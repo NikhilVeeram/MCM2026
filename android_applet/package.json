@@ -1,0 +1,10 @@
+{
+    "name": "ecodrain-legacy",
+    "version": "1.0.0",
+    "description": "Legacy EcoDrain Static Dashboard",
+    "main": "index.html",
+    "scripts": {
+        "start": "npx -y serve ."
+    },
+    "dependencies": {}
+}
