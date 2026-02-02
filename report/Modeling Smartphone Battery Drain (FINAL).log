@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.11.5)  2 FEB 2026 15:58
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.11.5)  2 FEB 2026 16:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -703,7 +703,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [12]
-<../images/model_physics_curves.png, id=376, 712.3413pt x 563.706pt>
+<../images/model_physics_curves.png, id=406, 712.3413pt x 563.706pt>
 File: ../images/model_physics_curves.png Graphic file (type png)
 <use ../images/model_physics_curves.png>
 Package pdftex.def Info: ../images/model_physics_curves.png  used on input line
@@ -718,13 +718,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [13 <../images/model_physics_curves.png>]
-<../images/power_breakdown.png, id=386, 722.7pt x 433.62pt>
+<../images/power_breakdown.png, id=416, 722.7pt x 433.62pt>
 File: ../images/power_breakdown.png Graphic file (type png)
 <use ../images/power_breakdown.png>
 Package pdftex.def Info: ../images/power_breakdown.png  used on input line 490.
 
 (pdftex.def)             Requested size: 463.42989pt x 278.05841pt.
-<../images/battery_scenario_grid.png, id=387, 1300.86pt x 1011.78pt>
+<../images/battery_scenario_grid.png, id=417, 1300.86pt x 1011.78pt>
 File: ../images/battery_scenario_grid.png Graphic file (type png)
 <use ../images/battery_scenario_grid.png>
 Package pdftex.def Info: ../images/battery_scenario_grid.png  used on input lin
@@ -742,7 +742,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [14 <../images/power_breakdown.png>]
-<../images/app_power_comparison.png, id=397, 867.24pt x 505.89pt>
+<../images/app_power_comparison.png, id=428, 867.24pt x 505.89pt>
 File: ../images/app_power_comparison.png Graphic file (type png)
 <use ../images/app_power_comparison.png>
 Package pdftex.def Info: ../images/app_power_comparison.png  used on input line
@@ -849,7 +849,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [23]
-<../images/equation_flowchart.png, id=546, 867.24pt x 578.16pt>
+<../images/equation_flowchart.png, id=570, 867.24pt x 578.16pt>
 File: ../images/equation_flowchart.png Graphic file (type png)
 <use ../images/equation_flowchart.png>
 Package pdftex.def Info: ../images/equation_flowchart.png  used on input line 8
@@ -920,26 +920,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-10-24>
  ***********
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package rerunfilecheck Warning: File `"Modeling Smartphone Battery Drain (FINAL
-)".out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `"Modeling Smartphone Battery Drain 
-(FINAL)".out':
-(rerunfilecheck)             Before: C62683F214408F5603D51443E5A6FC5B;8828
-(rerunfilecheck)             After:  C716668B4D6FBC112E89BEB58B42DEE3;10012.
+Package rerunfilecheck Info: File `"Modeling Smartphone Battery Drain (FINAL)".
+out' has not changed.
+(rerunfilecheck)             Checksum: C716668B4D6FBC112E89BEB58B42DEE3;10012.
  ) 
 Here is how much of TeX's memory you used:
- 15272 strings out of 467538
- 233374 string characters out of 5423725
- 1369150 words of memory out of 5000000
- 43756 multiletter control sequences out of 15000+600000
+ 15278 strings out of 467538
+ 233476 string characters out of 5423725
+ 1369315 words of memory out of 5000000
+ 43762 multiletter control sequences out of 15000+600000
  666734 words of font info for 125 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,12n,79p,755b,1329s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -954,10 +943,10 @@ r.pfb><c:/texlive/2025/texmf-dist/fonts/type1/urw/symbol/usyr.pfb><c:/texlive/2
 ts/type1/urw/times/utmr8a.pfb><c:/texlive/2025/texmf-dist/fonts/type1/urw/times
 /utmri8a.pfb>
 Output written on "Modeling Smartphone Battery Drain (FINAL).pdf" (30 pages, 17
-68618 bytes).
+76160 bytes).
 PDF statistics:
- 678 PDF objects out of 1000 (max. 8388607)
- 607 compressed objects within 7 object streams
+ 702 PDF objects out of 1000 (max. 8388607)
+ 631 compressed objects within 7 object streams
  209 named destinations out of 1000 (max. 500000)
- 386 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 434 words of extra memory for PDF output out of 10000 (max. 10000000)
 
