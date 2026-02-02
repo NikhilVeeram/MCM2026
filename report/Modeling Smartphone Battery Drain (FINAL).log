@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.11.5)  2 FEB 2026 17:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.11.5)  2 FEB 2026 17:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -592,14 +592,7 @@ LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 9
 
 (c:/texlive/2025/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-)
-
-LaTeX Warning: Citation `5' on page 1 undefined on input line 103.
-
-
-LaTeX Warning: Citation `13' on page 1 undefined on input line 104.
-
-[1
+) [1
 
 {c:/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{c:/texlive/2025/
 texmf-dist/fonts/enc/dvips/base/8r.enc}]
@@ -610,7 +603,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[2] (./Modeling Smartphone Battery Drain (FINAL).toc)
+[2] (./Modeling Smartphone Battery Drain (FINAL).toc
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[3])
 \tf@toc=\write4
 \openout4 = `"Modeling Smartphone Battery Drain (FINAL).toc"'.
 
@@ -622,13 +623,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[3]
-
-LaTeX Warning: Citation `1' on page 3 undefined on input line 128.
-
-
-LaTeX Warning: Citation `14' on page 3 undefined on input line 130.
-
+[4]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -650,25 +645,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[4]
 
-LaTeX Warning: Citation `6' on page 5 undefined on input line 237.
-
-
-LaTeX Warning: Citation `9' on page 5 undefined on input line 237.
-
-
-LaTeX Warning: Citation `7' on page 5 undefined on input line 241.
-
-
-LaTeX Warning: Citation `1' on page 5 undefined on input line 248.
-
-
-LaTeX Warning: Citation `2' on page 5 undefined on input line 249.
-
-
-LaTeX Warning: Citation `5' on page 5 undefined on input line 249.
-
+pdfTeX warning (ext4): destination with the same identifier (name{page.4}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.209 
+       [4]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -678,21 +661,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [5]
 
-LaTeX Warning: Citation `13' on page 6 undefined on input line 250.
-
-
-LaTeX Warning: Citation `6' on page 6 undefined on input line 263.
-
-
-LaTeX Warning: Citation `9' on page 6 undefined on input line 263.
-
-
-LaTeX Warning: Citation `14' on page 6 undefined on input line 279.
-
-
-LaTeX Warning: Citation `6' on page 6 undefined on input line 283.
-
-
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
@@ -700,18 +668,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [6]
-
-LaTeX Warning: Citation `6' on page 7 undefined on input line 296.
-
-
-LaTeX Warning: Citation `1' on page 7 undefined on input line 314.
-
-
-LaTeX Warning: Citation `2' on page 7 undefined on input line 314.
-
-
-LaTeX Warning: Citation `1' on page 7 undefined on input line 318.
-
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -721,27 +677,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [7]
 
-LaTeX Warning: Citation `2' on page 8 undefined on input line 334.
-
-
-LaTeX Warning: Citation `5' on page 8 undefined on input line 334.
-
-
-LaTeX Warning: Citation `5' on page 8 undefined on input line 343.
-
-
-LaTeX Warning: Citation `13' on page 8 undefined on input line 347.
-
-
-LaTeX Warning: Citation `13' on page 8 undefined on input line 353.
-
-
-LaTeX Warning: Citation `13' on page 8 undefined on input line 360.
-
-
-LaTeX Warning: Citation `3' on page 8 undefined on input line 362.
-
-
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
@@ -749,18 +684,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [8]
-
-LaTeX Warning: Citation `10' on page 9 undefined on input line 385.
-
-
-LaTeX Warning: Citation `10' on page 9 undefined on input line 394.
-
-
-LaTeX Warning: Citation `12' on page 9 undefined on input line 395.
-
-
-LaTeX Warning: Citation `6' on page 9 undefined on input line 410.
-
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -770,9 +693,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [9]
 
-LaTeX Warning: Citation `14' on page 10 undefined on input line 471.
-
-
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
@@ -780,30 +700,18 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [10]
-<../images/model_physics_curves.png, id=196, 712.3413pt x 563.706pt>
+<../images/model_physics_curves.png, id=395, 712.3413pt x 563.706pt>
 File: ../images/model_physics_curves.png Graphic file (type png)
 <use ../images/model_physics_curves.png>
 Package pdftex.def Info: ../images/model_physics_curves.png  used on input line
  479.
 (pdftex.def)             Requested size: 463.42989pt x 366.74pt.
-
-
-LaTeX Warning: Citation `6' on page 11 undefined on input line 489.
-
-
-LaTeX Warning: Citation `14' on page 11 undefined on input line 489.
-
-<../images/ios_power_profile.png, id=198, 252.19218pt x 516.42938pt>
+<../images/ios_power_profile.png, id=399, 1210.5225pt x 2631.8325pt>
 File: ../images/ios_power_profile.png Graphic file (type png)
 <use ../images/ios_power_profile.png>
 Package pdftex.def Info: ../images/ios_power_profile.png  used on input line 49
 4.
-(pdftex.def)             Requested size: 487.82251pt x 998.95618pt.
-
-LaTeX Warning: Float too large for page by 387.52615pt on input line 497.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
+(pdftex.def)             Requested size: 487.82251pt x 1060.58543pt.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -813,58 +721,152 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [11 <../images/model_physics_curves.png>]
-<../images/power_user_composite.png, id=207, 1084.05pt x 722.7pt>
+Overfull \vbox (449.15541pt too high) has occurred while \output is active []
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[12 <../images/ios_power_profile.png>]
+<../images/ios_gaming_load.png, id=413, 1210.5225pt x 2631.8325pt>
+File: ../images/ios_gaming_load.png Graphic file (type png)
+<use ../images/ios_gaming_load.png>
+Package pdftex.def Info: ../images/ios_gaming_load.png  used on input line 510.
+
+(pdftex.def)             Requested size: 222.44435pt x 483.58841pt.
+<../images/ios_wifi_toggle.png, id=414, 1210.5225pt x 2631.8325pt>
+File: ../images/ios_wifi_toggle.png Graphic file (type png)
+<use ../images/ios_wifi_toggle.png>
+Package pdftex.def Info: ../images/ios_wifi_toggle.png  used on input line 517.
+
+(pdftex.def)             Requested size: 222.44435pt x 483.58841pt.
+<../images/power_user_composite.png, id=417, 1084.05pt x 722.7pt>
 File: ../images/power_user_composite.png Graphic file (type png)
 <use ../images/power_user_composite.png>
 Package pdftex.def Info: ../images/power_user_composite.png  used on input line
- 508.
+ 525.
 (pdftex.def)             Requested size: 487.82251pt x 325.21199pt.
 
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-<../images/limited_user_composite.png, id=208, 1084.05pt x 722.7pt>
+[13 <../images/ios_gaming_load.png> <../images/ios_wifi_toggle.png>]
+<../images/ios_eco_profile.png, id=425, 1210.5225pt x 2631.8325pt>
+File: ../images/ios_eco_profile.png Graphic file (type png)
+<use ../images/ios_eco_profile.png>
+Package pdftex.def Info: ../images/ios_eco_profile.png  used on input line 533.
+
+(pdftex.def)             Requested size: 292.69647pt x 636.35126pt.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[14 <../images/power_user_composite.png>]
+Overfull \vbox (61.67123pt too high) has occurred while \output is active []
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[15 <../images/ios_eco_profile.png>]
+<../images/limited_user_composite.png, id=439, 1084.05pt x 722.7pt>
 File: ../images/limited_user_composite.png Graphic file (type png)
 <use ../images/limited_user_composite.png>
 Package pdftex.def Info: ../images/limited_user_composite.png  used on input li
-ne 522.
+ne 546.
 (pdftex.def)             Requested size: 487.82251pt x 325.21199pt.
+<../images/android_dashboard_top.png, id=442, 252.19218pt x 516.42938pt>
+File: ../images/android_dashboard_top.png Graphic file (type png)
+<use ../images/android_dashboard_top.png>
+Package pdftex.def Info: ../images/android_dashboard_top.png  used on input lin
+e 565.
+(pdftex.def)             Requested size: 222.44435pt x 455.51518pt.
+<../images/android_dashboard_bottom.png, id=443, 241.65282pt x 539.01375pt>
+File: ../images/android_dashboard_bottom.png Graphic file (type png)
+<use ../images/android_dashboard_bottom.png>
+Package pdftex.def Info: ../images/android_dashboard_bottom.png  used on input 
+line 572.
+(pdftex.def)             Requested size: 222.44435pt x 496.18652pt.
 
-LaTeX Warning: `h' float specifier changed to `ht'.
 
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-LaTeX Warning: Citation `12' on page 12 undefined on input line 534.
-
-
-LaTeX Warning: Citation `10' on page 12 undefined on input line 535.
-
-<../images/battery_scenario_grid.png, id=209, 1300.86pt x 1011.78pt>
+[16 <../images/limited_user_composite.png>]
+<../images/battery_scenario_grid.png, id=450, 1300.86pt x 1011.78pt>
 File: ../images/battery_scenario_grid.png Graphic file (type png)
 <use ../images/battery_scenario_grid.png>
 Package pdftex.def Info: ../images/battery_scenario_grid.png  used on input lin
-e 539.
+e 580.
 (pdftex.def)             Requested size: 463.42989pt x 360.44264pt.
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[17 <../images/android_dashboard_top.png> <../images/android_dashboard_bottom.p
+ng>]
+<../images/android_light_full.png, id=459, 246.9225pt x 515.67656pt>
+File: ../images/android_light_full.png Graphic file (type png)
+<use ../images/android_light_full.png>
+Package pdftex.def Info: ../images/android_light_full.png  used on input line 5
+90.
+(pdftex.def)             Requested size: 222.44435pt x 464.55312pt.
+<../images/android_eco_dark_50.png, id=460, 251.43938pt x 511.15968pt>
+File: ../images/android_eco_dark_50.png Graphic file (type png)
+<use ../images/android_eco_dark_50.png>
+Package pdftex.def Info: ../images/android_eco_dark_50.png  used on input line 
+597.
+(pdftex.def)             Requested size: 222.44435pt x 452.21638pt.
 
 
-LaTeX Warning: Citation `14' on page 12 undefined on input line 548.
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-<../images/app_power_comparison.png, id=210, 867.24pt x 505.89pt>
+[18 <../images/battery_scenario_grid.png>]
+<../images/app_power_comparison.png, id=468, 867.24pt x 505.89pt>
 File: ../images/app_power_comparison.png Graphic file (type png)
 <use ../images/app_power_comparison.png>
 Package pdftex.def Info: ../images/app_power_comparison.png  used on input line
- 553.
+ 611.
 (pdftex.def)             Requested size: 463.42989pt x 270.33583pt.
+
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-LaTeX Warning: Citation `2' on page 12 undefined on input line 571.
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-
-LaTeX Warning: Citation `5' on page 12 undefined on input line 571.
-
+[19 <../images/android_light_full.png> <../images/android_eco_dark_50.png>]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -872,129 +874,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[12]
+[20 <../images/app_power_comparison.png>]
 
-LaTeX Warning: Citation `5' on page 13 undefined on input line 576.
+LaTeX Warning: `h' float specifier changed to `ht'.
 
-
-LaTeX Warning: Citation `12' on page 13 undefined on input line 579.
-
-
-LaTeX Warning: Citation `11' on page 13 undefined on input line 593.
-
-
-LaTeX Warning: Citation `11' on page 13 undefined on input line 594.
-
-
-LaTeX Warning: Citation `8' on page 13 undefined on input line 615.
-
-
-LaTeX Warning: Citation `8' on page 13 undefined on input line 616.
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[13]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[14]
-
-LaTeX Warning: Citation `12' on page 15 undefined on input line 682.
-
-
-LaTeX Warning: Citation `8' on page 15 undefined on input line 682.
-
-
-LaTeX Warning: Citation `7' on page 15 undefined on input line 688.
-
-
-LaTeX Warning: Citation `7' on page 15 undefined on input line 690.
-
-
-LaTeX Warning: Citation `4' on page 15 undefined on input line 699.
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[15]
-
-LaTeX Warning: Citation `14' on page 16 undefined on input line 702.
-
-
-LaTeX Warning: Citation `15' on page 16 undefined on input line 705.
-
-
-LaTeX Warning: Citation `8' on page 16 undefined on input line 708.
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[16] (c:/texlive/2025/texmf-dist/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2024/09/23 1.10c listings language file
-)
-Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 725.
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[17]
-
-LaTeX Warning: Reference `tab:tte_validation' on page 18 undefined on input lin
-e 795.
-
-
-Overfull \hbox (6.31233pt too wide) in paragraph at lines 814--815
-[]\OT1/ptm/b/n/12 Access: \OT1/ptm/m/n/12 Open the pro-vided lo-cal-host URL (e
-.g., []$\OT1/cmtt/m/n/12 http : / / localhost : 5173$[]\OT1/ptm/m/n/12 ) in you
-r web browser.
- []
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[18]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[19]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[20]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1004,18 +887,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [21]
 
-LaTeX Warning: Citation `6' on page 22 undefined on input line 927.
-
-<../images/equation_flowchart.png, id=368, 1011.78pt x 722.7pt>
-File: ../images/equation_flowchart.png Graphic file (type png)
-<use ../images/equation_flowchart.png>
-Package pdftex.def Info: ../images/equation_flowchart.png  used on input line 9
-34.
-(pdftex.def)             Requested size: 463.42989pt x 331.02348pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
@@ -1023,19 +894,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [22]
-
-LaTeX Warning: Citation `12' on page 23 undefined on input line 950.
-
-
-LaTeX Warning: Citation `8' on page 23 undefined on input line 956.
-
-
-LaTeX Warning: Citation `13' on page 23 undefined on input line 964.
-
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <17.28> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 971.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 971.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1051,7 +909,75 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[24]
+[24] (c:/texlive/2025/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2024/09/23 1.10c listings language file
+)
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
+nput line 783.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[25]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[26]
+<../images/equation_flowchart.png, id=608, 1011.78pt x 722.7pt>
+File: ../images/equation_flowchart.png Graphic file (type png)
+<use ../images/equation_flowchart.png>
+Package pdftex.def Info: ../images/equation_flowchart.png  used on input line 8
+97.
+(pdftex.def)             Requested size: 463.42989pt x 331.02348pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[27]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[28 <../images/equation_flowchart.png>]
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <17.28> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 934.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 934.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[29]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[30]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1064,7 +990,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1058 \newpage
+l.1021 \newpage
                 [1]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1078,7 +1004,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1101 \begin{verbatim}
+l.1064 \begin{verbatim}
                         [2]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1092,7 +1018,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1106 \newpage
+l.1069 \newpage
                 [3]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1106,7 +1032,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.4}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1150 \newpage
+l.1113 \newpage
                 [4]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1120,7 +1046,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.5}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1185 \newpage
+l.1148 \newpage
                 [5]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1134,120 +1060,25 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.6}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1214 \end{document}
-                      [6]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-
-pdfTeX warning (ext4): destination with the same identifier (name{page.7}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.1214 \end{document}
-                      [7 <../images/ios_power_profile.png>]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-
-pdfTeX warning (ext4): destination with the same identifier (name{page.8}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.1214 \end{document}
-                      [8 <../images/power_user_composite.png>]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-
-pdfTeX warning (ext4): destination with the same identifier (name{page.9}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.1214 \end{document}
-                      [9 <../images/limited_user_composite.png>]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-
-pdfTeX warning (ext4): destination with the same identifier (name{page.10}) has
- been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.1214 \end{document}
-                      [10 <../images/battery_scenario_grid.png>]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-
-pdfTeX warning (ext4): destination with the same identifier (name{page.11}) has
- been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.1214 \end{document}
-                      [11 <../images/app_power_comparison.png>]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-
-pdfTeX warning (ext4): destination with the same identifier (name{page.12}) has
- been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.1214 \end{document}
-                      [12 <../images/equation_flowchart.png>]
-(./Modeling Smartphone Battery Drain (FINAL).aux)
+l.1177 \end{document}
+                      [6] (./Modeling Smartphone Battery Drain (FINAL).aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-10-24>
  ***********
 
 
-LaTeX Warning: There were undefined references.
-
-
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
-
-Package rerunfilecheck Warning: File `"Modeling Smartphone Battery Drain (FINAL
-)".out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `"Modeling Smartphone Battery Drain 
-(FINAL)".out':
-(rerunfilecheck)             Before: D4EAA2CD9E2E73ABC467DFFF35A0CD2C;4579
-(rerunfilecheck)             After:  3FF3EBC9ECAC0B031470916729186BBB;10155.
+Package rerunfilecheck Info: File `"Modeling Smartphone Battery Drain (FINAL)".
+out' has not changed.
+(rerunfilecheck)             Checksum: 3236156677426E5E0A0DE1304BEC66F9;9880.
  ) 
 Here is how much of TeX's memory you used:
- 15297 strings out of 467538
- 234224 string characters out of 5423725
- 1155680 words of memory out of 5000000
- 43771 multiletter control sequences out of 15000+600000
+ 15372 strings out of 467538
+ 236501 string characters out of 5423725
+ 1152495 words of memory out of 5000000
+ 43845 multiletter control sequences out of 15000+600000
  666734 words of font info for 125 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,12n,79p,741b,2159s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1261,11 +1092,11 @@ yr.pfb><c:/texlive/2025/texmf-dist/fonts/type1/urw/symbol/usyr.pfb><c:/texlive/
 2025/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><c:/texlive/2025/texmf-dist/fo
 nts/type1/urw/times/utmr8a.pfb><c:/texlive/2025/texmf-dist/fonts/type1/urw/time
 s/utmri8a.pfb>
-Output written on "Modeling Smartphone Battery Drain (FINAL).pdf" (37 pages, 23
-26904 bytes).
+Output written on "Modeling Smartphone Battery Drain (FINAL).pdf" (38 pages, 29
+89736 bytes).
 PDF statistics:
- 559 PDF objects out of 1000 (max. 8388607)
- 477 compressed objects within 5 object streams
- 219 named destinations out of 1000 (max. 500000)
- 228 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 761 PDF objects out of 1000 (max. 8388607)
+ 663 compressed objects within 7 object streams
+ 220 named destinations out of 1000 (max. 500000)
+ 471 words of extra memory for PDF output out of 10000 (max. 10000000)
 

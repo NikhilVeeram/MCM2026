@@ -272,7 +272,7 @@ Since smartphones draw power to maintain operation, the load current $I_{load}(t
 I_{load}(t) = \frac{P_{total}(t)}{V_{term}(t) \cdot \eta(P_{total})}
 \end{equation}
 
-Where $\eta(P_{total})$ is the power-dependent efficiency law, which account for non-ideal discharge behavior at high loads. As refined through empirical calibration (see Appendix C), we model this as:
+Where $\eta(P_{total})$ is the power-dependent efficiency law, which account for non-ideal discharge behavior at high loads. As refined through empirical calibration (see Appendix B), we model this as:
 \begin{equation} \label{eq:efficiency_refined}
 \eta(P_{total}) = \eta_{base} - \zeta \cdot \frac{P_{total}(t)}{P_{ref}}
 \end{equation}
@@ -462,7 +462,7 @@ Where $\lambda_{bg} \approx 0$ represents the disabling of background app refres
 
 \subsection{Thermal Throttling Model}
 
-To prevent unrealistic battery life predictions and hardware damage, we implement a thermal feedback loop. If the device temperature $T$ exceeds the comfort threshold $T_{crit} = 40^\circ$C, the total power is scaled by a throttling factor identified through our real-time simulation impetus (see Appendix C):
+To prevent unrealistic battery life predictions and hardware damage, we implement a thermal feedback loop. If the device temperature $T$ exceeds the comfort threshold $T_{crit} = 40^\circ$C, the total power is scaled by a throttling factor identified through our real-time simulation impetus (see Appendix B):
 
 \begin{equation} \label{eq:thermal_throttle}
 P_{actual}(t) = P_{total}(t) \cdot \max \left( 0.35, 1 - \frac{T(t) - 40}{20} \right)
@@ -474,7 +474,7 @@ This model ensures that sustained heavy loads (e.g., 4K streaming or gaming) res
 
 The derived equations provide a continuous-time framework that links physical hardware parameters with user-driven software events. By quantifying the coefficients for $P_{net}$ (Tail Energy) and $P_{disp}$ (OLED ratio), we can mathematically validate the impact of user behaviors. Specifically, the inclusion of the \textbf{App Cluster} summation (\ref{eq:software_power}) allows us to generalize energy consumption across thousands of apps by grouping them into solvable categories, satisfying the project's dual mandate of accuracy and simplicity.
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.95\textwidth]{../images/model_physics_curves.png}
     \caption{Constituent physics curves governing the model dynamics. Clockwise from top-left: Open Circuit Voltage (OCV) vs. SOC; Coulombic Efficiency $\eta(P)$ drop-off at high loads; Thermal Throttling factor decrease after $40^\circ$C; and exponential 5G power penalty vs. signal strength.}
@@ -489,7 +489,7 @@ The derived equations provide a continuous-time framework that links physical ha
 \textbf{Device Model:} iPhone 17 Pro (Modeled based on 2RC parameters from \cite{6} and \cite{14}). \\
 \textbf{Battery Parameters:} $Q_{cap} \approx 3988$ mAh, $V_{term} = 3.7$ V.
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=1.0\textwidth]{../images/ios_power_profile.png}
     \caption{iOS App Interface visualizing the "Power User" profile. Real-time metrics show elevated CPU and network power limits ($\lambda > 1.0$), with the interface reflecting a high-performance state.}
@@ -500,10 +500,27 @@ The derived equations provide a continuous-time framework that links physical ha
 This profile represents a user leveraging high-performance cores and 5G connectivity.
 \begin{itemize}
     \item \textbf{Inputs:} Brightness $B(t) = 100\%$, Active 5G ($\delta_{5G} = 2.1$ W), Heavy Gaming Cluster.
-    \item \textbf{Observation:} The high current draw ($I_{load}$) causes significant $I^2R$ losses across internal resistance $R_0$, leading to "voltage sag" visible in the circuit diagram below.
+    \item \textbf{Observation:} The high current draw ($I_{load}$) causes significant $I^2R$ losses across internal resistance $R_0$, leading to "voltage sag".
 \end{itemize}
 
-\begin{figure}[h]
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=0.95\textwidth]{../images/ios_gaming_load.png}
+        \caption{iOS: Gaming Load stress test. The thermal engine shows elevated temperature and peak power draw.}
+        \label{fig:ios_gaming_load}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=0.95\textwidth]{../images/ios_wifi_toggle.png}
+        \caption{iOS: Wi-Fi Toggle. Swithing to Wi-Fi reduces modem power to $\sim$0.8W (Eq. \ref{eq:network_power}).}
+        \label{fig:ios_wifi_toggle}
+    \end{minipage}
+\end{figure}
+
+\begin{figure}[H]
     \centering
     \includegraphics[width=1.0\textwidth]{../images/power_user_composite.png}
     \caption{Detailed Power User Profile. Central: Average power breakdown. Surrounding: Specific high-demand workloads (Gaming, 4K Streaming) highlighting maximum power draw variances and 5G penalties.}
@@ -511,13 +528,20 @@ This profile represents a user leveraging high-performance cores and 5G connecti
 \end{figure}
 
 \subsection{User B: The Limited User}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{../images/ios_eco_profile.png}
+    \caption{iOS: Eco 1.5x Profile. Reduced $\lambda = 0.65$ limits CPU/display power, showing green status indicators.}
+    \label{fig:ios_eco_profile}
+\end{figure}
+
 This profile utilizes "Low Power Mode" to restrict background activity.
 \begin{itemize}
     \item \textbf{Inputs:} LPM Enabled ($\lambda_{bg} = 0$), Screen Time $< 2$ hours.
     \item \textbf{Observation:} The elimination of $P_{tail}$ from network activity and the reduction of $P_{static}$ via CPU throttling results in a linear, slow drain curve.
 \end{itemize}
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=1.0\textwidth]{../images/limited_user_composite.png}
     \caption{Detailed Limited User Profile. Central: Average power breakdown (mostly background/idle). Surrounding: Low-power workloads (Eco Reading, Texting) showing significantly reduced power caps with disabled 5G tail states.}
@@ -534,7 +558,24 @@ This profile utilizes "Low Power Mode" to restrict background activity.
 \textbf{Device Model:} Google Pixel 8 (Modeled using dataset parameters from \cite{12}). \\
 \textbf{Key Difference:} Android devices often exhibit different background handling policies and thermal thresholds compared to iOS \cite{10}.
 
-\begin{figure}[h]
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=0.95\textwidth]{../images/android_dashboard_top.png}
+        \caption{Android Dashboard (Top): Real-time SOC ring and control toggles.}
+        \label{fig:android_dashboard_top}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=0.95\textwidth]{../images/android_dashboard_bottom.png}
+        \caption{Android Dashboard (Bottom): Octa-Core cluster activity and app impact.}
+        \label{fig:android_dashboard_bottom}
+    \end{minipage}
+\end{figure}
+
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.95\textwidth]{../images/battery_scenario_grid.png}
     \caption{Calibrated simulation results across 9 distinct user scenarios, highlighting the non-linear voltage sag and thermal throttling impact. This grid contrasts the Power User (Top Left) with the Limited User (Bottom Right).}
@@ -542,6 +583,23 @@ This profile utilizes "Low Power Mode" to restrict background activity.
 \end{figure}
 
 \subsection{User A: The Power User}
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=0.95\textwidth]{../images/android_light_full.png}
+        \caption{Light Mode (100\% Brightness): High APR ($\gamma=0.9$) results in peak display power.}
+        \label{fig:android_light_full}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=0.95\textwidth]{../images/android_eco_dark_50.png}
+        \caption{Dark Mode (Eco): Reduced APR ($\gamma=0.3$) saves $\sim$40\% display energy.}
+        \label{fig:android_eco_dark}
+    \end{minipage}
+\end{figure}
+
 Android devices often sustain higher peak power for longer durations before throttling.
 \begin{itemize}
     \item \textbf{Inputs:} 120Hz Refresh Rate, High-Brightness Mode, Multitasking.
@@ -794,125 +852,13 @@ limited = {'brightness': 0.3, 'alpha': 0.1, 'cpu_freq': 0.4,
 
 The validation code implements the calibrated coefficients ($\kappa_{soc} = 0.95$, $\beta_1 = 0.42$) and reproduces the TTE predictions from Table \ref{tab:tte_validation}.
 
-\section{Appendix B: Application Interface and Usage}
-
-This appendix provides a user manual and visual reference for the "Eco-Drain" application developed to help users visualize the model's predictions.
-
-\subsection*{How to Run the Application}
-\begin{enumerate}
-    \item \textbf{Prerequisites:} Ensure `Node.js` (v18+) and `Git` are installed.
-    \item \textbf{Installation:} Clone the repository and install dependencies:
-    \begin{verbatim}
-    git clone https://github.com/NikhilVeeram/MCM2026
-    cd MCM2026/mobile_app
-    npm install
-    \end{verbatim}
-    \item \textbf{Execution:} Run the development server:
-    \begin{verbatim}
-    npm run dev
-    \end{verbatim}
-    \item \textbf{Access:} Open the provided localhost URL (e.g., \url{http://localhost:5173}) in your web browser. Use the header icons to toggle between "Dashboard" and "Home Widget" views.
-\end{enumerate}
-
-\subsection*{Android Application Screenshots}
-
-The following screenshots demonstrate key features of the EcoDrain application on Android, highlighting the impact of display mode and power-saving settings on battery consumption.
-
-\begin{figure}[H]
-    \centering
-    \begin{minipage}{0.48\textwidth}
-        \centering
-        \fbox{\parbox[c][4cm]{0.95\textwidth}{\centering \vspace{1.2cm} \textbf{Screenshot A1} \\ android\_eco\_dark\_50.png \vspace{1.2cm}}}
-        \caption{Android: OLED Dark Mode with Eco Mode enabled at 50\% brightness. The reduced Active Pixel Ratio ($\gamma = 0.3$) and power-saving coefficients result in significantly lower display power consumption.}
-        \label{fig:android_eco_dark}
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.48\textwidth}
-        \centering
-        \fbox{\parbox[c][4cm]{0.95\textwidth}{\centering \vspace{1.2cm} \textbf{Screenshot A2} \\ android\_light\_full.png \vspace{1.2cm}}}
-        \caption{Android: Light Mode with Eco Mode disabled at 100\% brightness. The high APR ($\gamma = 0.9$) and maximum backlight demonstrate the worst-case display power scenario.}
-        \label{fig:android_light_full}
-    \end{minipage}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \begin{minipage}{0.48\textwidth}
-        \centering
-        \fbox{\parbox[c][4cm]{0.95\textwidth}{\centering \vspace{1.2cm} \textbf{Screenshot A3} \\ android\_dashboard\_top.png \vspace{1.2cm}}}
-        \caption{Android: Main Dashboard (Top Section). Shows the real-time SOC ring, time-to-empty prediction, user profile selector, and primary control toggles for display and network settings.}
-        \label{fig:android_dashboard_top}
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.48\textwidth}
-        \centering
-        \fbox{\parbox[c][4cm]{0.95\textwidth}{\centering \vspace{1.2cm} \textbf{Screenshot A4} \\ android\_dashboard\_bottom.png \vspace{1.2cm}}}
-        \caption{Android: Dashboard (Bottom Section). Displays the Octa-Core Cluster Activity with per-core frequency and power readings, along with the Active Software Impact list showing per-app wattage contributions.}
-        \label{fig:android_dashboard_bottom}
-    \end{minipage}
-\end{figure}
-
-\subsection*{iOS Application Screenshots}
-
-The following screenshots demonstrate the EcoDrain application on iOS, showcasing user profile switching, network optimization, and stress testing capabilities.
-
-\begin{figure}[H]
-    \centering
-    \begin{minipage}{0.48\textwidth}
-        \centering
-        \fbox{\parbox[c][4cm]{0.95\textwidth}{\centering \vspace{1.2cm} \textbf{Screenshot I1} \\ ios\_eco\_profile.png \vspace{1.2cm}}}
-        \caption{iOS: Eco 1.5x Profile selected. The reduced power scaling coefficient ($\lambda = 0.65$) limits CPU and display power consumption, extending battery life for conservative users.}
-        \label{fig:ios_eco_profile}
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.48\textwidth}
-        \centering
-        \fbox{\parbox[c][4cm]{0.95\textwidth}{\centering \vspace{1.2cm} \textbf{Screenshot I2} \\ ios\_power\_profile.png \vspace{1.2cm}}}
-        \caption{iOS: Power 1.5x Profile selected. The elevated power scaling ($\lambda = 1.5$) enables higher CPU frequencies and display brightness for performance-oriented users.}
-        \label{fig:ios_power_profile}
-    \end{minipage}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \begin{minipage}{0.48\textwidth}
-        \centering
-        \fbox{\parbox[c][4cm]{0.95\textwidth}{\centering \vspace{1.2cm} \textbf{Screenshot I3} \\ ios\_wifi\_toggle.png \vspace{1.2cm}}}
-        \caption{iOS: Wi-Fi Toggle demonstration. Switching from 5G Data to Wi-Fi reduces modem power from up to 3.0W to approximately 0.8W, as modeled by Equation (\ref{eq:network_power}).}
-        \label{fig:ios_wifi_toggle}
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.48\textwidth}
-        \centering
-        \fbox{\parbox[c][4cm]{0.95\textwidth}{\centering \vspace{1.2cm} \textbf{Screenshot I4} \\ ios\_gaming\_load.png \vspace{1.2cm}}}
-        \caption{iOS: Gaming Load stress test active. The thermal engine shows elevated temperature, and the Global Sink displays peak power draw demonstrating thermal throttling behavior per Equation (\ref{eq:thermal_throttle}).}
-        \label{fig:ios_gaming_load}
-    \end{minipage}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \begin{minipage}{0.48\textwidth}
-        \centering
-        \fbox{\parbox[c][4cm]{0.95\textwidth}{\centering \vspace{1.2cm} \textbf{Placeholder} \\ ios\_gaming\_eco\_2x.png \vspace{1.2cm}}}
-        \caption{iOS: Gaming (Eco 2x). Demonstrates performance throttling to maintain thermal equilibrium under the Eco 2x profile during heavy gaming loads.}
-        \label{fig:ios_gaming_eco}
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.48\textwidth}
-        \centering
-        \fbox{\parbox[c][4cm]{0.95\textwidth}{\centering \vspace{1.2cm} \textbf{Placeholder} \\ ios\_gaming\_power\_2x.png \vspace{1.2cm}}}
-        \caption{iOS: Gaming (Power 2x). Shows maximum frame rate and power consumption, with the thermal engine engaging aggressive cooling strategies (simulated).}
-        \label{fig:ios_gaming_power}
-    \end{minipage}
-\end{figure}
 
 \newpage
 
 % =================================================================================
 % PAGE 18: APPENDIX C
 % =================================================================================
-\section{Appendix C: Mathematical Derivations}
+\section{Appendix B: Mathematical Derivations}
 
 \subsection*{Model Refinement: Transition from Theoretical to Calibrated Models}
 
@@ -958,7 +904,7 @@ To clarify the interdependencies between the derived power modules, thermal feed
 % =================================================================================
 % PAGE 19: APPENDIX D
 % =================================================================================
-\section{Appendix D: Dataset Metadata}
+\section{Appendix C: Dataset Metadata}
 
 \subsection*{D.1 Kaggle Battery Drain Dataset}
 Used for: Calculating $\gamma$ (CPU load) and $P_{active}$ coefficients.
