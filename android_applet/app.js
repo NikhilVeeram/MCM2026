@@ -34,17 +34,17 @@ class EcoDrainModel {
     }
 
     calculate_power() {
-        // P_disp = 1.8 * Brightness(1.0) * ScreenRatio
-        const p_disp = 1.8 * 1.0 * this.screen_ratio;
-        // P_cpu = 3.5 * Util
-        const p_cpu = 3.5 * (this.cpu_load / 100);
+        // P_disp = Calibrated for OLED efficiency (0.8 max)
+        const p_disp = 0.8 * this.screen_ratio;
+        // P_cpu = Calibrated for background tasks (1.2 max)
+        const p_cpu = 1.2 * (this.cpu_load / 100);
         // P_net scaling (exponential with signal)
-        const signal_factor = Math.pow(10, (-this.signal_strength - 80) / 20);
-        const p_net = 0.5 * Math.min(signal_factor, 2.0);
+        const signal_factor = Math.pow(10, (-this.signal_strength - 80) / 25);
+        const p_net = 0.15 + 0.3 * Math.min(signal_factor, 3.0);
 
-        let total = p_disp + p_cpu + p_net + 0.1;
+        let total = p_disp + p_cpu + p_net + 0.1; // Total ~0.6-0.8W at idle
 
-        if (this.isLPM) total *= 0.65;
+        if (this.isLPM) total *= 0.60;
         return total;
     }
 

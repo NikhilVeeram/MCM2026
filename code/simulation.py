@@ -5,13 +5,13 @@ import matplotlib.pyplot as plt
 # ==========================================
 # 1. CALIBRATED PHYSICAL CONSTANTS (MCM-2633023)
 # ==========================================
-Q_CAP = 3.274 * 3600  
-V_NOM = 3.7           
+Q_CAP = 5.0 * 3600    # 5000mAh
+V_NOM = 3.8           # Nominal Voltage
 R_REF = 0.15          
 ALPHA_THERM = 0.003   
 T_REF = 25.0          
-C_TH = 150.0          # Aluminum/Lithium heat capacity
-H_CONV = 0.22         # Improved convective cooling
+C_TH = 150.0          
+H_CONV = 0.22         
 T_AMB = 22.0          
 V_CUTOFF = 3.1        
 
@@ -22,20 +22,27 @@ class MCMHighFidelityModel:
         return 3.45 + 0.6 * s + 0.12 * np.log(s + 0.01)
 
     def get_p_total(self, t, s, temp, p):
-        """[Eq 7-15] Refined coefficients based on device benchmarks"""
-        # 1. CPU Power: Calibrated for 2-4h heavy gaming floor
-        # alpha_cpu reduced to allow ~2x longer life than previous run
-        p_cpu = 8 * (0.045 * (0.8 + 0.3*p['f'])**2 * p['f'] * p['u']) + (p['p_app'] * 0.45)
+        """[Eq 7-15] Refined coefficients for 12W Gaming Peak"""
         
-        # 2. Display Power: brightness scaling
-        # p_disp adjusted for longer survival (OLED efficiency)
-        p_disp = 1.6 * (p['b']**1.6) * p['apr'] + 0.03
+        # User Profile Multipliers (Defaults to 1.0 if not specified)
+        # Power User > 1.0 scale, Eco User < 1.0 scale
+        u_mult = p.get('user_scale', 1.0) 
         
-        # 3. Network Signal scaling: GPS and 5G reduced (10x reduction for GPS as requested)
+        # 1. CPU Power: Performance Cores Peak at 12W [Requested]
+        # P_cpu = Alpha * f^3 + P_static
+        # If f=1.0, u=1.0, we want ~12W.
+        # Adjusted base to 12.0
+        p_cpu_base = 12.0 * (0.7 * (0.8 + 0.3*p['f'])**2 * p['f'] * p['u']) + (p['p_app'] * 0.45)
+        p_cpu = p_cpu_base * u_mult
+
+        # 2. Display Power: Scaled by profile
+        p_disp = (1.5 * (p['b']**1.6) * p['apr'] + 0.03) * u_mult
+        
+        # 3. Network Signal: Scaled by profile (Eco users use less background data)
         delta = 10**((-p['signal'] - 80) / 20)
-        p_net = (delta * 0.25) if p['net'] else 0.02
+        p_net = (min(3.0, (delta * 0.25)) if p['net'] else 0.02) * u_mult
         
-        p_total = p_cpu + p_disp + p_net + 0.04 # Parasitics
+        p_total = p_cpu + p_disp + p_net + 0.04
         
         # 4. Thermal Throttling [Eq 15 Improved]
         # Start throttling at 40C (hand comfort)
@@ -90,7 +97,7 @@ class MCMHighFidelityModel:
 def run_calibrated_suite():
     model = MCMHighFidelityModel()
     t = np.linspace(0, 24 * 3600, 8000) # 24 Hour potential span
-    y0 = [1.0, 0, 0, 22.0]
+    y0 = [0.95, 0, 0, 22.0]
 
     scenarios = [
         ("Ultra Gaming (5G)", {'f': 1.0, 'u': 0.98, 'p_app': 5.0, 'b': 1.0, 'apr': 0.95, 'signal': -110, 'net': True}),
