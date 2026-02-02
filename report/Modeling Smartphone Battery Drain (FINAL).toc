@@ -1,44 +1,51 @@
 \contentsline {section}{\numberline {1}Introduction}{3}{section.1}%
-\contentsline {section}{\numberline {2}Assumptions}{4}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Additional Modeling Assumptions}{4}{subsection.2.1}%
-\contentsline {section}{\numberline {3}Background on Developing Equaitons}{5}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Equivalent Circuit Model (ECM) of the Battery}{5}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Physical Power Laws}{5}{subsection.3.2}%
-\contentsline {section}{\numberline {4}Continuous-Time Model}{6}{section.4}%
-\contentsline {subsection}{\numberline {4.1}The Governing Equation}{6}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Terminal Voltage Dynamics (2RC Model)}{6}{subsection.4.2}%
-\contentsline {subsection}{\numberline {4.3}Total Power of System}{7}{subsection.4.3}%
-\contentsline {subsection}{\numberline {4.4}Hardware Models}{8}{subsection.4.4}%
-\contentsline {subsubsection}{\numberline {4.4.1}Central Processing Unit (CPU)}{8}{subsubsection.4.4.1}%
-\contentsline {subsubsection}{\numberline {4.4.2}Display (OLED vs LCD)}{8}{subsubsection.4.4.2}%
-\contentsline {subsubsection}{\numberline {4.4.3}Network and Modems}{8}{subsubsection.4.4.3}%
-\contentsline {subsubsection}{\numberline {4.4.4}Other Hardware Parameters}{9}{subsubsection.4.4.4}%
-\contentsline {subsection}{\numberline {4.5}Software Models}{9}{subsection.4.5}%
-\contentsline {subsubsection}{\numberline {4.5.1}App Clusters and Wake Locks}{9}{subsubsection.4.5.1}%
-\contentsline {subsubsection}{\numberline {4.5.2}Indexing and Garbage Collection}{9}{subsubsection.4.5.2}%
-\contentsline {section}{\numberline {5}Gainers: Charging Model}{9}{section.5}%
-\contentsline {section}{\numberline {6}System Implementation and Optimization}{10}{section.6}%
-\contentsline {subsection}{\numberline {6.1}The Complete Model}{10}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}Low Power Mode (LPM) Model}{10}{subsection.6.2}%
-\contentsline {subsection}{\numberline {6.3}Thermal Throttling Model}{10}{subsection.6.3}%
-\contentsline {section}{\numberline {7}Equation Development Summary}{10}{section.7}%
-\contentsline {section}{\numberline {8}Case Study: iPhone (Limited vs. Power User)}{11}{section.8}%
-\contentsline {subsection}{\numberline {8.1}User A: The Power User}{11}{subsection.8.1}%
-\contentsline {subsection}{\numberline {8.2}User B: The Limited User}{12}{subsection.8.2}%
-\contentsline {section}{\numberline {9}Case Study: Android (Power vs. Limited User)}{13}{section.9}%
-\contentsline {subsection}{\numberline {9.1}User A: The Power User}{13}{subsection.9.1}%
-\contentsline {subsection}{\numberline {9.2}Scenario B: The Limited User}{14}{subsection.9.2}%
-\contentsline {section}{\numberline {10}Optimization Model: Dark Mode \& App Clustering}{15}{section.10}%
-\contentsline {subsection}{\numberline {10.1}Dark Mode Optimization}{15}{subsection.10.1}%
-\contentsline {subsection}{\numberline {10.2}App Usage Clustering}{15}{subsection.10.2}%
-\contentsline {section}{\numberline {11}Dataset Applications \& Practical Applications}{16}{section.11}%
-\contentsline {subsection}{\numberline {11.1}User Behavior}{16}{subsection.11.1}%
-\contentsline {subsection}{\numberline {11.2}Remaining Useful Life (RUL) Evaluation}{16}{subsection.11.2}%
-\contentsline {section}{\numberline {12}Strengths and Weaknesses}{17}{section.12}%
-\contentsline {subsection}{\numberline {12.1}Strengths}{17}{subsection.12.1}%
-\contentsline {subsection}{\numberline {12.2}Weaknesses}{17}{subsection.12.2}%
-\contentsline {section}{\numberline {13}Future Work}{18}{section.13}%
-\contentsline {section}{\numberline {A}Appendix A: Python Modeling Code (Part 1)}{19}{appendix.A}%
-\contentsline {section}{\numberline {B}Appendix B: Figures of Application Interface}{21}{appendix.B}%
-\contentsline {section}{\numberline {C}Appendix C: Mathematical Derivations}{22}{appendix.C}%
-\contentsline {section}{\numberline {D}Appendix D: Dataset Metadata}{24}{appendix.D}%
+\contentsline {section}{\numberline {2}Model Framework and Assumptions}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Model Variables and Parameters}{4}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Modeling Assumptions}{5}{subsection.2.2}%
+\contentsline {section}{\numberline {3}Background on Developing Equaitons}{6}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Equivalent Circuit Model (ECM) of the Battery}{6}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Physical Power Laws}{6}{subsection.3.2}%
+\contentsline {section}{\numberline {4}Continuous-Time Model}{7}{section.4}%
+\contentsline {subsection}{\numberline {4.1}The Governing Equation}{7}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Terminal Voltage Dynamics (2RC Model)}{7}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Total Power of System}{8}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Hardware Models}{9}{subsection.4.4}%
+\contentsline {subsubsection}{\numberline {4.4.1}Central Processing Unit (CPU)}{9}{subsubsection.4.4.1}%
+\contentsline {subsubsection}{\numberline {4.4.2}Display (OLED vs LCD)}{9}{subsubsection.4.4.2}%
+\contentsline {subsubsection}{\numberline {4.4.3}Network and Modems}{9}{subsubsection.4.4.3}%
+\contentsline {subsubsection}{\numberline {4.4.4}Other Hardware Parameters}{11}{subsubsection.4.4.4}%
+\contentsline {subsection}{\numberline {4.5}Software Models}{11}{subsection.4.5}%
+\contentsline {subsubsection}{\numberline {4.5.1}App Clusters and Wake Locks}{11}{subsubsection.4.5.1}%
+\contentsline {subsubsection}{\numberline {4.5.2}Indexing and Garbage Collection}{11}{subsubsection.4.5.2}%
+\contentsline {section}{\numberline {5}Gainers: Charging Model}{11}{section.5}%
+\contentsline {section}{\numberline {6}System Implementation and Optimization}{12}{section.6}%
+\contentsline {subsection}{\numberline {6.1}The Complete Model}{12}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Low Power Mode (LPM) Model}{12}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Thermal Throttling Model}{12}{subsection.6.3}%
+\contentsline {section}{\numberline {7}Equation Development Summary}{13}{section.7}%
+\contentsline {section}{\numberline {8}Case Study: iPhone (Limited vs. Power User)}{14}{section.8}%
+\contentsline {subsection}{\numberline {8.1}User A: The Power User}{14}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}User B: The Limited User}{14}{subsection.8.2}%
+\contentsline {section}{\numberline {9}Case Study: Android (Power vs. Limited User)}{15}{section.9}%
+\contentsline {subsection}{\numberline {9.1}User A: The Power User}{15}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}Scenario B: The Limited User}{16}{subsection.9.2}%
+\contentsline {section}{\numberline {10}Optimization Model: Dark Mode \& App Clustering}{17}{section.10}%
+\contentsline {subsection}{\numberline {10.1}Dark Mode Optimization}{17}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}App Usage Clustering}{17}{subsection.10.2}%
+\contentsline {section}{\numberline {11}Dataset Applications \& Validation Results}{18}{section.11}%
+\contentsline {subsection}{\numberline {11.1}User Behavior Dataset}{18}{subsection.11.1}%
+\contentsline {subsection}{\numberline {11.2}Remaining Useful Life (RUL) Evaluation}{18}{subsection.11.2}%
+\contentsline {section}{\numberline {12}Strengths and Weaknesses}{19}{section.12}%
+\contentsline {subsection}{\numberline {12.1}Strengths}{19}{subsection.12.1}%
+\contentsline {subsection}{\numberline {12.2}Weaknesses}{19}{subsection.12.2}%
+\contentsline {section}{\numberline {13}Future Work}{20}{section.13}%
+\contentsline {subsection}{\numberline {13.1}AI-Driven Energy Modeling}{20}{subsection.13.1}%
+\contentsline {subsection}{\numberline {13.2}Advanced Thermal Management}{20}{subsection.13.2}%
+\contentsline {subsection}{\numberline {13.3}Cross-Platform Mobile Application}{20}{subsection.13.3}%
+\contentsline {subsection}{\numberline {13.4}Battery Degradation Over Lifecycle}{20}{subsection.13.4}%
+\contentsline {subsection}{\numberline {13.5}Integration with Smart Grid Systems}{20}{subsection.13.5}%
+\contentsline {subsection}{\numberline {13.6}}{20}{subsection.13.6}%
+\contentsline {section}{\numberline {14}Appendix A: Python Modeling Code}{21}{section.14}%
+\contentsline {section}{\numberline {15}Appendix B: Application Interface and Usage}{22}{section.15}%
+\contentsline {section}{\numberline {16}Appendix C: Mathematical Derivations}{23}{section.16}%
+\contentsline {section}{\numberline {17}Appendix D: Dataset Metadata}{25}{section.17}%

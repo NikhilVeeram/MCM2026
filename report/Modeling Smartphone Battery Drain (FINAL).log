@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.11.5)  2 FEB 2026 14:43
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.11.5)  2 FEB 2026 15:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -679,16 +679,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [9]
-<../images/model_physics_curves.png, id=348, 712.3413pt x 563.706pt>
-File: ../images/model_physics_curves.png Graphic file (type png)
-<use ../images/model_physics_curves.png>
-Package pdftex.def Info: ../images/model_physics_curves.png  used on input line
- 399.
-(pdftex.def)             Requested size: 463.42989pt x 366.74pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -697,15 +687,28 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [10]
-<../images/power_breakdown.png, id=359, 722.7pt x 433.62pt>
-File: ../images/power_breakdown.png Graphic file (type png)
-<use ../images/power_breakdown.png>
-Package pdftex.def Info: ../images/power_breakdown.png  used on input line 423.
 
-(pdftex.def)             Requested size: 463.42989pt x 278.05841pt.
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
+[11]
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[12]
+<../images/model_physics_curves.png, id=376, 712.3413pt x 563.706pt>
+File: ../images/model_physics_curves.png Graphic file (type png)
+<use ../images/model_physics_curves.png>
+Package pdftex.def Info: ../images/model_physics_curves.png  used on input line
+ 466.
+(pdftex.def)             Requested size: 463.42989pt x 366.74pt.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -714,12 +717,18 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[11 <../images/model_physics_curves.png>]
-<../images/battery_scenario_grid.png, id=366, 1300.86pt x 1011.78pt>
+[13 <../images/model_physics_curves.png>]
+<../images/power_breakdown.png, id=386, 722.7pt x 433.62pt>
+File: ../images/power_breakdown.png Graphic file (type png)
+<use ../images/power_breakdown.png>
+Package pdftex.def Info: ../images/power_breakdown.png  used on input line 490.
+
+(pdftex.def)             Requested size: 463.42989pt x 278.05841pt.
+<../images/battery_scenario_grid.png, id=387, 1300.86pt x 1011.78pt>
 File: ../images/battery_scenario_grid.png Graphic file (type png)
 <use ../images/battery_scenario_grid.png>
 Package pdftex.def Info: ../images/battery_scenario_grid.png  used on input lin
-e 437.
+e 504.
 (pdftex.def)             Requested size: 463.42989pt x 360.44264pt.
 
 
@@ -732,12 +741,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[12 <../images/power_breakdown.png>]
-<../images/app_power_comparison.png, id=377, 867.24pt x 505.89pt>
+[14 <../images/power_breakdown.png>]
+<../images/app_power_comparison.png, id=397, 867.24pt x 505.89pt>
 File: ../images/app_power_comparison.png Graphic file (type png)
 <use ../images/app_power_comparison.png>
 Package pdftex.def Info: ../images/app_power_comparison.png  used on input line
- 461.
+ 528.
 (pdftex.def)             Requested size: 463.42989pt x 270.33583pt.
 
 
@@ -750,7 +759,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[13 <../images/battery_scenario_grid.png>]
+[15 <../images/battery_scenario_grid.png>]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -758,29 +767,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[14 <../images/app_power_comparison.png>]
+[16 <../images/app_power_comparison.png>]
 File: ../images/app_power_comparison.png Graphic file (type png)
 <use ../images/app_power_comparison.png>
 Package pdftex.def Info: ../images/app_power_comparison.png  used on input line
- 495.
+ 562.
 (pdftex.def)             Requested size: 463.42989pt x 270.33583pt.
 
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[15]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[16]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -796,12 +789,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[18] (c:/texlive/2025/texmf-dist/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2024/09/23 1.10c listings language file
-)
-Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 567.
-
+[18]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -817,51 +805,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[20]
-! Missing number, treated as zero.
-<to be read again> 
-                   P
-l.690     \vspace{6cm}}}
-                        
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-! Illegal unit of measure (pt inserted).
-<to be read again> 
-                   P
-l.690     \vspace{6cm}}}
-                        
-Dimensions can be in units of em, ex, in, pt, pc,
-cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
-I'll assume that you meant to say pt, for printer's points.
-To recover gracefully from this error, it's best to
-delete the erroneous units; e.g., type `2' to delete
-two letters. (See Chapter 27 of The TeXbook.)
-
-! Missing number, treated as zero.
-<to be read again> 
-                   P
-l.701     \vspace{6cm}}}
-                        
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-! Illegal unit of measure (pt inserted).
-<to be read again> 
-                   P
-l.701     \vspace{6cm}}}
-                        
-Dimensions can be in units of em, ex, in, pt, pc,
-cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
-I'll assume that you meant to say pt, for printer's points.
-To recover gracefully from this error, it's best to
-delete the erroneous units; e.g., type `2' to delete
-two letters. (See Chapter 27 of The TeXbook.)
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
+[20] (c:/texlive/2025/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2024/09/23 1.10c listings language file
+)
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
+nput line 683.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -871,25 +819,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [21]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[22]
-Overfull \hbox (6.65327pt too wide) in paragraph at lines 726--728
-[]\OT1/ptm/b/n/12 Real-Time Im-pe-tus for Change: \OT1/ptm/m/n/12 Val-i-da-tion
- against in-dus-try bench-marks (GSM Arena, TechRadar)
+Overfull \hbox (6.31233pt too wide) in paragraph at lines 764--765
+[]\OT1/ptm/b/n/12 Access: \OT1/ptm/m/n/12 Open the pro-vided lo-cal-host URL (e
+.g., []$\OT1/cmtt/m/n/12 http : / / localhost : 5173$[]\OT1/ptm/m/n/12 ) in you
+r web browser.
  []
 
-<../images/equation_flowchart.png, id=549, 867.24pt x 578.16pt>
-File: ../images/equation_flowchart.png Graphic file (type png)
-<use ../images/equation_flowchart.png>
-Package pdftex.def Info: ../images/equation_flowchart.png  used on input line 7
-51.
-(pdftex.def)             Requested size: 463.42989pt x 308.95525pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -900,7 +835,30 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
+[22]
+Overfull \hbox (6.65327pt too wide) in paragraph at lines 826--828
+[]\OT1/ptm/b/n/12 Real-Time Im-pe-tus for Change: \OT1/ptm/m/n/12 Val-i-da-tion
+ against in-dus-try bench-marks (GSM Arena, TechRadar)
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
 [23]
+<../images/equation_flowchart.png, id=546, 867.24pt x 578.16pt>
+File: ../images/equation_flowchart.png Graphic file (type png)
+<use ../images/equation_flowchart.png>
+Package pdftex.def Info: ../images/equation_flowchart.png  used on input line 8
+51.
+(pdftex.def)             Requested size: 463.42989pt x 308.95525pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -908,20 +866,20 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[24 <../images/equation_flowchart.png>]
+[24]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[25 <../images/equation_flowchart.png>]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <17.28> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 788.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 888.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 788.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 888.
 
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[25]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -930,7 +888,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [26]
-Underfull \hbox (badness 10000) in paragraph at lines 848--850
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[27]
+Underfull \hbox (badness 10000) in paragraph at lines 948--950
 
  []
 
@@ -941,7 +907,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[27]
+[28]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -949,7 +915,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[28] (./Modeling Smartphone Battery Drain (FINAL).aux)
+[29] (./Modeling Smartphone Battery Drain (FINAL).aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-10-24>
@@ -958,15 +924,22 @@ L3 programming layer <2025-10-24>
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
-Package rerunfilecheck Info: File `"Modeling Smartphone Battery Drain (FINAL)".
-out' has not changed.
-(rerunfilecheck)             Checksum: 092BE3EB0D6A803505A0FD8CE443852B;8622.
+
+Package rerunfilecheck Warning: File `"Modeling Smartphone Battery Drain (FINAL
+)".out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `"Modeling Smartphone Battery Drain 
+(FINAL)".out':
+(rerunfilecheck)             Before: C62683F214408F5603D51443E5A6FC5B;8828
+(rerunfilecheck)             After:  C716668B4D6FBC112E89BEB58B42DEE3;10012.
  ) 
 Here is how much of TeX's memory you used:
- 15286 strings out of 467538
- 233430 string characters out of 5423725
- 1274788 words of memory out of 5000000
- 43755 multiletter control sequences out of 15000+600000
+ 15272 strings out of 467538
+ 233374 string characters out of 5423725
+ 1369150 words of memory out of 5000000
+ 43756 multiletter control sequences out of 15000+600000
  666734 words of font info for 125 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,12n,79p,755b,1329s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -980,11 +953,11 @@ r.pfb><c:/texlive/2025/texmf-dist/fonts/type1/urw/symbol/usyr.pfb><c:/texlive/2
 025/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><c:/texlive/2025/texmf-dist/fon
 ts/type1/urw/times/utmr8a.pfb><c:/texlive/2025/texmf-dist/fonts/type1/urw/times
 /utmri8a.pfb>
-Output written on "Modeling Smartphone Battery Drain (FINAL).pdf" (29 pages, 17
-55396 bytes).
+Output written on "Modeling Smartphone Battery Drain (FINAL).pdf" (30 pages, 17
+68618 bytes).
 PDF statistics:
- 689 PDF objects out of 1000 (max. 8388607)
- 619 compressed objects within 7 object streams
- 224 named destinations out of 1000 (max. 500000)
- 378 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 678 PDF objects out of 1000 (max. 8388607)
+ 607 compressed objects within 7 object streams
+ 209 named destinations out of 1000 (max. 500000)
+ 386 words of extra memory for PDF output out of 10000 (max. 10000000)
 

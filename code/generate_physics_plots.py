@@ -30,18 +30,18 @@ axes[0, 1].set_ylabel('Coulombic Efficiency')
 axes[0, 1].legend()
 
 # 3. 5G Signal Penalty [Eq 9]
-# delta = 10^((-L + 80)/20)
-# p_net = min(3.0, delta * 0.25) approx scaling
-# Range: -120 dBm (Weak) to -105 dBm (Stronger) [Requested Cap]
-signal_dbm = np.linspace(-120, -105, 100) 
-delta = 10**((-signal_dbm - 80) / 20)
-p_net = np.clip(delta * 0.25, 0, 3.0)
+# delta = 10^((-L - 80)/25) per App.tsx
+# p_net = min(3.0, 0.2 + delta * 2.5)
+# Range: -130 dBm (Very Weak) to -70 dBm (Excellent)
+signal_dbm = np.linspace(-130, -70, 100) 
+delta = 10**((-signal_dbm - 80) / 25)
+p_net = np.clip(0.2 + delta * 2.5, 0, 3.0)
 axes[1, 0].plot(signal_dbm, p_net, color='#10b981', linewidth=2.5)
 axes[1, 0].fill_between(signal_dbm, p_net, color='#10b981', alpha=0.2)
 axes[1, 0].set_title('5G Power vs. Signal Strength', fontweight='bold')
 axes[1, 0].set_xlabel('Signal Strength (dBm)')
 axes[1, 0].set_ylabel('Modem Power (W)')
-# axes[1, 0].invert_xaxis() # No invert needed if range is small, but let's keep it consistent if meaningful
+axes[1, 0].invert_xaxis() # Weak signals on left, strong on right
 
 # 4. Thermal Throttling [Eq 15]
 # scale = max(0.35, 1 - (T-40)/20)
