@@ -77,7 +77,7 @@ class HardwarePhysicsEngine {
         const netCap = isNetworkStress ? 3.0 : 1.0;
         const pNet = Math.min(netCap, rawNet) * profileScale;
 
-        let pTotal = pCpu + pDisp + pNet + 0.1;
+        let pTotal = pCpu + pDisp + pNet + 0.1 + (Math.random() * 0.05);
         if (isLPM) pTotal *= 0.6;
 
         // 2. STATE DYNAMICS
@@ -128,7 +128,10 @@ const FYIModal = ({ isOpen, onClose }: any) => (
                         <code>P_cpu = 12W * (U/100)³ * ProfileScale</code>
                         <p>12W peak power scaling for Power Users.</p>
                     </div>
-                    <button className="close-btn" style={{ padding: '16px', background: 'var(--accent-color)', border: 'none', borderRadius: '16px', fontWeight: 800, cursor: 'pointer', marginTop: '10px' }} onClick={onClose}>Return to Dashboard</button>
+                    <div className="eq-box">
+                        <code>P_net = (Wifi ? 0.8 : 3.0) * Load</code>
+                        <p>Dynamic radio capping. 5G uses 4x more power than Wi-Fi.</p>
+                    </div>
                 </motion.div>
             </div>
         )}
@@ -140,6 +143,7 @@ export default function App() {
     const [state, setState] = useState({ soc: 0.95, temp: 25.0, tte: 28800, mah: 4800, p: 1.2, pCpu: 0.4, pDisp: 0.3, pNet: 0.5 });
     const [isDarkMode, setIsDarkMode] = useState(true);
     const [isLPM, setIsLPM] = useState(false);
+    const [isWifi, setIsWifi] = useState(false); // Default to 5G
     const [brightness, setBrightness] = useState(0.6);
     const [isFYIOpen, setIsFYIOpen] = useState(false);
     const [userProfile, setUserProfile] = useState<UserProfile>('Baseline');
@@ -193,20 +197,29 @@ export default function App() {
     useEffect(() => {
         const interval = setInterval(() => {
             const pConfig = PROFILE_CONFIGS[userProfile];
+            // Calculate Network Load (0.0 - 1.0)
+            let netLoad = 0.05; // Base ping
+            if (activeScenario === 'Network') netLoad = 1.0; // Max download
+            else if (activeScenario === 'Gaming') netLoad = 0.6; // Consistent multiplayer data
+            else if (activeScenario === 'Social') netLoad = 0.3; // Feed scrolling
+            else if (apps.some((a: any) => a.id === 'youtube' || a.id === 'twitch')) netLoad = 0.5; // Streaming
+            else if (apps.some((a: any) => a.id === 'instagram')) netLoad = 0.2;
+
             let params = {
                 brightness,
                 cpuUtil: 15 + Math.random() * 10,
                 isLPM,
+                isWifi,
                 signal: -85,
                 appDrain: apps.reduce((acc, curr) => acc + curr.wattage * 1000, 0) / 2,
                 apr: isDarkMode ? 0.3 : 0.9,
                 profileScale: pConfig.scale,
-                isNetworkStress: false
+                networkLoad: netLoad
             };
 
             if (activeScenario && timer > 0) {
                 const c = configs[activeScenario];
-                params = { ...params, brightness: c.b, cpuUtil: c.u, signal: -115, appDrain: 3000, isNetworkStress: activeScenario === 'Network' };
+                params = { ...params, brightness: c.b, cpuUtil: c.u, signal: -115, appDrain: 3000, networkLoad: 1.0 };
                 setTimer(t => t - 1);
             } else if (timer === 0) {
                 setActiveScenario(null);
@@ -220,14 +233,14 @@ export default function App() {
             });
         }, 1000);
         return () => clearInterval(interval);
-    }, [brightness, isLPM, isDarkMode, activeScenario, timer, model, apps, userProfile]);
+    }, [brightness, isLPM, isDarkMode, isWifi, activeScenario, timer, model, apps, userProfile]);
 
     return (
         <div className="app-container">
             <header>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                     <Zap size={20} color="var(--accent-color)" />
-                    <span style={{ fontWeight: 800, fontSize: '14px', letterSpacing: '1px' }}>ECODRAIN v1.2</span>
+                    <span style={{ fontWeight: 800, fontSize: '14px', letterSpacing: '1px' }}>ECODRAIN v1.3</span>
                 </div>
                 <button onClick={() => setIsFYIOpen(true)} style={{ background: 'none', border: 'none', color: 'var(--accent-color)', cursor: 'pointer' }}>
                     <BookOpen size={20} />
@@ -289,6 +302,9 @@ export default function App() {
                     </button>
                     <button className={`scenario-btn ${isLPM ? 'active' : ''}`} style={{ flex: 1, flexDirection: 'row', padding: '12px' }} onClick={() => setIsLPM(!isLPM)}>
                         <Zap size={16} /> <span>Eco Mode</span>
+                    </button>
+                    <button className="scenario-btn" style={{ flex: 1, flexDirection: 'row', padding: '12px' }} onClick={() => setIsWifi(!isWifi)}>
+                        {isWifi ? <Wifi size={16} /> : <Activity size={16} />} <span>{isWifi ? 'Wi-Fi On' : '5G Data'}</span>
                     </button>
                 </div>
 
