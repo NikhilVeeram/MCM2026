@@ -295,6 +295,13 @@ Here, $V_{p1}$ and $V_{p2}$ represent the polarization voltages across the two R
 
 These equations account for the "voltage sag" observed during heavy gaming or 5G usage and the subsequent recovery when the device idles. The circuit parameters, calibrated from experimental data \cite{6}, are: $R_0 = 0.12~\Omega$ (ohmic resistance), $R_1 = 0.02~\Omega$, $C_1 = 1200~\text{F}$ (fast transient, $\tau_1 \approx 24$s), $R_2 = 0.05~\Omega$, $C_2 = 6000~\text{F}$ (slow recovery, $\tau_2 \approx 300$s).
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{../images/2RC_fig.png}
+    \caption{The 2RC-Thevenin Equivalent Circuit Model used for voltage dynamics simulation.}
+    \label{fig:2rc_model}
+\end{figure}
+
 \subsection{Total Power of System}
 
 The core complexity lies in modeling $P_{total}(t)$. We decompose this into hardware and software components, aligned with our clustering assumption:
@@ -476,7 +483,7 @@ The derived equations provide a continuous-time framework that links physical ha
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.95\textwidth]{../images/model_physics_curves.png}
+    \includegraphics[width=0.8\textwidth]{../images/model_physics_curves.png}
     \caption{Constituent physics curves governing the model dynamics. Clockwise from top-left: Open Circuit Voltage (OCV) vs. SOC; Coulombic Efficiency $\eta(P)$ drop-off at high loads; Thermal Throttling factor decrease after $40^\circ$C; and exponential 5G power penalty vs. signal strength.}
     \label{fig:physics_curves}
 \end{figure}
@@ -489,13 +496,6 @@ The derived equations provide a continuous-time framework that links physical ha
 \textbf{Device Model:} iPhone 17 Pro (Modeled based on 2RC parameters from \cite{6} and \cite{14}). \\
 \textbf{Battery Parameters:} $Q_{cap} \approx 3988$ mAh, $V_{term} = 3.7$ V.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1.0\textwidth]{../images/ios_power_profile.png}
-    \caption{iOS App Interface visualizing the "Power User" profile. Real-time metrics show elevated CPU and network power limits ($\lambda > 1.0$), with the interface reflecting a high-performance state.}
-    \label{fig:ios_app_real}
-\end{figure}
-
 \subsection{User A: The Power User}
 This profile represents a user leveraging high-performance cores and 5G connectivity.
 \begin{itemize}
@@ -505,36 +505,12 @@ This profile represents a user leveraging high-performance cores and 5G connecti
 
 \begin{figure}[H]
     \centering
-    \begin{minipage}{0.48\textwidth}
-        \centering
-        \includegraphics[width=0.95\textwidth]{../images/ios_gaming_load.png}
-        \caption{iOS: Gaming Load stress test. The thermal engine shows elevated temperature and peak power draw.}
-        \label{fig:ios_gaming_load}
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.48\textwidth}
-        \centering
-        \includegraphics[width=0.95\textwidth]{../images/ios_wifi_toggle.png}
-        \caption{iOS: Wi-Fi Toggle. Swithing to Wi-Fi reduces modem power to $\sim$0.8W (Eq. \ref{eq:network_power}).}
-        \label{fig:ios_wifi_toggle}
-    \end{minipage}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1.0\textwidth]{../images/power_user_composite.png}
+    \includegraphics[width=0.85\textwidth]{../images/power_user_composite.png}
     \caption{Detailed Power User Profile. Central: Average power breakdown. Surrounding: Specific high-demand workloads (Gaming, 4K Streaming) highlighting maximum power draw variances and 5G penalties.}
     \label{fig:power_breakdown}
 \end{figure}
 
 \subsection{User B: The Limited User}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.6\textwidth]{../images/ios_eco_profile.png}
-    \caption{iOS: Eco 1.5x Profile. Reduced $\lambda = 0.65$ limits CPU/display power, showing green status indicators.}
-    \label{fig:ios_eco_profile}
-\end{figure}
-
 This profile utilizes "Low Power Mode" to restrict background activity.
 \begin{itemize}
     \item \textbf{Inputs:} LPM Enabled ($\lambda_{bg} = 0$), Screen Time $< 2$ hours.
@@ -543,9 +519,38 @@ This profile utilizes "Low Power Mode" to restrict background activity.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1.0\textwidth]{../images/limited_user_composite.png}
+    \includegraphics[width=0.85\textwidth]{../images/limited_user_composite.png}
     \caption{Detailed Limited User Profile. Central: Average power breakdown (mostly background/idle). Surrounding: Low-power workloads (Eco Reading, Texting) showing significantly reduced power caps with disabled 5G tail states.}
     \label{fig:limited_user}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=0.95\textwidth]{../images/ios_power_profile.png}
+        \caption{iOS: Power 1.5x Profile.}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=0.95\textwidth]{../images/ios_eco_profile.png}
+        \caption{iOS: Eco 1.5x Profile.}
+    \end{minipage}
+    \vspace{0.5em}
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=0.95\textwidth]{../images/ios_gaming_load.png}
+        \caption{iOS: Gaming Load.}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=0.95\textwidth]{../images/ios_wifi_toggle.png}
+        \caption{iOS: Wi-Fi Toggle.}
+    \end{minipage}
+    \caption{iOS Application Interface Validation showing Power vs. Eco profiles and real-time stress testing.}
+    \label{fig:ios_app_composite}
 \end{figure}
 
 \vspace{1em}
@@ -563,52 +568,47 @@ This profile utilizes "Low Power Mode" to restrict background activity.
     \begin{minipage}{0.48\textwidth}
         \centering
         \includegraphics[width=0.95\textwidth]{../images/android_dashboard_top.png}
-        \caption{Android Dashboard (Top): Real-time SOC ring and control toggles.}
-        \label{fig:android_dashboard_top}
+        \caption{Dashboard (Top)}
     \end{minipage}
     \hfill
     \begin{minipage}{0.48\textwidth}
         \centering
         \includegraphics[width=0.95\textwidth]{../images/android_dashboard_bottom.png}
-        \caption{Android Dashboard (Bottom): Octa-Core cluster activity and app impact.}
-        \label{fig:android_dashboard_bottom}
+        \caption{Dashboard (Bottom)}
     \end{minipage}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.95\textwidth]{../images/battery_scenario_grid.png}
-    \caption{Calibrated simulation results across 9 distinct user scenarios, highlighting the non-linear voltage sag and thermal throttling impact. This grid contrasts the Power User (Top Left) with the Limited User (Bottom Right).}
-    \label{fig:scenario_grid}
-\end{figure}
-
-\subsection{User A: The Power User}
-\begin{figure}[H]
-    \centering
+    \vspace{0.5em}
     \begin{minipage}{0.48\textwidth}
         \centering
         \includegraphics[width=0.95\textwidth]{../images/android_light_full.png}
-        \caption{Light Mode (100\% Brightness): High APR ($\gamma=0.9$) results in peak display power.}
-        \label{fig:android_light_full}
+        \caption{Light Mode (100\%)}
     \end{minipage}
     \hfill
     \begin{minipage}{0.48\textwidth}
         \centering
         \includegraphics[width=0.95\textwidth]{../images/android_eco_dark_50.png}
-        \caption{Dark Mode (Eco): Reduced APR ($\gamma=0.3$) saves $\sim$40\% display energy.}
-        \label{fig:android_eco_dark}
+        \caption{Dark Mode (Eco)}
     \end{minipage}
+    \caption{Android Application Interface Validation comparing dashboard metrics and display power optimization (Light vs. Dark Mode).}
+    \label{fig:android_app_composite}
 \end{figure}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{../images/battery_scenario_grid.png}
+    \caption{Calibrated simulation results across 9 distinct user scenarios, highlighting the non-linear voltage sag and thermal throttling impact. This grid contrasts the Power User (Top Left) with the Limited User (Bottom Right).}
+    \label{fig:scenario_grid}
+\end{figure}
+
+\subsection{User A: The Power User}
 Android devices often sustain higher peak power for longer durations before throttling.
 \begin{itemize}
     \item \textbf{Inputs:} 120Hz Refresh Rate, High-Brightness Mode, Multitasking.
     \item \textbf{Thermal Impact:} As temperature $T$ rises, internal resistance $R_{int}(T)$ increases, degrading efficiency $\eta(T)$ as per Panchal's thermal studies \cite{14}.
 \end{itemize}
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
-    \includegraphics[width=0.95\textwidth]{../images/app_power_comparison.png}
+    \includegraphics[width=0.85\textwidth]{../images/app_power_comparison.png}
     \caption{Component power contribution across 9 distinct app usage scenarios, highlighting the variance in CPU vs. 5G dominance.}
     \label{fig:app_comparison}
 \end{figure}
@@ -892,9 +892,9 @@ This derivation confirms Equation (\ref{eq:vp1}) used in the main text and align
 \subsection*{Visual Summary of Equation Modules}
 To clarify the interdependencies between the derived power modules, thermal feedback loops, and circuit dynamics, we generated a modular flowchart (Figure C.2) using the Python `Matplotlib` library. This visual representation highlights how Equation 6 ($P_{total}$) aggregates the sub-components and feeds into the efficiency and thermal throttling loops.
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
-    \includegraphics[width=0.95\textwidth]{../images/equation_flowchart.png}
+    \includegraphics[width=0.85\textwidth]{../images/equation_flowchart.png}
     \caption{Modular interaction of the mathematical battery models, showing the feedback loop between Power, Heat, and Circuit Dynamics.}
     \label{fig:equation_flowchart}
 \end{figure}
