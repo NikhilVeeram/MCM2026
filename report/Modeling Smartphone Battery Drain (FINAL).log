@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.11.5)  2 FEB 2026 17:51
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.11.5)  2 FEB 2026 17:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -726,7 +726,7 @@ File: ../images/power_user_composite.png Graphic file (type png)
 <use ../images/power_user_composite.png>
 Package pdftex.def Info: ../images/power_user_composite.png  used on input line
  508.
-(pdftex.def)             Requested size: 414.6521pt x 276.43736pt.
+(pdftex.def)             Requested size: 365.86688pt x 243.90623pt.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -756,25 +756,25 @@ File: ../images/ios_power_profile.png Graphic file (type png)
 <use ../images/ios_power_profile.png>
 Package pdftex.def Info: ../images/ios_power_profile.png  used on input line 53
 1.
-(pdftex.def)             Requested size: 222.44435pt x 483.58841pt.
+(pdftex.def)             Requested size: 85.05923pt x 184.9429pt.
 <../images/ios_eco_profile.png, id=422, 1210.5225pt x 2631.8325pt>
 File: ../images/ios_eco_profile.png Graphic file (type png)
 <use ../images/ios_eco_profile.png>
 Package pdftex.def Info: ../images/ios_eco_profile.png  used on input line 537.
 
-(pdftex.def)             Requested size: 222.44435pt x 483.58841pt.
+(pdftex.def)             Requested size: 85.05923pt x 184.9429pt.
 <../images/ios_gaming_load.png, id=423, 1210.5225pt x 2631.8325pt>
 File: ../images/ios_gaming_load.png Graphic file (type png)
 <use ../images/ios_gaming_load.png>
 Package pdftex.def Info: ../images/ios_gaming_load.png  used on input line 543.
 
-(pdftex.def)             Requested size: 222.44435pt x 483.58841pt.
+(pdftex.def)             Requested size: 85.05923pt x 184.9429pt.
 <../images/ios_wifi_toggle.png, id=424, 1210.5225pt x 2631.8325pt>
 File: ../images/ios_wifi_toggle.png Graphic file (type png)
 <use ../images/ios_wifi_toggle.png>
 Package pdftex.def Info: ../images/ios_wifi_toggle.png  used on input line 549.
 
-(pdftex.def)             Requested size: 222.44435pt x 483.58841pt.
+(pdftex.def)             Requested size: 85.05923pt x 184.9429pt.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -784,8 +784,30 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [14 <../images/limited_user_composite.png>]
-Overfull \vbox (411.74677pt too high) has occurred while \output is active []
-
+<../images/android_dashboard_top.png, id=434, 252.19218pt x 516.42938pt>
+File: ../images/android_dashboard_top.png Graphic file (type png)
+<use ../images/android_dashboard_top.png>
+Package pdftex.def Info: ../images/android_dashboard_top.png  used on input lin
+e 570.
+(pdftex.def)             Requested size: 90.31194pt x 184.9429pt.
+<../images/android_dashboard_bottom.png, id=435, 241.65282pt x 539.01375pt>
+File: ../images/android_dashboard_bottom.png Graphic file (type png)
+<use ../images/android_dashboard_bottom.png>
+Package pdftex.def Info: ../images/android_dashboard_bottom.png  used on input 
+line 576.
+(pdftex.def)             Requested size: 82.91307pt x 184.9429pt.
+<../images/android_light_full.png, id=436, 246.9225pt x 515.67656pt>
+File: ../images/android_light_full.png Graphic file (type png)
+<use ../images/android_light_full.png>
+Package pdftex.def Info: ../images/android_light_full.png  used on input line 5
+82.
+(pdftex.def)             Requested size: 88.55669pt x 184.9429pt.
+<../images/android_eco_dark_50.png, id=437, 251.43938pt x 511.15968pt>
+File: ../images/android_eco_dark_50.png Graphic file (type png)
+<use ../images/android_eco_dark_50.png>
+Package pdftex.def Info: ../images/android_eco_dark_50.png  used on input line 
+588.
+(pdftex.def)             Requested size: 90.97083pt x 184.9429pt.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -796,58 +818,23 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [15 <../images/ios_power_profile.png> <../images/ios_eco_profile.png> <../image
 s/ios_gaming_load.png> <../images/ios_wifi_toggle.png>]
-<../images/android_dashboard_top.png, id=443, 252.19218pt x 516.42938pt>
-File: ../images/android_dashboard_top.png Graphic file (type png)
-<use ../images/android_dashboard_top.png>
-Package pdftex.def Info: ../images/android_dashboard_top.png  used on input lin
-e 570.
-(pdftex.def)             Requested size: 222.44435pt x 455.51518pt.
-<../images/android_dashboard_bottom.png, id=444, 241.65282pt x 539.01375pt>
-File: ../images/android_dashboard_bottom.png Graphic file (type png)
-<use ../images/android_dashboard_bottom.png>
-Package pdftex.def Info: ../images/android_dashboard_bottom.png  used on input 
-line 576.
-(pdftex.def)             Requested size: 222.44435pt x 496.18652pt.
-<../images/android_light_full.png, id=445, 246.9225pt x 515.67656pt>
-File: ../images/android_light_full.png Graphic file (type png)
-<use ../images/android_light_full.png>
-Package pdftex.def Info: ../images/android_light_full.png  used on input line 5
-82.
-(pdftex.def)             Requested size: 222.44435pt x 464.55312pt.
-<../images/android_eco_dark_50.png, id=446, 251.43938pt x 511.15968pt>
-File: ../images/android_eco_dark_50.png Graphic file (type png)
-<use ../images/android_eco_dark_50.png>
-Package pdftex.def Info: ../images/android_eco_dark_50.png  used on input line 
-588.
-(pdftex.def)             Requested size: 222.44435pt x 452.21638pt.
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[16]
-Overfull \vbox (405.30959pt too high) has occurred while \output is active []
-
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[17 <../images/android_dashboard_top.png> <../images/android_dashboard_bottom.p
-ng> <../images/android_light_full.png> <../images/android_eco_dark_50.png>]
-<../images/battery_scenario_grid.png, id=461, 1300.86pt x 1011.78pt>
+<../images/battery_scenario_grid.png, id=447, 1300.86pt x 1011.78pt>
 File: ../images/battery_scenario_grid.png Graphic file (type png)
 <use ../images/battery_scenario_grid.png>
 Package pdftex.def Info: ../images/battery_scenario_grid.png  used on input lin
 e 597.
-(pdftex.def)             Requested size: 414.6521pt x 322.51025pt.
-<../images/app_power_comparison.png, id=463, 867.24pt x 505.89pt>
+(pdftex.def)             Requested size: 365.86688pt x 284.56242pt.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[16 <../images/android_dashboard_top.png> <../images/android_dashboard_bottom.p
+ng> <../images/android_light_full.png> <../images/android_eco_dark_50.png>]
+<../images/app_power_comparison.png, id=458, 867.24pt x 505.89pt>
 File: ../images/app_power_comparison.png Graphic file (type png)
 <use ../images/app_power_comparison.png>
 Package pdftex.def Info: ../images/app_power_comparison.png  used on input line
@@ -861,7 +848,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[18 <../images/battery_scenario_grid.png>]
+[17 <../images/battery_scenario_grid.png>]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -869,7 +856,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[19 <../images/app_power_comparison.png>]
+[18 <../images/app_power_comparison.png>]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[19]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -893,15 +888,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[22]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[23] (c:/texlive/2025/texmf-dist/tex/latex/listings/lstlang1.sty
+[22] (c:/texlive/2025/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2024/09/23 1.10c listings language file
 )
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
@@ -914,7 +901,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[24]
+[23]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -922,8 +909,8 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[25]
-<../images/equation_flowchart.png, id=603, 1011.78pt x 722.7pt>
+[24]
+<../images/equation_flowchart.png, id=598, 1011.78pt x 722.7pt>
 File: ../images/equation_flowchart.png Graphic file (type png)
 <use ../images/equation_flowchart.png>
 Package pdftex.def Info: ../images/equation_flowchart.png  used on input line 8
@@ -937,7 +924,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[26]
+[25]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -945,7 +932,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[27 <../images/equation_flowchart.png>]
+[26 <../images/equation_flowchart.png>]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <17.28> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 934.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
@@ -958,7 +945,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[28]
+[27]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -966,7 +953,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[29]
+[28]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1064,32 +1051,28 @@ out' has not changed.
 (rerunfilecheck)             Checksum: 3236156677426E5E0A0DE1304BEC66F9;9880.
  ) 
 Here is how much of TeX's memory you used:
- 15380 strings out of 467538
- 236736 string characters out of 5423725
- 1152543 words of memory out of 5000000
- 43855 multiletter control sequences out of 15000+600000
+ 15370 strings out of 467538
+ 236529 string characters out of 5423725
+ 1151935 words of memory out of 5000000
+ 43847 multiletter control sequences out of 15000+600000
  666734 words of font info for 125 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,12n,79p,741b,2159s stack positions out of 10000i,1000n,20000p,200000b,200000s
-
-pdfTeX warning (dest): name{table.caption.14} has been referenced but does not 
-exist, replaced by a fixed one
-
-<c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texli
-ve/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2025/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2025/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2025/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmtt10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmtt12.pfb><c:/texlive/2025/texmf-dist/fonts/type1/urw/symbol/usyr
-.pfb><c:/texlive/2025/texmf-dist/fonts/type1/urw/symbol/usyr.pfb><c:/texlive/20
-25/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><c:/texlive/2025/texmf-dist/font
-s/type1/urw/times/utmr8a.pfb><c:/texlive/2025/texmf-dist/fonts/type1/urw/times/
-utmri8a.pfb>
-Output written on "Modeling Smartphone Battery Drain (FINAL).pdf" (37 pages, 30
-01470 bytes).
+<c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/tex
+live/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2025
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2025/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2025/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmtt10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmtt12.pfb><c:/texlive/2025/texmf-dist/fonts/type1/urw/symbol/us
+yr.pfb><c:/texlive/2025/texmf-dist/fonts/type1/urw/symbol/usyr.pfb><c:/texlive/
+2025/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><c:/texlive/2025/texmf-dist/fo
+nts/type1/urw/times/utmr8a.pfb><c:/texlive/2025/texmf-dist/fonts/type1/urw/time
+s/utmri8a.pfb>
+Output written on "Modeling Smartphone Battery Drain (FINAL).pdf" (36 pages, 30
+01068 bytes).
 PDF statistics:
- 756 PDF objects out of 1000 (max. 8388607)
- 658 compressed objects within 7 object streams
- 218 named destinations out of 1000 (max. 500000)
+ 744 PDF objects out of 1000 (max. 8388607)
+ 647 compressed objects within 7 object streams
+ 216 named destinations out of 1000 (max. 500000)
  476 words of extra memory for PDF output out of 10000 (max. 10000000)
 

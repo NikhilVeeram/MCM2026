@@ -26,25 +26,25 @@
 \contentsline {section}{\numberline {8}Case Study: iPhone (Limited vs. Power User)}{12}{section.8}%
 \contentsline {subsection}{\numberline {8.1}User A: The Power User}{12}{subsection.8.1}%
 \contentsline {subsection}{\numberline {8.2}User B: The Limited User}{13}{subsection.8.2}%
-\contentsline {section}{\numberline {9}Case Study: Android (Power vs. Limited User)}{16}{section.9}%
-\contentsline {subsection}{\numberline {9.1}User A: The Power User}{18}{subsection.9.1}%
-\contentsline {subsection}{\numberline {9.2}Scenario B: The Limited User}{19}{subsection.9.2}%
-\contentsline {section}{\numberline {10}Optimization Model: Dark Mode \& App Clustering}{19}{section.10}%
-\contentsline {subsection}{\numberline {10.1}Dark Mode Optimization}{19}{subsection.10.1}%
-\contentsline {subsection}{\numberline {10.2}App Usage Clustering}{19}{subsection.10.2}%
-\contentsline {section}{\numberline {11}Dataset Applications \& Validation Results}{20}{section.11}%
-\contentsline {subsection}{\numberline {11.1}User Behavior Dataset}{20}{subsection.11.1}%
-\contentsline {subsection}{\numberline {11.2}Remaining Useful Life (RUL) Evaluation}{20}{subsection.11.2}%
-\contentsline {subsection}{\numberline {11.3}Validation Methodology}{21}{subsection.11.3}%
-\contentsline {section}{\numberline {12}Strengths and Weaknesses}{21}{section.12}%
-\contentsline {subsection}{\numberline {12.1}Strengths}{21}{subsection.12.1}%
-\contentsline {subsection}{\numberline {12.2}Weaknesses}{22}{subsection.12.2}%
-\contentsline {section}{\numberline {13}Future Work}{22}{section.13}%
-\contentsline {subsection}{\numberline {13.1}AI-Driven Energy Modeling}{22}{subsection.13.1}%
-\contentsline {subsection}{\numberline {13.2}Advanced Thermal Management}{22}{subsection.13.2}%
-\contentsline {subsection}{\numberline {13.3}Cross-Platform Mobile Application}{23}{subsection.13.3}%
-\contentsline {subsection}{\numberline {13.4}Battery Degradation Over Lifecycle}{23}{subsection.13.4}%
-\contentsline {subsection}{\numberline {13.5}Integration with Smart Grid Systems}{23}{subsection.13.5}%
-\contentsline {section}{\numberline {14}Appendix A: Validation Implementation}{24}{section.14}%
-\contentsline {section}{\numberline {15}Appendix B: Mathematical Derivations}{26}{section.15}%
-\contentsline {section}{\numberline {16}Appendix C: Dataset Metadata}{28}{section.16}%
+\contentsline {section}{\numberline {9}Case Study: Android (Power vs. Limited User)}{15}{section.9}%
+\contentsline {subsection}{\numberline {9.1}User A: The Power User}{17}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}Scenario B: The Limited User}{18}{subsection.9.2}%
+\contentsline {section}{\numberline {10}Optimization Model: Dark Mode \& App Clustering}{18}{section.10}%
+\contentsline {subsection}{\numberline {10.1}Dark Mode Optimization}{18}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}App Usage Clustering}{18}{subsection.10.2}%
+\contentsline {section}{\numberline {11}Dataset Applications \& Validation Results}{19}{section.11}%
+\contentsline {subsection}{\numberline {11.1}User Behavior Dataset}{19}{subsection.11.1}%
+\contentsline {subsection}{\numberline {11.2}Remaining Useful Life (RUL) Evaluation}{19}{subsection.11.2}%
+\contentsline {subsection}{\numberline {11.3}Validation Methodology}{20}{subsection.11.3}%
+\contentsline {section}{\numberline {12}Strengths and Weaknesses}{20}{section.12}%
+\contentsline {subsection}{\numberline {12.1}Strengths}{20}{subsection.12.1}%
+\contentsline {subsection}{\numberline {12.2}Weaknesses}{21}{subsection.12.2}%
+\contentsline {section}{\numberline {13}Future Work}{21}{section.13}%
+\contentsline {subsection}{\numberline {13.1}AI-Driven Energy Modeling}{21}{subsection.13.1}%
+\contentsline {subsection}{\numberline {13.2}Advanced Thermal Management}{21}{subsection.13.2}%
+\contentsline {subsection}{\numberline {13.3}Cross-Platform Mobile Application}{22}{subsection.13.3}%
+\contentsline {subsection}{\numberline {13.4}Battery Degradation Over Lifecycle}{22}{subsection.13.4}%
+\contentsline {subsection}{\numberline {13.5}Integration with Smart Grid Systems}{22}{subsection.13.5}%
+\contentsline {section}{\numberline {14}Appendix A: Validation Implementation}{23}{section.14}%
+\contentsline {section}{\numberline {15}Appendix B: Mathematical Derivations}{25}{section.15}%
+\contentsline {section}{\numberline {16}Appendix C: Dataset Metadata}{27}{section.16}%
