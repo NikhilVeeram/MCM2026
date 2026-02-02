@@ -822,14 +822,14 @@ The following screenshots demonstrate key features of the EcoDrain application o
     \centering
     \begin{minipage}{0.48\textwidth}
         \centering
-        \fbox{\parbox[c][7cm]{0.95\textwidth}{\centering \vspace{3cm} \textbf{Screenshot A1} \\ android\_eco\_dark\_50.png \vspace{3cm}}}
+        \fbox{\parbox[c][4cm]{0.95\textwidth}{\centering \vspace{1.2cm} \textbf{Screenshot A1} \\ android\_eco\_dark\_50.png \vspace{1.2cm}}}
         \caption{Android: OLED Dark Mode with Eco Mode enabled at 50\% brightness. The reduced Active Pixel Ratio ($\gamma = 0.3$) and power-saving coefficients result in significantly lower display power consumption.}
         \label{fig:android_eco_dark}
     \end{minipage}
     \hfill
     \begin{minipage}{0.48\textwidth}
         \centering
-        \fbox{\parbox[c][7cm]{0.95\textwidth}{\centering \vspace{3cm} \textbf{Screenshot A2} \\ android\_light\_full.png \vspace{3cm}}}
+        \fbox{\parbox[c][4cm]{0.95\textwidth}{\centering \vspace{1.2cm} \textbf{Screenshot A2} \\ android\_light\_full.png \vspace{1.2cm}}}
         \caption{Android: Light Mode with Eco Mode disabled at 100\% brightness. The high APR ($\gamma = 0.9$) and maximum backlight demonstrate the worst-case display power scenario.}
         \label{fig:android_light_full}
     \end{minipage}
@@ -839,14 +839,14 @@ The following screenshots demonstrate key features of the EcoDrain application o
     \centering
     \begin{minipage}{0.48\textwidth}
         \centering
-        \fbox{\parbox[c][7cm]{0.95\textwidth}{\centering \vspace{3cm} \textbf{Screenshot A3} \\ android\_dashboard\_top.png \vspace{3cm}}}
+        \fbox{\parbox[c][4cm]{0.95\textwidth}{\centering \vspace{1.2cm} \textbf{Screenshot A3} \\ android\_dashboard\_top.png \vspace{1.2cm}}}
         \caption{Android: Main Dashboard (Top Section). Shows the real-time SOC ring, time-to-empty prediction, user profile selector, and primary control toggles for display and network settings.}
         \label{fig:android_dashboard_top}
     \end{minipage}
     \hfill
     \begin{minipage}{0.48\textwidth}
         \centering
-        \fbox{\parbox[c][7cm]{0.95\textwidth}{\centering \vspace{3cm} \textbf{Screenshot A4} \\ android\_dashboard\_bottom.png \vspace{3cm}}}
+        \fbox{\parbox[c][4cm]{0.95\textwidth}{\centering \vspace{1.2cm} \textbf{Screenshot A4} \\ android\_dashboard\_bottom.png \vspace{1.2cm}}}
         \caption{Android: Dashboard (Bottom Section). Displays the Octa-Core Cluster Activity with per-core frequency and power readings, along with the Active Software Impact list showing per-app wattage contributions.}
         \label{fig:android_dashboard_bottom}
     \end{minipage}
@@ -860,14 +860,14 @@ The following screenshots demonstrate the EcoDrain application on iOS, showcasin
     \centering
     \begin{minipage}{0.48\textwidth}
         \centering
-        \fbox{\parbox[c][7cm]{0.95\textwidth}{\centering \vspace{3cm} \textbf{Screenshot I1} \\ ios\_eco\_profile.png \vspace{3cm}}}
+        \fbox{\parbox[c][4cm]{0.95\textwidth}{\centering \vspace{1.2cm} \textbf{Screenshot I1} \\ ios\_eco\_profile.png \vspace{1.2cm}}}
         \caption{iOS: Eco 1.5x Profile selected. The reduced power scaling coefficient ($\lambda = 0.65$) limits CPU and display power consumption, extending battery life for conservative users.}
         \label{fig:ios_eco_profile}
     \end{minipage}
     \hfill
     \begin{minipage}{0.48\textwidth}
         \centering
-        \fbox{\parbox[c][7cm]{0.95\textwidth}{\centering \vspace{3cm} \textbf{Screenshot I2} \\ ios\_power\_profile.png \vspace{3cm}}}
+        \fbox{\parbox[c][4cm]{0.95\textwidth}{\centering \vspace{1.2cm} \textbf{Screenshot I2} \\ ios\_power\_profile.png \vspace{1.2cm}}}
         \caption{iOS: Power 1.5x Profile selected. The elevated power scaling ($\lambda = 1.5$) enables higher CPU frequencies and display brightness for performance-oriented users.}
         \label{fig:ios_power_profile}
     \end{minipage}
@@ -877,16 +877,33 @@ The following screenshots demonstrate the EcoDrain application on iOS, showcasin
     \centering
     \begin{minipage}{0.48\textwidth}
         \centering
-        \fbox{\parbox[c][7cm]{0.95\textwidth}{\centering \vspace{3cm} \textbf{Screenshot I3} \\ ios\_wifi\_toggle.png \vspace{3cm}}}
+        \fbox{\parbox[c][4cm]{0.95\textwidth}{\centering \vspace{1.2cm} \textbf{Screenshot I3} \\ ios\_wifi\_toggle.png \vspace{1.2cm}}}
         \caption{iOS: Wi-Fi Toggle demonstration. Switching from 5G Data to Wi-Fi reduces modem power from up to 3.0W to approximately 0.8W, as modeled by Equation (\ref{eq:network_power}).}
         \label{fig:ios_wifi_toggle}
     \end{minipage}
     \hfill
     \begin{minipage}{0.48\textwidth}
         \centering
-        \fbox{\parbox[c][7cm]{0.95\textwidth}{\centering \vspace{3cm} \textbf{Screenshot I4} \\ ios\_gaming\_load.png \vspace{3cm}}}
+        \fbox{\parbox[c][4cm]{0.95\textwidth}{\centering \vspace{1.2cm} \textbf{Screenshot I4} \\ ios\_gaming\_load.png \vspace{1.2cm}}}
         \caption{iOS: Gaming Load stress test active. The thermal engine shows elevated temperature, and the Global Sink displays peak power draw demonstrating thermal throttling behavior per Equation (\ref{eq:thermal_throttle}).}
         \label{fig:ios_gaming_load}
+    \end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \fbox{\parbox[c][4cm]{0.95\textwidth}{\centering \vspace{1.2cm} \textbf{Placeholder} \\ ios\_gaming\_eco\_2x.png \vspace{1.2cm}}}
+        \caption{iOS: Gaming (Eco 2x). Demonstrates performance throttling to maintain thermal equilibrium under the Eco 2x profile during heavy gaming loads.}
+        \label{fig:ios_gaming_eco}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \fbox{\parbox[c][4cm]{0.95\textwidth}{\centering \vspace{1.2cm} \textbf{Placeholder} \\ ios\_gaming\_power\_2x.png \vspace{1.2cm}}}
+        \caption{iOS: Gaming (Power 2x). Shows maximum frame rate and power consumption, with the thermal engine engaging aggressive cooling strategies (simulated).}
+        \label{fig:ios_gaming_power}
     \end{minipage}
 \end{figure}
 
