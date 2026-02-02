@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">EcoDrain</string>
+    <string name="title_activity_main">EcoDrain</string>
+    <string name="package_name">com.ecodrain.app</string>
+    <string name="custom_url_scheme">com.ecodrain.app</string>
+</resources>

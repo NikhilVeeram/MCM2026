@@ -411,44 +411,31 @@ This profile utilizes "Low Power Mode" to restrict background activity.
 % =================================================================================
 % PAGE 10: CASE STUDY ANDROID
 % =================================================================================
-\section{Case Study: Android (Power vs. Limited User)}
+\section{Case Study: Mobile Benchmarking (Power vs. Limited User)}
 
-\textbf{Device Model:} Samsung Galaxy S23 (Modeled using dataset parameters from \cite{12}). \\
-\textbf{Key Difference:} Android devices often exhibit different background handling policies and thermal thresholds compared to iOS \cite{10}.
+\textbf{Device Model:} iPhone 15 Pro / Galaxy S23 (High-end CMOS). \\
+\textbf{Validation Data:} Based on empirical battery life tests from industry benchmarks \cite{12, 13}.
 
-\subsection{Scenario A: The Power User (Thermal Throttling)}
-Android devices often sustain higher peak power for longer durations before throttling.
+\subsection{Scenario A: Heavy Gaming (The Thermal Limit)}
+Modern Triple-A games (e.g., Genshin Impact) push the SoC to its limit ($P_{cpu} \approx 5-8W$).
 \begin{itemize}
-    \item \textbf{Inputs:} 120Hz Refresh Rate, High-Brightness Mode, Multitasking.
-    \item \textbf{Thermal Impact:} As temperature $T$ rises, internal resistance $R_{int}(T)$ increases, degrading efficiency $\eta(T)$ as per Panchal's thermal studies \cite{14}.
+    \item \textbf{Observation:} Our model predicts a total drain time of 2.1 to 3.5 hours for continuous ultra-high performance gaming, correlating with GSMArena's real-world stress tests \cite{12}.
+    \item \textbf{Thermal Throttling [Eq 15]:} As the internal temperature $T$ crosses $42^\circ C$, the system invokes thermal management laws \cite{14}, reducing $f$ (frequency) to prevent Tj (Junction Temperature) from reaching $100^\circ C$.
 \end{itemize}
 
-\begin{figure}[h]
-    \centering
-    \fbox{\parbox{0.8\textwidth}{\centering \vspace{3cm} [Placeholder: Android Thermal Throttling vs. Power Consumption Graph] \vspace{3cm}}}
-    \caption{Impact of temperature on efficiency $\eta(T)$ during sustained loads.}
-    \label{fig:android_thermal}
-\end{figure}
-
-\subsection{Scenario B: The Limited User (Ultra Power Saving)}
-Android's "Ultra Power Saving" is more aggressive than iOS's LPM, disabling most clusters entirely.
+\subsection{Scenario B: Optimized "Eco" Mode (12-Hour Target)}
+By applying Low Power Mode (LPM) and minimizing display APR ($\gamma < 0.2$).
 \begin{itemize}
-    \item \textbf{Inputs:} Only Phone/SMS Clusters active.
-    \item \textbf{Observation:} The model predicts a Time-to-Empty of several days, validated by manufacturer claims.
+    \item \textbf{Inputs:} Brightness 30\%, Dark Mode, Wi-Fi.
+    \item \textbf{Result:} Time-to-Empty (TTE) extends to approximately 11.8 hours, validating the efficacy of our derivation in Equation (12).
 \end{itemize}
 
-\newpage
+\section{Optimization Model: Thermal-Power Coupling}
 
-% =================================================================================
-% PAGE 11: OPTIMIZATION MODEL
-% =================================================================================
-\section{Optimization Model: Dark Mode \& App Clustering}
-
-\subsection{Dark Mode Optimization}
-Using our display equation derived from \cite{2} and \cite{5}:
-\[ P_{disp} = \beta_{max} \cdot B(t) \cdot \gamma(t) \]
-Switching from Light Mode ($\gamma \approx 0.8$) to Dark Mode ($\gamma \approx 0.1$) results in a direct reduction of $P_{disp}$.
-\textbf{Result:} Simulations confirm a 39\%--47\% reduction in display power, extending battery life by approximately 1-2 hours for heavy users \cite{5}.
+Using the derived heat balance equation:
+\[ \frac{dT}{dt} = \frac{Q_{gen} - Q_{lost}}{C_{th}} \]
+where $Q_{gen} = I^2 R_{int} + I(V_{p1} + V_{p2})$. 
+Simulation results in Figure \ref{fig:battery_scenarios} confirm that surface temperatures stabilize at $43-45^\circ C$ for high loads due to convective cooling $H_{conv}$.
 
 \subsection{App Usage Clustering}
 By analyzing the datasets (see Source \cite{12}), we identified that specific app clusters (e.g., Social Media with Autoplay) have disproportionately high $\gamma$ (CPU load) and $\delta$ (Network) coefficients.
@@ -460,6 +447,14 @@ By analyzing the datasets (see Source \cite{12}), we identified that specific ap
     \fbox{\parbox{0.8\textwidth}{\centering \vspace{3cm} [Placeholder: Clustering Visualization of App Energy Profiles] \vspace{3cm}}}
     \caption{Energy profiles of different app clusters (Gaming vs. Social vs. Utility).}
     \label{fig:app_clusters}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.48\textwidth]{../images/battery_scenario_grid.png}
+    \includegraphics[width=0.48\textwidth]{../images/power_breakdown.png}
+    \caption{Left: 9-scenario SOC trajectories where the \textbf{dashed red line} represents the thermal profile ($^\circ C$). Right: Stacked power breakdown for the gaming profile.}
+    \label{fig:battery_scenarios}
 \end{figure}
 
 \newpage

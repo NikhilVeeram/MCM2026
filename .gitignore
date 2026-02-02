@@ -1,0 +1,21 @@
+# Dependencies
+**/node_modules
+**/dist
+**/build
+**/.DS_Store
+Thumbs.db
+
+# Mobile Native
+**/android/app/build
+**/android/app/src/main/assets/public
+**/android/app/src/main/assets/capacitor.config.json
+
+# Python
+**/__pycache__
+**/.ipynb_checkpoints
+*.pyc
+
+# Local envs
+.env*
+.vscode
+.idea
