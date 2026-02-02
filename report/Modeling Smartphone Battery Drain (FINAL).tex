@@ -2,7 +2,7 @@
 
 % --- PACKAGES ---
 \usepackage{geometry}
-\geometry{left=1in,right=0.75in,top=1in,bottom=1in}
+\geometry{margin=0.75in} % Reduced margins to 0.75in all around
 \usepackage{mathptmx} % Times New Roman font
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{graphicx}
@@ -18,10 +18,17 @@
 \usepackage{caption}
 \usepackage{titlesec}
 \usepackage{setspace}
+\usepackage{enumitem} % For compact lists
 
 % --- REDUCE SPACING ---
 \raggedbottom
-\setlength{\parskip}{0.5ex plus 0.2ex minus 0.1ex}
+\setlength{\parskip}{0.3ex plus 0.1ex minus 0.1ex} % Reduced paragraph skip
+\setlist{nosep} % Removes vertical space in lists
+
+% --- COMPACT HEADERS ---
+\titlespacing*{\section}{0pt}{6pt plus 2pt minus 2pt}{4pt plus 2pt minus 2pt}
+\titlespacing*{\subsection}{0pt}{6pt plus 2pt minus 2pt}{4pt plus 2pt minus 2pt}
+\titlespacing*{\subsubsection}{0pt}{6pt plus 2pt minus 2pt}{4pt plus 2pt minus 2pt}
 
 % --- CODE STYLE ---
 \definecolor{codegreen}{rgb}{0,0.6,0}
@@ -35,7 +42,7 @@
     keywordstyle=\color{magenta},
     numberstyle=\tiny\color{codegray},
     stringstyle=\color{codepurple},
-    basicstyle=\ttfamily\footnotesize,
+    basicstyle=\ttfamily\scriptsize,
     breakatwhitespace=false,         
     breaklines=true,                 
     captionpos=b,                    
