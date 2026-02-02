@@ -127,31 +127,77 @@ The motivation for this study originates from an observation from personal user 
 In this project, we seek to bridge the gap between electrical engineering formulas and the practical information needed by mobile phone users. We simplify certain aspects of the modeling to ensure the equations are both solvable for any phone model and representative of real life. Ultimately, this mathematical framework serves as the engine for a proposed Python-based application that visualizes battery drain as a continuous time series, offering users insights into how optimizations like "Low Power Mode" affect their specific device and state of charge (SOC).
 \newpage 
 
-\section{Assumptions}
+\section{Model Framework and Assumptions}
 
-To render the complex electrochemical systems in a mathematically defined way, we make the following modeling assumptions based on our initial ideation and extensive literature review:
+\subsection{Model Variables and Parameters}
 
+To ensure mathematical clarity, we first define the state variables and control parameters governing the Continuous-Time Kinetic Battery Model (CT-KBM).
+
+\subsubsection*{State Variables}
+The system state at any time $t$ is fully described by the vector $\mathbf{x}(t) = [S(t), V_{p1}(t), V_{p2}(t), T(t)]^T$, where:
+\begin{itemize}
+    \item \textbf{$S(t)$}: State of Charge (SOC), normalized to $[0,1]$ (unitless).
+    \item \textbf{$V_{p1}(t), V_{p2}(t)$}: Polarization voltages across the short-term and long-term RC branches (Volts).
+    \item \textbf{$T(t)$}: Device temperature ($^\circ$C).
+\end{itemize}
+
+\subsubsection*{Control Parameters (Inputs)}
+The model is driven by user-dependent exogenous inputs $\mathbf{u}(t)$:
+\begin{itemize}
+    \item \textbf{$f(t), U(t)$}: CPU frequency (Hz) and Utilization ($0-1$).
+    \item \textbf{$B(t)$}: Screen brightness ($0-1$).
+    \item \textbf{$L(t)$}: Network signal strength (dBm).
+    \item \textbf{$\gamma(t)$}: Active Pixel Ratio for OLED screens ($0-1$).
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Summary of Model Symbols and Parameters}
+\label{tab:vars}
+\begin{tabular}{|c|l|c|c|}
+\hline
+\textbf{Symbol} & \textbf{Description} & \textbf{Unit} & \textbf{Typical Value} \\
+\hline
+$Q_{cap}$ & Battery Capacity & As (Coulombs) & $18,000$ (5000mAh) \\
+$V_{OC}(S)$ & Open Circuit Voltage & V & $3.4 - 4.2$ \\
+$R_0$ & Internal Ohmic Resistance & $\Omega$ & $0.15$ \\
+$\tau$ & Network Tail State Duration & s & $1.0 - 10.0$ \\
+$\eta(P)$ & Discharge Efficiency Factor & - & $0.85 - 0.99$ \\
+$P_{total}$ & Total Power Consumption & W & $0.5 - 12.0$ \\
+$\alpha$ & CMOS Switching Activity & - & $0.1 - 1.0$ \\
+$T_{crit}$ & Thermal Throttling Threshold & $^\circ$C & $40.0$ \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Modeling Assumptions}
+
+We make the following assumptions to translate physical realities into mathematically tractable equations:
 
 \begin{enumerate}
-    \item \textbf{Active vs. Passive Usage:} We assume that users operate in two primary states:
-    \begin{itemize}
-        \item \textbf{Active State:} The user is actively interacting with the device for $X$ hours on average.
-        \item \textbf{Passive State:} The device is idle (screen off or on a static home screen) for $Y$ hours on average. This distinction is critical for modeling "standby" drain versus "active" load.
-    \end{itemize}
+    \item \textbf{Active vs. Passive Usage States:}
+    \emph{Assumption:} Users operate in two distinct regimes: active interaction and passive standby.
+    \emph{Model Link:} This is encoded via the binary indicator function $\mathbf{1}_{active}(t)$, which switches the active pixel ratio $\gamma(t)$ zero (screen off) or non-zero, and toggles the CPU utilization $U(t)$ between idle maintenance ($\approx 0.05$) and load ($\approx 0.8$).
     
-    \item \textbf{Background Persistence:} We assume that background app refresh (e.g., mail downloads, social media syncs) is turned on by default in most operating systems. Therefore, our model must account for stochastic power spikes even during the Passive State, often referred to as "Energy Smells" in software engineering literature \cite{10}.
+    \item \textbf{Background Persistence ("Energy Smells"):}
+    \emph{Assumption:} Apps consume energy even when distinctively "closed" due to background syncs.
+    \emph{Model Link:} Mathematically represented by the software wake-lock term $W_j(t)$ in Equation (\ref{eq:software_power}) and the network idle floor $P_{idle}$ in Equation (\ref{eq:network_power}).
     
-    \item \textbf{Software Clustering:} Different apps consume vastly different amounts of energy. To simplify the system of equations, we model applications in a defined number of \textbf{clusters} (e.g., Gaming, Streaming, Social Media, Utility) based on consumption patterns identified in large-scale Android studies \cite{12}.
+    \item \textbf{Software Clustering:}
+    \emph{Assumption:} Individual app variance can be approximated by categorical averages.
+    \emph{Model Link:} Verification via the summation $\sum_{c=1}^{M}$ in Equation (\ref{eq:software_power}), reducing $N_{apps}$ dimensions to $M=4$ clusters (Gaming, Media, Social, Utility).
     
-    \item \textbf{OS-Specific Hardware Variance:} We assume that no single energy factor is perfectly translatable across operating systems or devices. Our equations will include scaling factors to accommodate this variance.
+    \item \textbf{2RC-Thevenin Battery Dynamics:}
+    \emph{Assumption:} Battery voltage response is non-linear and exhibits transient recovery.
+    \emph{Model Link:} The explicit inclusion of two time constants $\tau_1 = R_1 C_1$ (fast transient) and $\tau_2 = R_2 C_2$ (slow recovery) in the voltage governing equation (\ref{eq:voltage_term}).
     
-    \item \textbf{Lithium-Ion Chemistry:} We assume the device is powered by a standard Lithium-Ion battery. Its behavior is characterized by a non-linear Open Circuit Voltage (OCV) curve and internal resistance that varies with temperature and age \cite{6}.
-
-    \subsection{Additional Modeling Assumptions}
-
-    \item \textbf{Network Tail Energy:} We assume that cellular radios (4G/5G) exhibit "tail energy" behavior, where the modem remains in a high-power Radio Resource Control (RRC) state for a set duration $\tau$ after data transmission ceases, before dropping to idle \cite{13}.
+    \item \textbf{Tail Energy Phenomenon:}
+    \emph{Assumption:} Cellular radios remain high-power after transmission ends.
+    \emph{Model Link:} Included as the conditional term $\mathbf{1}_{t < t_{last} + \tau}$ in the refined network power equation.
     
-    \item \textbf{Battery Health and Aging:} We assume that greater cumulative battery usage translates to greater wear and tear (capacity fade). Our primary model assumes a cycle starting from 100\% capacity, with aging modeled as a reduction in effective capacity $Q_{max}$ over long time horizons \cite{8}.
+    \item \textbf{Thermal Feedback:}
+    \emph{Assumption:} High discharge rates generate heat which retroactively throttles performance.
+    \emph{Model Link:} The system is coupled via Equation (\ref{eq:thermal_throttle}), where $P_{actual}$ becomes a function of state $T(t)$, creating a negative feedback loop when $T(t) > T_{crit}$.
 \end{enumerate}
 
 
@@ -362,13 +408,31 @@ V_{cut} \cdot I_{decay}(t) & \text{if } V_{term} \ge V_{cut} \text{ (CV Phase)}
 
 \subsection{The Complete Model}
 
-Combining equations (\ref{eq:soc_ode}) through (\ref{eq:network_power}), we arrive at the full system description:
+Combining all derived components, the complete dynamics of the smartphone battery system are governed by the following coupled differential algebraic equations (DAE):
 
-\begin{equation} \label{eq:state_space}
-\frac{dS}{dt} = \frac{1}{Q_{cap} V_{term}} \left( P_{gain}(t) - \left[ P_{cpu} + P_{disp} + P_{net} + P_{misc} + P_{software} \right] \right)
-\end{equation}
+\begin{align}
+\label{eq:gov_soc}
+\frac{dS}{dt} &= - \frac{I_{load}(t)}{Q_{cap} \cdot \eta(P_{total})} \\
+\label{eq:gov_vp1}
+\frac{dV_{p1}}{dt} &= -\frac{V_{p1}}{R_1 C_1} + \frac{I_{load}(t)}{C_1} \\
+\label{eq:gov_vp2}
+\frac{dV_{p2}}{dt} &= -\frac{V_{p2}}{R_2 C_2} + \frac{I_{load}(t)}{C_2} \\
+\label{eq:gov_temp}
+\frac{dT}{dt} &= \frac{1}{m C_p} \left( I_{load}^2 R_{total} + P_{chem} - h A (T - T_{amb}) \right)
+\end{align}
 
-This system allows us to simulate the trajectory of $S(t)$ from 100\% to 0\% under various user profiles defined by the "Active $X$" and "Passive $Y$" assumptions.
+Subject to the algebraic constraints defining load and voltage:
+
+\begin{align}
+\label{eq:gov_current}
+I_{load}(t) &= \frac{P_{total}(S, \mathbf{u}, T)}{V_{term}(t)} \\
+\label{eq:gov_voltage}
+V_{term}(t) &= V_{OC}(S) - I_{load}(t)R_0(T) - V_{p1} - V_{p2} \\
+\label{eq:gov_power}
+P_{total}(t) &= P_{cpu}(f,U) + P_{disp}(B,\gamma) + P_{net}(L) + P_{sys}
+\end{align}
+
+This system (\ref{eq:gov_soc}--\ref{eq:gov_power}) is solved numerically using the LSODA method for stiff systems. Note that in Equation (\ref{eq:gov_temp}), $m C_p$ represents the device's thermal mass ($\approx 150$ J/K), $h A$ is the convective heat transfer coefficient ($\approx 0.22$ W/K), and $T_{amb}$ is the ambient temperature ($25^\circ$C).
 
 \subsection{Low Power Mode (LPM) Model}
 
