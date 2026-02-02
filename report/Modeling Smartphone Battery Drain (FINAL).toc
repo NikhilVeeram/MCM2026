@@ -35,17 +35,17 @@
 \contentsline {section}{\numberline {11}Dataset Applications \& Validation Results}{20}{section.11}%
 \contentsline {subsection}{\numberline {11.1}User Behavior Dataset}{20}{subsection.11.1}%
 \contentsline {subsection}{\numberline {11.2}Remaining Useful Life (RUL) Evaluation}{20}{subsection.11.2}%
-\contentsline {section}{\numberline {12}Strengths and Weaknesses}{21}{section.12}%
-\contentsline {subsection}{\numberline {12.1}Strengths}{21}{subsection.12.1}%
-\contentsline {subsection}{\numberline {12.2}Weaknesses}{21}{subsection.12.2}%
-\contentsline {section}{\numberline {13}Future Work}{22}{section.13}%
-\contentsline {subsection}{\numberline {13.1}AI-Driven Energy Modeling}{22}{subsection.13.1}%
-\contentsline {subsection}{\numberline {13.2}Advanced Thermal Management}{22}{subsection.13.2}%
-\contentsline {subsection}{\numberline {13.3}Cross-Platform Mobile Application}{22}{subsection.13.3}%
-\contentsline {subsection}{\numberline {13.4}Battery Degradation Over Lifecycle}{22}{subsection.13.4}%
-\contentsline {subsection}{\numberline {13.5}Integration with Smart Grid Systems}{22}{subsection.13.5}%
-\contentsline {subsection}{\numberline {13.6}}{22}{subsection.13.6}%
-\contentsline {section}{\numberline {14}Appendix A: Core Simulation Logic}{23}{section.14}%
-\contentsline {section}{\numberline {15}Appendix B: Application Interface and Usage}{26}{section.15}%
+\contentsline {subsection}{\numberline {11.3}Validation Methodology}{21}{subsection.11.3}%
+\contentsline {section}{\numberline {12}Strengths and Weaknesses}{22}{section.12}%
+\contentsline {subsection}{\numberline {12.1}Strengths}{22}{subsection.12.1}%
+\contentsline {subsection}{\numberline {12.2}Weaknesses}{22}{subsection.12.2}%
+\contentsline {section}{\numberline {13}Future Work}{23}{section.13}%
+\contentsline {subsection}{\numberline {13.1}AI-Driven Energy Modeling}{23}{subsection.13.1}%
+\contentsline {subsection}{\numberline {13.2}Advanced Thermal Management}{23}{subsection.13.2}%
+\contentsline {subsection}{\numberline {13.3}Cross-Platform Mobile Application}{23}{subsection.13.3}%
+\contentsline {subsection}{\numberline {13.4}Battery Degradation Over Lifecycle}{23}{subsection.13.4}%
+\contentsline {subsection}{\numberline {13.5}Integration with Smart Grid Systems}{23}{subsection.13.5}%
+\contentsline {section}{\numberline {14}Appendix A: Validation Implementation}{24}{section.14}%
+\contentsline {section}{\numberline {15}Appendix B: Application Interface and Usage}{25}{section.15}%
 \contentsline {section}{\numberline {16}Appendix C: Mathematical Derivations}{27}{section.16}%
-\contentsline {section}{\numberline {17}Appendix D: Dataset Metadata}{29}{section.17}%
+\contentsline {section}{\numberline {17}Appendix D: Dataset Metadata}{28}{section.17}%
