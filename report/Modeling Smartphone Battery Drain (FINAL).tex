@@ -747,50 +747,9 @@ This appendix provides a user manual and visual reference for the "Eco-Drain" ap
 
 \newpage
 
-This section contains the core logic for the Continuous-Time Kinetic Battery Model (CT-KBM). The code defines the device parameters, the user profile clustering, and the differential equation solver for the 2RC circuit.
 
-\begingroup
-\lstset{basicstyle=\ttfamily\scriptsize}
-\begin{lstlisting}[language=Python, caption=Calibrated High-Fidelity Battery Model]
-import numpy as np
-from scipy.integrate import odeint
 
-# Calibrated Physical Constants (MCM-2633023)
-Q_CAP = 5.0 * 3600    # 5000mAh
-V_NOM = 3.8           # Nominal Voltage
-R_REF = 0.15          # Internal Resistance (Ohms)
-ALPHA_THERM = 0.003   # Thermal Coefficient
-C_TH = 150.0          # Thermal Heat Capacity
-H_CONV = 0.22         # Convective Heat Loss
 
-class MCMHighFidelityModel:
-    def get_ocv(self, soc):
-        """Empirical Li-Ion chemistry curve [Eq 11]"""
-        s = np.clip(soc, 0.0001, 1.0)
-        return 3.45 + 0.6 * s + 0.12 * np.log(s + 0.01)
-
-    def get_p_total(self, t, s, temp, p):
-        """Refined Power Laws [Eq 7-15]"""
-        u_mult = p.get('user_scale', 1.0) 
-        
-        # 1. CPU Power (DVFS Convex Model)
-        p_cpu = 12.0 * (0.7 * (0.8 + 0.3*p['f'])**2 * p['f'] * p['u']) + (p['p_app'] * 0.45)
-        
-        # 2. Display Power (OLED Non-linear Scaling)
-        p_disp = (1.5 * (p['b']**1.6) * p['apr'] + 0.03)
-        
-        # 3. Network Signal (SNR Penalty)
-        delta = 10**((-p['signal'] - 80) / 20)
-        p_net = (min(3.0, (delta * 0.25)) if p['net'] else 0.02)
-        
-        p_total = (p_cpu + p_disp + p_net + 0.04) * u_mult
-        
-        # 4. Thermal Throttling [Eq 15]
-        if temp > 40.0:
-            throttle = np.clip(1.0 - (temp - 40.0) / 20.0, 0.35, 1.0)
-            p_total *= throttle
-            
-        return p_total
         
 \newpage
 
