@@ -478,6 +478,13 @@ The derived equations provide a continuous-time framework that links physical ha
 \textbf{Device Model:} iPhone 17 Pro (Modeled based on 2RC parameters from \cite{6} and \cite{14}). \\
 \textbf{Battery Parameters:} $Q_{cap} \approx 3988$ mAh, $V_{term} = 3.7$ V.
 
+\begin{figure}[h]
+    \centering
+    \fbox{\parbox[c][4cm]{0.95\textwidth}{\centering \vspace{1.5cm} \textbf{Placeholder: iOS App UI Screenshot} \\ (To be inserted: Real-time monitoring view) \vspace{1.5cm}}}
+    \caption{Proposed iOS App Interface for Real-Time Battery Monitoring.}
+    \label{fig:ios_app_placeholder}
+\end{figure}
+
 \subsection{User A: The Power User}
 This profile represents a user leveraging high-performance cores and 5G connectivity.
 \begin{itemize}
@@ -487,8 +494,8 @@ This profile represents a user leveraging high-performance cores and 5G connecti
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.95\textwidth]{../images/power_breakdown.png}
-    \caption{Instantaneous power breakdown for a Power User, showing the CPU and Display dominance.}
+    \includegraphics[width=1.0\textwidth]{../images/power_user_composite.png}
+    \caption{Detailed Power User Profile. Central: Average power breakdown. Surrounding: Specific high-demand workloads (Gaming, 4K Streaming) highlighting maximum power draw variances and 5G penalties.}
     \label{fig:power_breakdown}
 \end{figure}
 
@@ -501,9 +508,9 @@ This profile utilizes "Low Power Mode" to restrict background activity.
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.95\textwidth]{../images/battery_scenario_grid.png}
-    \caption{Calibrated simulation results across 9 distinct user scenarios, highlighting the non-linear voltage sag and thermal throttling impact.}
-    \label{fig:scenario_grid}
+    \includegraphics[width=1.0\textwidth]{../images/limited_user_composite.png}
+    \caption{Detailed Limited User Profile. Central: Average power breakdown (mostly background/idle). Surrounding: Low-power workloads (Eco Reading, Texting) showing significantly reduced power caps with disabled 5G tail states.}
+    \label{fig:limited_user}
 \end{figure}
 
 \newpage
@@ -515,6 +522,13 @@ This profile utilizes "Low Power Mode" to restrict background activity.
 
 \textbf{Device Model:} Google Pixel 8 (Modeled using dataset parameters from \cite{12}). \\
 \textbf{Key Difference:} Android devices often exhibit different background handling policies and thermal thresholds compared to iOS \cite{10}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.95\textwidth]{../images/battery_scenario_grid.png}
+    \caption{Calibrated simulation results across 9 distinct user scenarios, highlighting the non-linear voltage sag and thermal throttling impact. This grid contrasts the Power User (Top Left) with the Limited User (Bottom Right).}
+    \label{fig:scenario_grid}
+\end{figure}
 
 \subsection{User A: The Power User}
 Android devices often sustain higher peak power for longer durations before throttling.
@@ -557,12 +571,7 @@ By analyzing the datasets (see Source \cite{12}), we identified that specific ap
 
 \textbf{Recommendation:} Users should identify "Power Hog" clusters. Our Python tool allows users to input their app usage and see the predicted drain. Reducing usage of Cluster 1 (High Performance Games) by 30 minutes saves more energy than reducing Cluster 4 (E-readers) by 2 hours.
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.95\textwidth]{../images/app_power_comparison.png}
-    \caption{Summary of average power consumption by application type. Note the significant 13W draw for Ultra Gaming vs. <0.5W for Deep Standby.}
-    \label{fig:app_clusters}
-\end{figure}
+% Figure 5 Removed as duplicate. Reference Figure 5 (App Power Comparison) for details.
 
 \newpage
 
