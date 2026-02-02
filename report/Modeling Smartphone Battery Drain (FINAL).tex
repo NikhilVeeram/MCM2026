@@ -557,8 +557,129 @@ The integration of these datasets ensures that our model is not just theoretical
 % =================================================================================
 % PAGE 15: APPENDIX A (PAGE 1)
 % =================================================================================
-\appendix
-\section{Appendix A: Python Modeling Code (Part 1)}
+\section{Appendix A: Python Modeling Code}
+
+This appendix contains the core logic for the Continuous-Time Kinetic Battery Model (CT-KBM). The code defines the device parameters and the differential equation solver for the 2RC circuit.
+
+\begingroup
+\lstset{basicstyle=\ttfamily\scriptsize}
+\begin{lstlisting}[language=Python, caption=Calibrated High-Fidelity Battery Model]
+import numpy as np
+from scipy.integrate import odeint
+
+# Calibrated Physical Constants (MCM-2633023)
+Q_CAP = 5.0 * 3600    # 5000mAh
+R_REF = 0.15          # Internal Resistance (Ohms)
+
+class MCMHighFidelityModel:
+    def get_ocv(self, soc):
+        """Empirical Li-Ion chemistry curve based on NLLS fitting"""
+        s = np.clip(soc, 0.0001, 1.0)
+        return 3.45 + 0.6 * s + 0.12 * np.log(s + 0.01)
+
+    def get_p_total(self, t, s, temp, p):
+        """Refined Power Laws: Aggregates CPU, Display, and 5G Tail Energy"""
+        u_mult = p.get('user_scale', 1.0) 
+        
+        # 1. CPU Power (DVFS Convex Model)
+        p_cpu = 12.0 * (0.7 * (0.8 + 0.3*p['f'])**2 * p['f'] * p['u']) + (p['p_app'] * 0.45)
+        
+        # 2. Display Power (OLED Non-linear Scaling)
+        p_disp = (1.5 * (p['b']**1.6) * p['apr'] + 0.03)
+        
+        # 3. Network Signal (SNR Penalty & Tail Energy)
+        delta = 10**((-p['signal'] - 80) / 20)
+        p_net = (min(3.0, (delta * 0.25)) if p['net'] else 0.02)
+        
+        p_total = (p_cpu + p_disp + p_net + 0.04) * u_mult
+        
+        # 4. Thermal Throttling Feedback Loop
+        if temp > 40.0:
+            throttle = np.clip(1.0 - (temp - 40.0) / 20.0, 0.35, 1.0)
+            p_total *= throttle
+            
+        return p_total
+
+    def system_dynamics(self, y, t, p):
+        """Solves the 2RC-Thevenin Differential Equations"""
+        s, vp1, vp2, temp = y
+        r0_t = 0.15 * (1 + 0.003 * (temp - 25.0)) # Calibrated Internal Resistance
+        
+        p_total = self.get_p_total(t, s, temp, p)
+        
+        # Current-dependent efficiency law (Peukert's Effect)
+        eta_i = 0.99 - 0.015 * (p_total / 8.0) 
+        voc = self.get_ocv(s)
+        
+        # Solving Terminal Voltage Polynomial for I_load
+        disc = (voc - vp1 - vp2)**2 - 4 * r0_t * p_total
+        i_load = ((voc - vp1 - vp2) - np.sqrt(max(0, disc))) / (2 * r0_t)
+        
+        # State Derivatives: [dS/dt, dVp1/dt, dVp2/dt, dT/dt]
+        ds = - (i_load) / (Q_CAP * eta_i) if s > 0 else 0
+        dvp1 = - (vp1 / 30.0) + (i_load / 1500.0)
+        dvp2 = - (vp2 / 300.0) + (i_load / 8000.0)
+        dtemp = ((i_load**2 * r0_t) + i_load * (vp1 + vp2) - 0.22 * (temp - 22.0)) / 150.0
+        
+        return [ds, dvp1, dvp2, dtemp]
+\end{lstlisting}
+\endgroup
+
+\newpage
+
+\section{Appendix B: Application Interface and Usage}
+
+This appendix provides a user manual and visual reference for the "Eco-Drain" application developed to help users visualize the model's predictions.
+
+\subsection*{How to Run the Application}
+\begin{enumerate}
+    \item \textbf{Prerequisites:} Ensure `Node.js` (v18+) and `Git` are installed.
+    \item \textbf{Installation:} Clone the repository and install dependencies:
+    \begin{verbatim}
+    git clone https://github.com/NikhilVeeram/MCM2026
+    cd MCM2026/mobile_app
+    npm install
+    \end{verbatim}
+    \item \textbf{Execution:} Run the development server:
+    \begin{verbatim}
+    npm run dev
+    \end{verbatim}
+    \item \textbf{Access:} Open the provided localhost URL (e.g., \url{http://localhost:5173}) in your web browser. Use the header icons to toggle between "Dashboard" and "Home Widget" views.
+\end{enumerate}
+
+\subsection*{Interface Visualizations}
+
+\begin{figure}[h]
+    \centering
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \fbox{\parbox[c][6cm]{0.95\textwidth}{\centering \vspace{2.5cm} \textbf{Android: Composite View} \\ (General | Eco Toggle | Load Analysis) \vspace{2.5cm}}}
+        \caption{Android App Functionality}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \fbox{\parbox[c][6cm]{0.95\textwidth}{\centering \vspace{2.5cm} \textbf{Android: Home Screen} \\ (Widget \& Status Integration) \vspace{2.5cm}}}
+        \caption{Android Widget Integration}
+    \end{minipage}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \fbox{\parbox[c][6cm]{0.95\textwidth}{\centering \vspace{2.5cm} \textbf{iOS: Main Dashboard} \\ (Real-time Battery Stats) \vspace{2.5cm}}}
+        \caption{iOS Application View 1}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \fbox{\parbox[c][6cm]{0.95\textwidth}{\centering \vspace{2.5cm} \textbf{iOS: Optimization} \\ (Recommendations) \vspace{2.5cm}}}
+        \caption{iOS Application View 2}
+    \end{minipage}
+\end{figure}
+
+\newpage
 
 This section contains the core logic for the Continuous-Time Kinetic Battery Model (CT-KBM). The code defines the device parameters, the user profile clustering, and the differential equation solver for the 2RC circuit.
 
@@ -605,103 +726,6 @@ class MCMHighFidelityModel:
             
         return p_total
         
-        # Hardware: CPU (Convex Model - Source [1])
-        p_cpu = 3.2 * (profile['cpu_freq'] ** 2) * profile['cpu_util']
-        
-        # Hardware: Network (Tail Energy - Source [4])
-        if profile['network_active']:
-            p_net = 2.1 * profile['signal_factor']
-        elif t < profile['last_active'] + TAU_TAIL:
-            p_net = P_TAIL_5G # Tail State
-        else:
-            p_net = 0.01 # Idle
-            
-        return p_disp + p_cpu + p_net + 0.05 # Base parasitic
-\end{lstlisting}
-
-% =================================================================================
-% PAGE 16: APPENDIX A (PAGE 2)
-% =================================================================================
-\section*{Appendix A: Python Modeling Code (Part 2)}
-
-This section details the simulation loop and the ODE solver integration, allowing for time-series prediction of the State of Charge (SOC).
-
-\begin{lstlisting}[language=Python, caption=Calibrated ODE Solver and Dynamics]
-    def system_dynamics(self, y, t, p):
-        s, vp1, vp2, temp = y
-        # Calibrated Thermal Internal Resistance [Eq 3]
-        r0_t = 0.15 * (1 + 0.003 * (temp - 25.0))
-        p_total = self.get_p_total(t, s, temp, p)
-        
-        # Current-dependent efficiency law [Eq 12]
-        eta_i = 0.99 - 0.015 * (p_total / 8.0) 
-        voc = self.get_ocv(s)
-        
-        # Solving Terminal Voltage Polynomial for I_load
-        disc = (voc - vp1 - vp2)**2 - 4 * r0_t * p_total
-        i_load = ((voc - vp1 - vp2) - np.sqrt(max(0, disc))) / (2 * r0_t)
-        
-        # State Derivatives: [dS/dt, dVp1/dt, dVp2/dt, dT/dt]
-        ds = - (i_load) / (Q_CAP * eta_i) if s > 0 else 0
-        dvp1 = - (vp1 / 30.0) + (i_load / 1500.0)
-        dvp2 = - (vp2 / 300.0) + (i_load / 8000.0)
-        dtemp = ((i_load**2 * r0_t) + i_load * (vp1 + vp2) - 0.22 * (temp - 22.0)) / 150.0
-        
-        return [ds, dvp1, dvp2, dtemp]
-\end{lstlisting}
-
-\begin{lstlisting}[language=Python, caption=User Scenarios and Simulation Suite]
-def run_calibrated_suite():
-    model = MCMHighFidelityModel()
-    t = np.linspace(0, 24 * 3600, 8000) 
-    y0 = [0.95, 0, 0, 22.0] # 95% SOC, Ambient Temp
-
-    # Define profile parameters optimized for iPhone 17 Pro / Pixel 8
-    scenarios = [
-        ("Ultra Gaming (5G)", {'f': 1.0, 'u': 0.98, 'p_app': 5.0, 
-                               'b': 1.0, 'apr': 0.95, 'signal': -110, 'net': True}),
-        ("Social Media", {'f': 0.4, 'u': 0.4, 'p_app': 0.6, 
-                          'b': 0.7, 'apr': 0.6, 'signal': -85, 'net': True}),
-        ("Deep Standby", {'f': 0.05, 'u': 0.02, 'p_app': 0.0, 
-                          'b': 0.0, 'apr': 0.0, 'signal': -90, 'net': False})
-    ]
-
-    for name, config in scenarios:
-        res = odeint(model.system_dynamics, y0, t, args=(config,))
-        # Process and validate deaths index...
-\end{lstlisting}
-\endgroup
-
-\newpage
-
-% =================================================================================
-% PAGE 17: APPENDIX B
-% =================================================================================
-\section{Appendix B: Figures of Application Interface}
-
-This appendix provides visualizations of the proposed Python-based GUI. The tool allows users to toggle "clusters" (Gaming, Social, Utility) and immediately visualize the impact on their battery's Time-to-Empty (TTE).
-
-\begin{figure}[h]
-    \centering
-    \fbox{\parbox{0.9\textwidth}{\centering \vspace{6cm} 
-    \textbf{Figure B.1: Main Dashboard} \\
-    [Placeholder: Screenshot of the "Eco-Drain" App Dashboard. \\
-    Shows current SOC, Real-time Voltage V(t), and Active Clusters.]
-    \vspace{6cm}}}
-    \caption{The main dashboard allows users to see real-time battery stats.}
-\end{figure}
-
-\begin{figure}[h]
-    \centering
-    \fbox{\parbox{0.9\textwidth}{\centering \vspace{6cm} 
-    \textbf{Figure B.2: Optimization Suggestions} \\
-    [Placeholder: Screenshot of "Recommendation Engine". \\
-    "Switching to Dark Mode will save 12\% battery today." \\
-    "Disable background refresh for Instagram to save 5\%."]
-    \vspace{6cm}}}
-    \caption{The recommendation engine suggests actionable changes based on the derived equations.}
-\end{figure}
-
 \newpage
 
 % =================================================================================

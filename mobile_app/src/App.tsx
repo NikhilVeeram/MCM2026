@@ -21,7 +21,8 @@ import {
     Instagram,
     MessageSquare,
     Music,
-    Trash2
+    Trash2,
+    Grid
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -147,6 +148,7 @@ export default function App() {
     const [brightness, setBrightness] = useState(0.6);
     const [isFYIOpen, setIsFYIOpen] = useState(false);
     const [userProfile, setUserProfile] = useState<UserProfile>('Baseline');
+    const [isWidgetView, setIsWidgetView] = useState(false);
 
     const [activeScenario, setActiveScenario] = useState<string | null>(null);
     const [timer, setTimer] = useState(0);
@@ -242,172 +244,259 @@ export default function App() {
                     <Zap size={20} color="var(--accent-color)" />
                     <span style={{ fontWeight: 800, fontSize: '14px', letterSpacing: '1px' }}>ECODRAIN v1.3</span>
                 </div>
-                <button onClick={() => setIsFYIOpen(true)} style={{ background: 'none', border: 'none', color: 'var(--accent-color)', cursor: 'pointer' }}>
-                    <BookOpen size={20} />
-                </button>
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <button onClick={() => setIsWidgetView(!isWidgetView)} style={{ background: 'none', border: 'none', color: 'var(--accent-color)', cursor: 'pointer', marginRight: '15px' }} title="Toggle Home Widget View">
+                        <Grid size={20} />
+                    </button>
+                    <button onClick={() => setIsFYIOpen(true)} style={{ background: 'none', border: 'none', color: 'var(--accent-color)', cursor: 'pointer' }}>
+                        <BookOpen size={20} />
+                    </button>
+                </div>
             </header>
 
-            <section className="hero-visual">
-                <div className="ring-container">
-                    <svg className="ring-svg" viewBox="0 0 100 100">
-                        <circle cx="50" cy="50" r="46" fill="none" stroke="rgba(128,128,128,0.05)" strokeWidth="6" />
-                        <motion.circle
-                            cx="50" cy="50" r="46"
-                            fill="none" stroke="var(--accent-color)" strokeWidth="6"
-                            strokeDasharray="289" animate={{ strokeDashoffset: 289 * (1 - state.soc) }}
-                            strokeLinecap="round"
-                        />
-                    </svg>
-                    <div className="percentage-display">
-                        <h1>{Math.round(state.soc * 100)}<span className="unit">%</span></h1>
-                        <div className="charging-status" style={{ color: activeScenario ? 'var(--danger)' : PROFILE_CONFIGS[userProfile].color }}>
-                            {userProfile} Profile
+            {isWidgetView ? (
+                <div style={{
+                    flex: 1,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    borderRadius: '20px',
+                    backgroundColor: '#333',
+                    backgroundImage: 'url("https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop")',
+                    backgroundPosition: 'center',
+                    backgroundSize: 'cover',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    minHeight: '600px',
+                    border: '4px solid #1a1b1e',
+                    boxShadow: '0 20px 50px rgba(0,0,0,0.5)'
+                }}>
+                    {/* Status Bar Shim */}
+                    <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '30px', background: 'rgba(0,0,0,0.3)', backdropFilter: 'blur(2px)' }}></div>
+
+                    <div style={{
+                        width: '90%',
+                        padding: '16px',
+                        background: 'rgba(20, 20, 20, 0.75)',
+                        backdropFilter: 'blur(16px)',
+                        borderRadius: '24px',
+                        border: '1px solid rgba(255,255,255,0.1)',
+                        color: '#fff',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '12px',
+                        boxShadow: '0 8px 32px rgba(0,0,0,0.3)'
+                    }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                <Zap size={16} color="var(--accent-color)" fill="var(--accent-color)" />
+                                <span style={{ fontSize: '14px', fontWeight: 700, letterSpacing: '0.5px' }}>EcoDrain</span>
+                            </div>
+                            <span style={{ fontSize: '11px', opacity: 0.7, background: 'rgba(255,255,255,0.1)', padding: '2px 6px', borderRadius: '4px' }}>{userProfile}</span>
+                        </div>
+
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginTop: '5px' }}>
+                            <div>
+                                <div style={{ fontSize: '36px', fontWeight: 600, lineHeight: 1 }}>{Math.round(state.soc * 100)}%</div>
+                                <div style={{ fontSize: '12px', opacity: 0.7, marginTop: '4px', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                                    <Battery size={12} />
+                                    {Math.floor(state.tte / 3600)}h {Math.floor((state.tte % 3600) / 60)}m Left
+                                </div>
+                            </div>
+                            <div style={{ textAlign: 'right' }}>
+                                <div style={{ fontSize: '20px', fontWeight: 600, color: 'var(--accent-color)' }}>{state.p.toFixed(1)}W</div>
+                                <div style={{ fontSize: '10px', opacity: 0.7 }}>Current Load</div>
+                            </div>
+                        </div>
+
+                        <div style={{ marginTop: '5px' }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '10px', marginBottom: '4px', opacity: 0.6 }}>
+                                <span>Discharge Rate</span>
+                                <span>{state.soc < 0.2 ? 'Critical' : 'Normal'}</span>
+                            </div>
+                            <div style={{ height: '6px', background: 'rgba(255,255,255,0.1)', borderRadius: '3px', overflow: 'hidden' }}>
+                                <div style={{ height: '100%', width: `${state.soc * 100}%`, background: state.soc < 0.2 ? 'var(--danger)' : 'linear-gradient(90deg, var(--accent-color), #2ed573)' }} />
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div className="tte-display">
-                    <span className="label">ACTIVE TIME TO EMPTY</span>
-                    <div className="value">{Math.floor(state.tte / 3600)}h {Math.floor((state.tte % 3600) / 60)}m</div>
-                </div>
-            </section>
 
-            <section className="control-sheet">
-                {/* User Profile Selector */}
-                <div style={{ marginBottom: '10px', overflowX: 'auto', whiteSpace: 'nowrap', paddingBottom: '5px' }}>
-                    {Object.keys(PROFILE_CONFIGS).map((key) => (
-                        <button
-                            key={key}
-                            onClick={() => setUserProfile(key as UserProfile)}
-                            style={{
-                                display: 'inline-block',
-                                padding: '6px 12px',
-                                margin: '0 4px',
-                                borderRadius: '12px',
-                                background: userProfile === key ? PROFILE_CONFIGS[key as UserProfile].color : 'rgba(255,255,255,0.1)',
-                                color: userProfile === key ? '#000' : '#fff',
-                                border: 'none',
-                                fontSize: '11px',
-                                fontWeight: 700,
-                                cursor: 'pointer'
-                            }}
-                        >
-                            {key}
-                        </button>
-                    ))}
-                </div>
-
-                <div style={{ display: 'flex', gap: '10px', marginBottom: '15px' }}>
-                    <button className={`scenario-btn ${isDarkMode ? 'active' : ''}`} style={{ flex: 1, flexDirection: 'row', padding: '12px' }} onClick={() => setIsDarkMode(!isDarkMode)}>
-                        {isDarkMode ? <Moon size={16} /> : <Sun size={16} />} <span>{isDarkMode ? 'OLED Dark' : 'Bright Mode'}</span>
-                    </button>
-                    <button className={`scenario-btn ${isLPM ? 'active' : ''}`} style={{ flex: 1, flexDirection: 'row', padding: '12px' }} onClick={() => setIsLPM(!isLPM)}>
-                        <Zap size={16} /> <span>Eco Mode</span>
-                    </button>
-                    <button className="scenario-btn" style={{ flex: 1, flexDirection: 'row', padding: '12px' }} onClick={() => setIsWifi(!isWifi)}>
-                        {isWifi ? <Wifi size={16} /> : <Activity size={16} />} <span>{isWifi ? 'Wi-Fi On' : '5G Data'}</span>
-                    </button>
-                </div>
-
-                <div style={{ padding: '0 5px' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
-                        <span style={{ fontSize: '10px', fontWeight: 800, color: 'var(--text-secondary)' }}>BACKLIGHT LEVEL</span>
-                        <span style={{ fontSize: '10px', fontWeight: 800 }}>{Math.round(brightness * 100)}%</span>
+                    <div style={{ position: 'absolute', bottom: '80px', display: 'flex', gap: '15px' }}>
+                        {[1, 2, 3, 4].map(i => (
+                            <div key={i} style={{ width: '50px', height: '50px', borderRadius: '14px', background: 'rgba(255,255,255,0.15)', backdropFilter: 'blur(10px)' }}></div>
+                        ))}
                     </div>
-                    <input type="range" min="0.05" max="1" step="0.01" value={brightness} onChange={e => setBrightness(parseFloat(e.target.value))} className="slider" style={{ width: '100%' }} />
-                </div>
 
-                <div className="scenario-grid">
-                    {Object.entries(configs).map(([key, c]: [string, any]) => (
-                        <button key={key} className={`scenario-btn ${activeScenario === key ? 'active' : ''}`} onClick={() => { setActiveScenario(key); setTimer(10); }}>
-                            <c.icon size={20} color={activeScenario === key ? '#000' : c.color} />
-                            <span>{key} Load</span>
-                        </button>
-                    ))}
-                </div>
-            </section>
-
-            <div className="markers-grid">
-                <div className="marker-card">
-                    <div className="marker-header"><Thermometer size={14} /> <span>Thermal Engine</span></div>
-                    <div className="marker-value"><h3 style={{ color: state.temp > 38 ? 'var(--danger)' : 'var(--success)' }}>{state.temp.toFixed(1)}</h3><span className="unit">°C</span></div>
-                    <div className="marker-progress"><div className="progress-fill" style={{ width: `${Math.min(100, (state.temp - 22) * 4)}%`, background: state.temp > 38 ? 'var(--danger)' : 'var(--success)' }} /></div>
-                </div>
-                <div className="marker-card">
-                    <div className="marker-header"><Activity size={14} /> <span>Global Sink</span></div>
-                    <div className="marker-value"><h3>{state.p.toFixed(2)}</h3><span className="unit">Watts</span></div>
-                    <div className="marker-progress"><div className="progress-fill" style={{ width: `${Math.min(100, state.p * 15)}%`, background: 'var(--accent-color)' }} /></div>
-                </div>
-
-                <div className="marker-card full-width">
-                    <div className="marker-header"><Cpu size={14} /> <span>Octa-Core Cluster Activity</span></div>
-                    <div className="core-grid">
-                        <CoreChip name="P-Core 1" freq={(activeScenario ? 3.2 : 0.6 + Math.random() * 0.4).toFixed(2)} power={(state.pCpu * 0.35).toFixed(2)} color="var(--danger)" />
-                        <CoreChip name="P-Core 2" freq={(activeScenario ? 3.2 : 0.6 + Math.random() * 0.4).toFixed(2)} power={(state.pCpu * 0.35).toFixed(2)} color="var(--danger)" />
-                        <CoreChip name="E-Core 1" freq={(0.4 + Math.random() * 1.5).toFixed(2)} power={(state.pCpu * 0.07).toFixed(2)} color="var(--success)" />
-                        <CoreChip name="E-Core 2" freq={(0.4 + Math.random() * 1.5).toFixed(2)} power={(state.pCpu * 0.07).toFixed(2)} color="var(--success)" />
-                        <CoreChip name="E-Core 3" freq={(0.4 + Math.random() * 1.5).toFixed(2)} power={(state.pCpu * 0.07).toFixed(2)} color="var(--success)" />
-                        <CoreChip name="E-Core 4" freq={(0.4 + Math.random() * 1.5).toFixed(2)} power={(state.pCpu * 0.07).toFixed(2)} color="var(--success)" />
+                    <div style={{ position: 'absolute', bottom: '40px', fontSize: '12px', fontWeight: 600, color: 'rgba(255,255,255,0.8)', textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>
+                        Simulated Home Screen
                     </div>
                 </div>
-
-                {/* Per-App Impact with Removal Logic */}
-                <div className="marker-card full-width">
-                    <div className="marker-header"><Activity size={14} /> <span>Active Software Impact</span></div>
-                    <div className="app-impact-list">
-                        <AnimatePresence>
-                            {apps.map((app) => (
-                                <motion.div
-                                    initial={{ opacity: 0, x: -20 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    exit={{ opacity: 0, scale: 0.8 }}
-                                    className="impact-item"
-                                    key={app.id}
-                                >
-                                    <div className="impact-app-info">
-                                        <app.icon size={16} color={app.color} />
-                                        <span className="impact-name">{app.name}</span>
-                                        <span className={`impact-badge impact-${app.impact}`}>{app.impact}</span>
-                                    </div>
-                                    <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
-                                        <span className="impact-wattage">{(app.wattage * (activeScenario === 'Gaming' && app.impact === 'high' ? 2.5 : 1)).toFixed(2)}W</span>
-                                        {app.id !== 'ecodrain' && (
-                                            <Trash2 size={14} color="var(--danger)" style={{ cursor: 'pointer', opacity: 0.6 }} onClick={() => removeApp(app.id)} />
-                                        )}
-                                    </div>
-                                </motion.div>
-                            ))}
-                        </AnimatePresence>
-                        {apps.length === 1 && (
-                            <div style={{ textAlign: 'center', fontSize: '11px', color: 'var(--text-secondary)', padding: '10px' }}>
-                                All background apps terminated. System Optimized.
+            ) : (
+                <>
+                    <section className="hero-visual">
+                        <div className="ring-container">
+                            <svg className="ring-svg" viewBox="0 0 100 100">
+                                <circle cx="50" cy="50" r="46" fill="none" stroke="rgba(128,128,128,0.05)" strokeWidth="6" />
+                                <motion.circle
+                                    cx="50" cy="50" r="46"
+                                    fill="none" stroke="var(--accent-color)" strokeWidth="6"
+                                    strokeDasharray="289" animate={{ strokeDashoffset: 289 * (1 - state.soc) }}
+                                    strokeLinecap="round"
+                                />
+                            </svg>
+                            <div className="percentage-display">
+                                <h1>{Math.round(state.soc * 100)}<span className="unit">%</span></h1>
+                                <div className="charging-status" style={{ color: activeScenario ? 'var(--danger)' : PROFILE_CONFIGS[userProfile].color }}>
+                                    {userProfile} Profile
+                                </div>
                             </div>
-                        )}
-                    </div>
-                </div>
+                        </div>
+                        <div className="tte-display">
+                            <span className="label">ACTIVE TIME TO EMPTY</span>
+                            <div className="value">{Math.floor(state.tte / 3600)}h {Math.floor((state.tte % 3600) / 60)}m</div>
+                        </div>
+                    </section>
 
-                <div className="marker-card full-width">
-                    <div className="marker-header"><Layers size={14} /> <span>Topology Breakdown</span></div>
-                    <div className="physics-stack">
-                        <div className="physics-item"><span>Processor Cluster</span><span>{state.pCpu.toFixed(2)}W</span></div>
-                        <div className="physics-item"><span>OLED Logic (APR: {isDarkMode ? '0.30' : '0.90'})</span><span>{state.pDisp.toFixed(2)}W</span></div>
-                        <div className="physics-item"><span>Carrier Radio (Capped peak)</span><span>{state.pNet.toFixed(2)}W</span></div>
-                    </div>
-                </div>
-            </div>
+                    <section className="control-sheet">
+                        {/* User Profile Selector */}
+                        <div style={{ marginBottom: '10px', overflowX: 'auto', whiteSpace: 'nowrap', paddingBottom: '5px' }}>
+                            {Object.keys(PROFILE_CONFIGS).map((key) => (
+                                <button
+                                    key={key}
+                                    onClick={() => setUserProfile(key as UserProfile)}
+                                    style={{
+                                        display: 'inline-block',
+                                        padding: '6px 12px',
+                                        margin: '0 4px',
+                                        borderRadius: '12px',
+                                        background: userProfile === key ? PROFILE_CONFIGS[key as UserProfile].color : 'rgba(255,255,255,0.1)',
+                                        color: userProfile === key ? '#000' : '#fff',
+                                        border: 'none',
+                                        fontSize: '11px',
+                                        fontWeight: 700,
+                                        cursor: 'pointer'
+                                    }}
+                                >
+                                    {key}
+                                </button>
+                            ))}
+                        </div>
 
-            <div className="android-notification">
-                <Zap size={18} color="var(--accent-color)" />
-                <div style={{ flex: 1 }}>
-                    <h6 style={{ fontSize: '11px', color: '#fff', fontWeight: 800 }}>ECODRAIN ACTIVE</h6>
-                    <div style={{ display: 'flex', gap: '15px', fontSize: '12px', color: 'var(--text-secondary)' }}>
-                        <span>{state.p.toFixed(2)}W Drain</span>
-                        <span>{Math.floor(state.tte / 3600)}h {Math.floor((state.tte % 3600) / 60)}m Left</span>
+                        <div style={{ display: 'flex', gap: '10px', marginBottom: '15px' }}>
+                            <button className={`scenario-btn ${isDarkMode ? 'active' : ''}`} style={{ flex: 1, flexDirection: 'row', padding: '12px' }} onClick={() => setIsDarkMode(!isDarkMode)}>
+                                {isDarkMode ? <Moon size={16} /> : <Sun size={16} />} <span>{isDarkMode ? 'OLED Dark' : 'Bright Mode'}</span>
+                            </button>
+                            <button className={`scenario-btn ${isLPM ? 'active' : ''}`} style={{ flex: 1, flexDirection: 'row', padding: '12px' }} onClick={() => setIsLPM(!isLPM)}>
+                                <Zap size={16} /> <span>Eco Mode</span>
+                            </button>
+                            <button className="scenario-btn" style={{ flex: 1, flexDirection: 'row', padding: '12px' }} onClick={() => setIsWifi(!isWifi)}>
+                                {isWifi ? <Wifi size={16} /> : <Activity size={16} />} <span>{isWifi ? 'Wi-Fi On' : '5G Data'}</span>
+                            </button>
+                        </div>
+
+                        <div style={{ padding: '0 5px' }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
+                                <span style={{ fontSize: '10px', fontWeight: 800, color: 'var(--text-secondary)' }}>BACKLIGHT LEVEL</span>
+                                <span style={{ fontSize: '10px', fontWeight: 800 }}>{Math.round(brightness * 100)}%</span>
+                            </div>
+                            <input type="range" min="0.05" max="1" step="0.01" value={brightness} onChange={e => setBrightness(parseFloat(e.target.value))} className="slider" style={{ width: '100%' }} />
+                        </div>
+
+                        <div className="scenario-grid">
+                            {Object.entries(configs).map(([key, c]: [string, any]) => (
+                                <button key={key} className={`scenario-btn ${activeScenario === key ? 'active' : ''}`} onClick={() => { setActiveScenario(key); setTimer(10); }}>
+                                    <c.icon size={20} color={activeScenario === key ? '#000' : c.color} />
+                                    <span>{key} Load</span>
+                                </button>
+                            ))}
+                        </div>
+                    </section>
+
+                    <div className="markers-grid">
+                        <div className="marker-card">
+                            <div className="marker-header"><Thermometer size={14} /> <span>Thermal Engine</span></div>
+                            <div className="marker-value"><h3 style={{ color: state.temp > 38 ? 'var(--danger)' : 'var(--success)' }}>{state.temp.toFixed(1)}</h3><span className="unit">°C</span></div>
+                            <div className="marker-progress"><div className="progress-fill" style={{ width: `${Math.min(100, (state.temp - 22) * 4)}%`, background: state.temp > 38 ? 'var(--danger)' : 'var(--success)' }} /></div>
+                        </div>
+                        <div className="marker-card">
+                            <div className="marker-header"><Activity size={14} /> <span>Global Sink</span></div>
+                            <div className="marker-value"><h3>{state.p.toFixed(2)}</h3><span className="unit">Watts</span></div>
+                            <div className="marker-progress"><div className="progress-fill" style={{ width: `${Math.min(100, state.p * 15)}%`, background: 'var(--accent-color)' }} /></div>
+                        </div>
+
+                        <div className="marker-card full-width">
+                            <div className="marker-header"><Cpu size={14} /> <span>Octa-Core Cluster Activity</span></div>
+                            <div className="core-grid">
+                                <CoreChip name="P-Core 1" freq={(activeScenario ? 3.2 : 0.6 + Math.random() * 0.4).toFixed(2)} power={(state.pCpu * 0.35).toFixed(2)} color="var(--danger)" />
+                                <CoreChip name="P-Core 2" freq={(activeScenario ? 3.2 : 0.6 + Math.random() * 0.4).toFixed(2)} power={(state.pCpu * 0.35).toFixed(2)} color="var(--danger)" />
+                                <CoreChip name="E-Core 1" freq={(0.4 + Math.random() * 1.5).toFixed(2)} power={(state.pCpu * 0.07).toFixed(2)} color="var(--success)" />
+                                <CoreChip name="E-Core 2" freq={(0.4 + Math.random() * 1.5).toFixed(2)} power={(state.pCpu * 0.07).toFixed(2)} color="var(--success)" />
+                                <CoreChip name="E-Core 3" freq={(0.4 + Math.random() * 1.5).toFixed(2)} power={(state.pCpu * 0.07).toFixed(2)} color="var(--success)" />
+                                <CoreChip name="E-Core 4" freq={(0.4 + Math.random() * 1.5).toFixed(2)} power={(state.pCpu * 0.07).toFixed(2)} color="var(--success)" />
+                            </div>
+                        </div>
+
+                        {/* Per-App Impact with Removal Logic */}
+                        <div className="marker-card full-width">
+                            <div className="marker-header"><Activity size={14} /> <span>Active Software Impact</span></div>
+                            <div className="app-impact-list">
+                                <AnimatePresence>
+                                    {apps.map((app) => (
+                                        <motion.div
+                                            initial={{ opacity: 0, x: -20 }}
+                                            animate={{ opacity: 1, x: 0 }}
+                                            exit={{ opacity: 0, scale: 0.8 }}
+                                            className="impact-item"
+                                            key={app.id}
+                                        >
+                                            <div className="impact-app-info">
+                                                <app.icon size={16} color={app.color} />
+                                                <span className="impact-name">{app.name}</span>
+                                                <span className={`impact-badge impact-${app.impact}`}>{app.impact}</span>
+                                            </div>
+                                            <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+                                                <span className="impact-wattage">{(app.wattage * (activeScenario === 'Gaming' && app.impact === 'high' ? 2.5 : 1)).toFixed(2)}W</span>
+                                                {app.id !== 'ecodrain' && (
+                                                    <Trash2 size={14} color="var(--danger)" style={{ cursor: 'pointer', opacity: 0.6 }} onClick={() => removeApp(app.id)} />
+                                                )}
+                                            </div>
+                                        </motion.div>
+                                    ))}
+                                </AnimatePresence>
+                                {apps.length === 1 && (
+                                    <div style={{ textAlign: 'center', fontSize: '11px', color: 'var(--text-secondary)', padding: '10px' }}>
+                                        All background apps terminated. System Optimized.
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+
+                        <div className="marker-card full-width">
+                            <div className="marker-header"><Layers size={14} /> <span>Topology Breakdown</span></div>
+                            <div className="physics-stack">
+                                <div className="physics-item"><span>Processor Cluster</span><span>{state.pCpu.toFixed(2)}W</span></div>
+                                <div className="physics-item"><span>OLED Logic (APR: {isDarkMode ? '0.30' : '0.90'})</span><span>{state.pDisp.toFixed(2)}W</span></div>
+                                <div className="physics-item"><span>Carrier Radio (Capped peak)</span><span>{state.pNet.toFixed(2)}W</span></div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <ShieldCheck size={18} color="var(--success)" style={{ opacity: 0.5 }} />
-            </div>
+
+                    <div className="android-notification">
+                        <Zap size={18} color="var(--accent-color)" />
+                        <div style={{ flex: 1 }}>
+                            <h6 style={{ fontSize: '11px', color: '#fff', fontWeight: 800 }}>ECODRAIN ACTIVE</h6>
+                            <div style={{ display: 'flex', gap: '15px', fontSize: '12px', color: 'var(--text-secondary)' }}>
+                                <span>{state.p.toFixed(2)}W Drain</span>
+                                <span>{Math.floor(state.tte / 3600)}h {Math.floor((state.tte % 3600) / 60)}m Left</span>
+                            </div>
+                        </div>
+                        <ShieldCheck size={18} color="var(--success)" style={{ opacity: 0.5 }} />
+                    </div>
+                </>
+            )
+            }
 
             <FYIModal isOpen={isFYIOpen} onClose={() => setIsFYIOpen(false)} />
-        </div>
+        </div >
     );
 }
