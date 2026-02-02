@@ -19,6 +19,10 @@
 \usepackage{titlesec}
 \usepackage{setspace}
 
+% --- REDUCE SPACING ---
+\raggedbottom
+\setlength{\parskip}{0.5ex plus 0.2ex minus 0.1ex}
+
 % --- CODE STYLE ---
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
@@ -126,7 +130,7 @@ The power consumption profile $P(t)$ of a smartphone is not static but fluctuate
 The motivation for this study originates from an observation from personal user experience: most operating systems provide a "time-to-empty" estimate but fail to explain the \textit{why} behind the drain. This model aims to represent the battery as a large source with thousands of different drains that take various, small chunks of energy over time. Every hardware and software action, whether it is from cellular modem services or the active load of rendering a 3D game, contributes to the depletion of internal joules\cite{14}.
 
 In this project, we seek to bridge the gap between electrical engineering formulas and the practical information needed by mobile phone users. We simplify certain aspects of the modeling to ensure the equations are both solvable for any phone model and representative of real life. Ultimately, this mathematical framework serves as the engine for a proposed Python-based application that visualizes battery drain as a continuous time series, offering users insights into how optimizations like "Low Power Mode" affect their specific device and state of charge (SOC).
-\newpage 
+
 
 \section{Model Framework and Assumptions}
 
@@ -220,9 +224,6 @@ We make the following assumptions to translate physical realities into mathemati
     \emph{Model Link:} The system is coupled via Equation (\ref{eq:thermal_throttle}), where $P_{actual}$ becomes a function of state $T(t)$, creating a negative feedback loop when $T(t) > T_{crit}$.
 \end{enumerate}
 
-
-\newpage
-
 % =================================================================================
 % PAGE 4: ASSUMPTIONS + BACKGROUND
 % =================================================================================
@@ -248,8 +249,6 @@ The drain on the battery is the sum of power drawn by individual components. We 
     \item \textbf{OLED Physics:} Unlike backlit displays, Organic Light Emitting Diodes (OLEDs) consume current proportional to the luminosity of each sub-pixel. This validates our "Software Clustering" assumption, as a "Dark Mode" app will fall into a different energy cluster than a "Light Mode" app \cite{2, 5}.
     \item \textbf{Signal Propagation:} The power required by the modem is inversely proportional to the Signal-to-Noise Ratio (SNR). This supports our need to model background refresh, as a background sync in a poor signal area can consume disproportionate energy \cite{13}.
 \end{itemize}
-
-\newpage
 
 % =================================================================================
 % PAGE 5: START ON EQUATIONS
@@ -305,8 +304,6 @@ P_{total}(t) = P_{sys}(t) + P_{gain}(t)
 \end{equation}
 
 Where $P_{sys}$ represents the sum of all hardware and software drainers.
-
-\newpage
 
 % =================================================================================
 % PAGE 6: CONTINUE EQUATIONS + DEV.
@@ -365,8 +362,6 @@ Where:
     \item 5G modems generally have higher $E_{bit}$ and $P_{tail}$ values than 4G, as discussed in \cite{3}.
 \end{itemize}
 
-\newpage
-
 % =================================================================================
 % PAGE 7: CONTINUE EQUATIONS + DEV.
 % =================================================================================
@@ -420,8 +415,6 @@ I_{max} \cdot V_{term}(t) & \text{if } V_{term} < V_{cut} \text{ (CC Phase)} \\
 V_{cut} \cdot I_{decay}(t) & \text{if } V_{term} \ge V_{cut} \text{ (CV Phase)}
 \end{cases}
 \end{equation}
-
-\newpage
 
 % =================================================================================
 % PAGE 8: CONTINUE EQUATIONS + DEV.
@@ -488,8 +481,6 @@ The derived equations provide a continuous-time framework that links physical ha
     \label{fig:physics_curves}
 \end{figure}
 
-\newpage
-
 % =================================================================================
 % PAGE 9: CASE STUDY IPHONE
 % =================================================================================
@@ -500,9 +491,9 @@ The derived equations provide a continuous-time framework that links physical ha
 
 \begin{figure}[h]
     \centering
-    \fbox{\parbox[c][4cm]{0.95\textwidth}{\centering \vspace{1.5cm} \textbf{Placeholder: iOS App UI Screenshot} \\ (To be inserted: Real-time monitoring view) \vspace{1.5cm}}}
-    \caption{Proposed iOS App Interface for Real-Time Battery Monitoring.}
-    \label{fig:ios_app_placeholder}
+    \includegraphics[width=1.0\textwidth]{../images/ios_power_profile.png}
+    \caption{iOS App Interface visualizing the "Power User" profile. Real-time metrics show elevated CPU and network power limits ($\lambda > 1.0$), with the interface reflecting a high-performance state.}
+    \label{fig:ios_app_real}
 \end{figure}
 
 \subsection{User A: The Power User}
@@ -533,7 +524,7 @@ This profile utilizes "Low Power Mode" to restrict background activity.
     \label{fig:limited_user}
 \end{figure}
 
-\newpage
+\vspace{1em}
 
 % =================================================================================
 % PAGE 10: CASE STUDY ANDROID
@@ -571,8 +562,6 @@ Android's "Ultra Power Saving" is more aggressive than iOS's LPM, disabling most
     \item \textbf{Observation:} The model predicts a Time-to-Empty of several days, validated by manufacturer claims.
 \end{itemize}
 
-\newpage
-
 % =================================================================================
 % PAGE 11: OPTIMIZATION MODEL
 % =================================================================================
@@ -592,8 +581,6 @@ By analyzing the datasets (see Source \cite{12}), we identified that specific ap
 \textbf{Recommendation:} Users should identify "Power Hog" clusters. Our Python tool allows users to input their app usage and see the predicted drain. Reducing usage of Cluster 1 (High Performance Games) by 30 minutes saves more energy than reducing Cluster 4 (E-readers) by 2 hours.
 
 % Figure 5 Removed as duplicate. Reference Figure 5 (App Power Comparison) for details.
-
-\newpage
 
 % =================================================================================
 % PAGE 12: DATASET APPLICATIONS
@@ -681,7 +668,7 @@ Limited user (LPM) & 100\% & 71.0 & 48--72 & 18.3 \\
 
 \textbf{Conclusion:} The updated model (Equations 1--18) provides actionable TTE predictions suitable for comparative analysis of usage modes and optimization strategies. While absolute TTE accuracy exhibits 16--18\% error, the model's value lies in decomposing drain into interpretable components ($P_{cpu}$, $P_{disp}$, $P_{net}$ via Eq. 8--11) and quantifying optimization impacts (dark mode $\gamma$-reduction, Low Power Mode $\lambda$-scaling). The gaming-to-limited ratio of $\sim$17:1 (4.1h vs. 71.0h) quantitatively demonstrates the combined effect of Equations 8--11, guiding the optimization recommendations in Section 10.
 
-\newpage
+
 
 % =================================================================================
 % PAGE 13: STRENGTHS AND WEAKNESSES
@@ -702,8 +689,6 @@ Limited user (LPM) & 100\% & 71.0 & 48--72 & 18.3 \\
     \item \textbf{User Behavior Stochasticity:} Human behavior is unpredictable. While we use clusters, outliers (e.g., leaving a flashlight on) are essentially random events our model treats as noise.
     \item \textbf{Parameter Calibration Requirements:} Achieving realistic TTE required empirical tuning of $\kappa_{soc} = 0.95$ (Eq. 8), $\beta_1 = 0.42$ (Eq. 9), and network parameters (Eq. 10--11). While physically plausible, device-specific calibration using impedance spectroscopy \cite{7} would reduce the current 16--18\% error range.
 \end{itemize}
-
-\newpage
 
 % =================================================================================
 % PAGE 14: FUTURE WORK
@@ -829,35 +814,79 @@ This appendix provides a user manual and visual reference for the "Eco-Drain" ap
     \item \textbf{Access:} Open the provided localhost URL (e.g., \url{http://localhost:5173}) in your web browser. Use the header icons to toggle between "Dashboard" and "Home Widget" views.
 \end{enumerate}
 
-\subsection*{Interface Visualizations}
+\subsection*{Android Application Screenshots}
 
-\begin{figure}[h]
+The following screenshots demonstrate key features of the EcoDrain application on Android, highlighting the impact of display mode and power-saving settings on battery consumption.
+
+\begin{figure}[H]
     \centering
     \begin{minipage}{0.48\textwidth}
         \centering
-        \fbox{\parbox[c][6cm]{0.95\textwidth}{\centering \vspace{2.5cm} \textbf{Android: Composite View} \\ (General | Eco Toggle | Load Analysis) \vspace{2.5cm}}}
-        \caption{Android App Functionality}
+        \fbox{\parbox[c][7cm]{0.95\textwidth}{\centering \vspace{3cm} \textbf{Screenshot A1} \\ android\_eco\_dark\_50.png \vspace{3cm}}}
+        \caption{Android: OLED Dark Mode with Eco Mode enabled at 50\% brightness. The reduced Active Pixel Ratio ($\gamma = 0.3$) and power-saving coefficients result in significantly lower display power consumption.}
+        \label{fig:android_eco_dark}
     \end{minipage}
     \hfill
     \begin{minipage}{0.48\textwidth}
         \centering
-        \fbox{\parbox[c][6cm]{0.95\textwidth}{\centering \vspace{2.5cm} \textbf{Android: Home Screen} \\ (Widget \& Status Integration) \vspace{2.5cm}}}
-        \caption{Android Widget Integration}
+        \fbox{\parbox[c][7cm]{0.95\textwidth}{\centering \vspace{3cm} \textbf{Screenshot A2} \\ android\_light\_full.png \vspace{3cm}}}
+        \caption{Android: Light Mode with Eco Mode disabled at 100\% brightness. The high APR ($\gamma = 0.9$) and maximum backlight demonstrate the worst-case display power scenario.}
+        \label{fig:android_light_full}
     \end{minipage}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \begin{minipage}{0.48\textwidth}
         \centering
-        \fbox{\parbox[c][6cm]{0.95\textwidth}{\centering \vspace{2.5cm} \textbf{iOS: Main Dashboard} \\ (Real-time Battery Stats) \vspace{2.5cm}}}
-        \caption{iOS Application View 1}
+        \fbox{\parbox[c][7cm]{0.95\textwidth}{\centering \vspace{3cm} \textbf{Screenshot A3} \\ android\_dashboard\_top.png \vspace{3cm}}}
+        \caption{Android: Main Dashboard (Top Section). Shows the real-time SOC ring, time-to-empty prediction, user profile selector, and primary control toggles for display and network settings.}
+        \label{fig:android_dashboard_top}
     \end{minipage}
     \hfill
     \begin{minipage}{0.48\textwidth}
         \centering
-        \fbox{\parbox[c][6cm]{0.95\textwidth}{\centering \vspace{2.5cm} \textbf{iOS: Optimization} \\ (Recommendations) \vspace{2.5cm}}}
-        \caption{iOS Application View 2}
+        \fbox{\parbox[c][7cm]{0.95\textwidth}{\centering \vspace{3cm} \textbf{Screenshot A4} \\ android\_dashboard\_bottom.png \vspace{3cm}}}
+        \caption{Android: Dashboard (Bottom Section). Displays the Octa-Core Cluster Activity with per-core frequency and power readings, along with the Active Software Impact list showing per-app wattage contributions.}
+        \label{fig:android_dashboard_bottom}
+    \end{minipage}
+\end{figure}
+
+\subsection*{iOS Application Screenshots}
+
+The following screenshots demonstrate the EcoDrain application on iOS, showcasing user profile switching, network optimization, and stress testing capabilities.
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \fbox{\parbox[c][7cm]{0.95\textwidth}{\centering \vspace{3cm} \textbf{Screenshot I1} \\ ios\_eco\_profile.png \vspace{3cm}}}
+        \caption{iOS: Eco 1.5x Profile selected. The reduced power scaling coefficient ($\lambda = 0.65$) limits CPU and display power consumption, extending battery life for conservative users.}
+        \label{fig:ios_eco_profile}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \fbox{\parbox[c][7cm]{0.95\textwidth}{\centering \vspace{3cm} \textbf{Screenshot I2} \\ ios\_power\_profile.png \vspace{3cm}}}
+        \caption{iOS: Power 1.5x Profile selected. The elevated power scaling ($\lambda = 1.5$) enables higher CPU frequencies and display brightness for performance-oriented users.}
+        \label{fig:ios_power_profile}
+    \end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \fbox{\parbox[c][7cm]{0.95\textwidth}{\centering \vspace{3cm} \textbf{Screenshot I3} \\ ios\_wifi\_toggle.png \vspace{3cm}}}
+        \caption{iOS: Wi-Fi Toggle demonstration. Switching from 5G Data to Wi-Fi reduces modem power from up to 3.0W to approximately 0.8W, as modeled by Equation (\ref{eq:network_power}).}
+        \label{fig:ios_wifi_toggle}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \fbox{\parbox[c][7cm]{0.95\textwidth}{\centering \vspace{3cm} \textbf{Screenshot I4} \\ ios\_gaming\_load.png \vspace{3cm}}}
+        \caption{iOS: Gaming Load stress test active. The thermal engine shows elevated temperature, and the Global Sink displays peak power draw demonstrating thermal throttling behavior per Equation (\ref{eq:thermal_throttle}).}
+        \label{fig:ios_gaming_load}
     \end{minipage}
 \end{figure}
 
