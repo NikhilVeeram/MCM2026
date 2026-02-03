@@ -10,11 +10,11 @@ def draw_box(ax, x, y, width, height, text, color='#e0e7ff', title=None):
     
     if title:
         # Title near top
-        ax.text(center_x, y + height - 0.03, title, ha='center', va='top', fontsize=10, fontweight='bold', color='#1e3a8a')
+        ax.text(center_x, y + height - 0.03, title, ha='center', va='top', fontsize=13, fontweight='bold', color='#1e3a8a')
         # Content in middle-bottom
-        ax.text(center_x, y + (height / 2) - 0.02, text, ha='center', va='center', fontsize=9, wrap=True)
+        ax.text(center_x, y + (height / 2) - 0.02, text, ha='center', va='center', fontsize=11, wrap=True)
     else:
-        ax.text(center_x, y + height/2, text, ha='center', va='center', fontsize=9, wrap=True)
+        ax.text(center_x, y + height/2, text, ha='center', va='center', fontsize=11, wrap=True)
     return (x + width/2, y, x + width/2, y + height)
 
 def draw_arrow(ax, start, end, text=None, curved=False):
@@ -27,7 +27,7 @@ def draw_arrow(ax, start, end, text=None, curved=False):
     if text:
         mid_x = (start[0] + end[0]) / 2
         mid_y = (start[1] + end[1]) / 2 + (0.05 if curved else 0)
-        ax.text(mid_x, mid_y, text, fontsize=8, color='#374151', backgroundcolor='white', ha='center')
+        ax.text(mid_x, mid_y, text, fontsize=10, color='#374151', backgroundcolor='white', ha='center')
 
 fig, ax = plt.subplots(figsize=(14, 10)) # Increased size for better spacing
 ax.set_xlim(0, 1.0)
@@ -115,13 +115,13 @@ draw_arrow(ax, (0.80, 0.68), (0.74, 0.33), "V_oc")
 # Circuit (Heat) -> Thermal
 ax.annotate('', xy=(0.64, 0.62), xytext=(0.64, 0.33), 
             arrowprops=dict(arrowstyle="->", color='#ef4444', lw=2, linestyle="dashed"))
-ax.text(0.65, 0.48, "Heat (I^2R)", fontsize=8, color='#dc2626', rotation=90)
+ax.text(0.65, 0.48, "Heat (I^2R)", fontsize=10, color='#dc2626', rotation=90)
 
 # Thermal -> Aggregation/Eff (Throttle)
 # Draw arrow from Thermal down/left to Efficiency or Aggregation
 ax.annotate('', xy=(0.58, 0.54), xytext=(0.60, 0.62), 
             arrowprops=dict(arrowstyle="->", color='#ef4444', lw=2))
-ax.text(0.61, 0.58, "Throttle", fontsize=8, color='#dc2626')
+ax.text(0.61, 0.58, "Throttle", fontsize=10, color='#dc2626')
 
 plt.title("Modular Interaction of Mathematical Battery Models", fontsize=16, fontweight='bold', y=0.96)
 plt.tight_layout()

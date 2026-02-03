@@ -531,29 +531,30 @@ This profile utilizes "Low Power Mode" to restrict background activity.
     \label{fig:limited_user}
 \end{figure}
 
+\clearpage
 \begin{figure}[H]
     \centering
     \begin{minipage}{0.48\textwidth}
         \centering
-        \includegraphics[height=6.5cm, keepaspectratio]{../images/ios_power_profile.png}
+        \includegraphics[height=6.2cm, keepaspectratio]{../images/ios_power_profile.png}
         \caption{iOS: Power 1.5x Profile.}
     \end{minipage}
     \hfill
     \begin{minipage}{0.48\textwidth}
         \centering
-        \includegraphics[height=6.5cm, keepaspectratio]{../images/ios_eco_profile.png}
+        \includegraphics[height=6.2cm, keepaspectratio]{../images/ios_eco_profile.png}
         \caption{iOS: Eco 1.5x Profile.}
     \end{minipage}
     \vspace{0.5em}
     \begin{minipage}{0.48\textwidth}
         \centering
-        \includegraphics[height=6.5cm, keepaspectratio]{../images/ios_gaming_load.png}
+        \includegraphics[height=6.2cm, keepaspectratio]{../images/ios_gaming_load.png}
         \caption{iOS: Gaming Load.}
     \end{minipage}
     \hfill
     \begin{minipage}{0.48\textwidth}
         \centering
-        \includegraphics[height=6.5cm, keepaspectratio]{../images/ios_wifi_toggle.png}
+        \includegraphics[height=6.2cm, keepaspectratio]{../images/ios_wifi_toggle.png}
         \caption{iOS: Wi-Fi Toggle.}
     \end{minipage}
     \caption{iOS Application Interface Validation showing Power vs. Eco profiles and real-time stress testing.}
@@ -570,29 +571,30 @@ This profile utilizes "Low Power Mode" to restrict background activity.
 \textbf{Device Model:} Google Pixel 8 (Modeled using dataset parameters from \cite{12}). \\
 \textbf{Key Difference:} Android devices often exhibit different background handling policies and thermal thresholds compared to iOS \cite{10}.
 
+\clearpage
 \begin{figure}[H]
     \centering
     \begin{minipage}{0.48\textwidth}
         \centering
-        \includegraphics[height=6.5cm, keepaspectratio]{../images/android_dashboard_top.png}
+        \includegraphics[height=6.2cm, keepaspectratio]{../images/android_dashboard_top.png}
         \caption{Dashboard (Top)}
     \end{minipage}
     \hfill
     \begin{minipage}{0.48\textwidth}
         \centering
-        \includegraphics[height=6.5cm, keepaspectratio]{../images/android_dashboard_bottom.png}
+        \includegraphics[height=6.2cm, keepaspectratio]{../images/android_dashboard_bottom.png}
         \caption{Dashboard (Bottom)}
     \end{minipage}
     \vspace{0.5em}
     \begin{minipage}{0.48\textwidth}
         \centering
-        \includegraphics[height=6.5cm, keepaspectratio]{../images/android_light_full.png}
+        \includegraphics[height=6.2cm, keepaspectratio]{../images/android_light_full.png}
         \caption{Light Mode (100\%)}
     \end{minipage}
     \hfill
     \begin{minipage}{0.48\textwidth}
         \centering
-        \includegraphics[height=6.5cm, keepaspectratio]{../images/android_eco_dark_50.png}
+        \includegraphics[height=6.2cm, keepaspectratio]{../images/android_eco_dark_50.png}
         \caption{Dark Mode (Eco)}
     \end{minipage}
     \caption{Android Application Interface Validation comparing dashboard metrics and display power optimization (Light vs. Dark Mode).}
@@ -780,13 +782,6 @@ As electric vehicles and home energy storage become prevalent, smartphone batter
 % PAGE 15: APPENDIX A (PAGE 1)
 % =================================================================================
 \section{Appendix A: Validation Implementation}
-
-This appendix presents the Python implementation of the Continuous-Time Kinetic Battery Model (CT-KBM) with the updated equations (1--18) used for validation. The code implements the calibrated power models and differential system from Sections 5--6.
-
-\subsection*{A.1 Validation Implementation (Updated Equations)}
-
-This code implements the validation using the updated model equations (1--18).
-
 \begin{lstlisting}[language=Python, caption={Validation with updated equations}]
 import numpy as np
 from scipy.integrate import odeint
@@ -992,6 +987,12 @@ V. Panchal, ``Thermal and Power Management Challenges in High-Performance Mobile
 
 \bibitem{15}
 D. Di Nucci et al., ``PETrA: A Software-Based Tool for Estimating the Energy Consumption of Mobile Apps,'' \textit{Proc. of ICSE}, 2017.
+
+\bibitem{16}
+Kaggle Battery Drain Dataset. Available: \url{https://www.kaggle.com/datasets/battery-drain} (Accessed: Feb. 2026).
+
+\bibitem{17}
+NASA Prognostics Data Repository. Available: \url{https://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository} (Accessed: Feb. 2026).
 
 \end{thebibliography}
 
