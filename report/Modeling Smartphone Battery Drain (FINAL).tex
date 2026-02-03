@@ -106,7 +106,7 @@ Smartphone battery estimates obscure a complex question: \textit{what physical p
 \noindent\textbf{Methodology \& Data Integration:}
 \begin{itemize}[nosep]
 \item \textbf{Physics-based components:} CPU DVFS scaling (Eq.~8), OLED pixel-level power (Eq.~9), 5G path loss with tail energy (Eq.~10--11)
-\item \textbf{Data-driven calibration:} NASA battery dataset (94.2\% $R^2$ correlation), Kaggle app clustering (<3\% error), signal strength traces [13]
+\item \textbf{Data-driven calibration:} NASA battery dataset (94.2\% $R^2$ correlation), Kaggle app clustering ($<$3\% error), signal strength traces [13]
 \item \textbf{User profiles:} Power user (gaming, 5G) $\rightarrow$ 4.1h $\vert$ Limited user (dark mode, LPM) $\rightarrow$ 71h (\textbf{17$\times$ difference})
 \end{itemize}
 
@@ -130,7 +130,7 @@ Low Power Mode (dark) & \textbf{71h} & 48--72h & 18\% \\
 \noindent\textbf{Dominant drain factors:} Display brightness (47\% reduction via dark mode), network signal strength (2.1W peak 5G), background app refresh (eliminated by LPM).
 
 \begin{itemize}[nosep]
-\item \textbf{OLED Display Optimization:} Dark mode reduces Active Pixel Ratio ($\alpha$: 0.8$\rightarrow$0.1), yielding \textbf{39--47\% energy savings} [5] by lowering pixel emission current.
+\item \textbf{OLED Display Optimization:} Dark mode reduces Active Pixel Ratio ($\alpha \colon 0.8 \rightarrow 0.1$), yielding \textbf{39--47\% energy savings} [5] by lowering pixel emission current.
 
 \item \textbf{5G Tail Energy:} Modems consume \textbf{2.1W peak} during transmission plus ``tail'' state penalty in low-signal environments ($\delta_{snr} \propto 10^{-(L+80)/20}$) [13].
 
@@ -161,9 +161,9 @@ Low Power Mode (dark) & \textbf{71h} & 48--72h & 18\% \\
 
 The power consumption profile $P(t)$ of a smartphone is not static but fluctuates wildly based on screen content (display intensity), processor frequency scaling---known as Dynamic Voltage and Frequency Scaling (DVFS), which adjusts CPU power states in real-time---and radio signal conditions \cite{1}.
 
-The motivation for this study originates from an observation from personal user experience: most operating systems provide a "time-to-empty" estimate but fail to explain the \textit{why} behind the drain. This model aims to represent the battery as a large source with thousands of different drains that take various, small chunks of energy over time. Every hardware and software action, whether it is from cellular modem services or the active load of rendering a 3D game, contributes to the depletion of internal joules\cite{14}.
+The motivation for this study originates from an observation from personal user experience: most operating systems provide a ``time-to-empty'' estimate but fail to explain the \textit{why} behind the drain. This model aims to represent the battery as a large source with thousands of different drains that take various, small chunks of energy over time. Every hardware and software action, whether it is from cellular modem services or the active load of rendering a 3D game, contributes to the depletion of internal joules\cite{14}.
 
-In this project, we seek to bridge the gap between electrical engineering formulas and the practical information needed by mobile phone users. We simplify certain aspects of the modeling to ensure the equations are both solvable for any phone model and representative of real life. Ultimately, this mathematical framework serves as the engine for a proposed Python-based application that visualizes battery drain as a continuous time series, offering users insights into how optimizations like "Low Power Mode" affect their specific device and state of charge (SOC).
+In this project, we seek to bridge the gap between electrical engineering formulas and the practical information needed by mobile phone users. We simplify certain aspects of the modeling to ensure the equations are both solvable for any phone model and representative of real life. Ultimately, this mathematical framework serves as the engine for a proposed Python-based application that visualizes battery drain as a continuous time series, offering users insights into how optimizations like ``Low Power Mode'' affect their specific device and state of charge (SOC).
 
 
 \section{Model Framework and Assumptions}
@@ -183,10 +183,10 @@ The system state at any time $t$ is fully described by the vector $\mathbf{x}(t)
 \subsubsection*{Control Parameters (Inputs)}
 The model is driven by user-dependent exogenous inputs $\mathbf{u}(t)$:
 \begin{itemize}
-    \item \textbf{$f(t), U(t)$}: CPU frequency (Hz) and Utilization ($0-1$).
-    \item \textbf{$B(t)$}: Screen brightness ($0-1$).
+    \item \textbf{$f(t), U(t)$}: CPU frequency (Hz) and Utilization ($0--1$).
+    \item \textbf{$B(t)$}: Screen brightness ($0--1$).
     \item \textbf{$L(t)$}: Network signal strength (dBm).
-    \item \textbf{$\gamma(t)$}: Active Pixel Ratio for OLED screens ($0-1$).
+    \item \textbf{$\gamma(t)$}: Active Pixel Ratio for OLED screens ($0--1$).
 \end{itemize}
 
 \begin{table}[H]
@@ -237,8 +237,8 @@ We make the following assumptions to translate physical realities into mathemati
     \emph{Assumption:} Users operate in two distinct regimes: active interaction and passive standby.
     \emph{Model Link:} This is encoded via the binary indicator function $\mathbf{1}_{active}(t)$, which switches the active pixel ratio $\gamma(t)$ zero (screen off) or non-zero, and toggles the CPU utilization $U(t)$ between idle maintenance ($\approx 0.05$) and load ($\approx 0.8$).
     
-    \item \textbf{Background Persistence ("Energy Smells"):}
-    \emph{Assumption:} Apps consume energy even when distinctively "closed" due to background syncs.
+    \item \textbf{Background Persistence (``Energy Smells''):}
+    \emph{Assumption:} Apps consume energy even when distinctively ``closed'' due to background syncs.
     \emph{Model Link:} Mathematically represented by the software wake-lock term $W_j(t)$ in Equation (\ref{eq:software_power}) and the network idle floor $P_{idle}$ in Equation (\ref{eq:network_power}).
     
     \item \textbf{Software Clustering:}
@@ -272,15 +272,15 @@ To model the battery voltage response accurately, we employ the \textbf{2RC-Thev
 \begin{itemize}
     \item An ideal voltage source $V_{oc}(S)$ representing the Open Circuit Voltage as a function of State of Charge (SOC).
     \item An internal ohmic resistance $R_0$ representing immediate voltage drop.
-    \item Two parallel RC branches ($R_1, C_1$) and ($R_2, C_2$) representing short-term and long-term transient polarization effects (e.g., the "recovery" effect seen when a heavy load is removed) \cite{7}.
+    \item Two parallel RC branches ($R_1, C_1$) and ($R_2, C_2$) representing short-term and long-term transient polarization effects (e.g., the ``recovery'' effect seen when a heavy load is removed) \cite{7}.
 \end{itemize}
 
 \subsection{Physical Power Laws}
 
 The drain on the battery is the sum of power drawn by individual components. We derive these from fundamental physics:
 \begin{itemize}
-    \item \textbf{CMOS Logic:} The CPU and GPU are comprised of CMOS transistors. The dynamic power is given by $P = C \cdot V^2 \cdot f \cdot \alpha$, where $\alpha$ is the switching activity factor. This explains why "active" usage drains power quadratically with voltage scaling \cite{1}.
-    \item \textbf{OLED Physics:} Unlike backlit displays, Organic Light Emitting Diodes (OLEDs) consume current proportional to the luminosity of each sub-pixel. This validates our "Software Clustering" assumption, as a "Dark Mode" app will fall into a different energy cluster than a "Light Mode" app \cite{2, 5}.
+    \item \textbf{CMOS Logic:} The CPU and GPU are comprised of CMOS transistors. The dynamic power is given by $P = C \cdot V^2 \cdot f \cdot \alpha$, where $\alpha$ is the switching activity factor. This explains why ``active'' usage drains power quadratically with voltage scaling \cite{1}.
+    \item \textbf{OLED Physics:} Unlike backlit displays, Organic Light Emitting Diodes (OLEDs) consume current proportional to the luminosity of each sub-pixel. This validates our ``Software Clustering'' assumption, as a ``Dark Mode'' app will fall into a different energy cluster than a ``Light Mode'' app \cite{2, 5}.
     \item \textbf{Signal Propagation:} The power required by the modem is inversely proportional to the Signal-to-Noise Ratio (SNR). This supports our need to model background refresh, as a background sync in a poor signal area can consume disproportionate energy \cite{13}.
 \end{itemize}
 
@@ -297,7 +297,7 @@ The drain on the battery is the sum of power drawn by individual components. We 
 We define the State of Charge, $S(t)$, as a normalized value $S(t) \in [1]$. The rate of change of SOC is governed by the load current drawn from the battery capacity $Q_{cap}$ (measured in Ampere-seconds or Coulombs). As established in \cite{6} and \cite{9}, the differential equation is:
 
 \begin{equation} \label{eq:soc_ode}
-\frac{dS(t)}{dt} = - \frac{1}{Q_{cap}} \left( I_{load}(t) + I_{self\_discharge}(S, T) \right)
+\frac{dS(t)}{dt} = - \frac{1}{Q_{cap}} \left( I_{load}(t) + I_{\text{self\_discharge}}(S, T) \right)
 \end{equation}
 
 Since smartphones draw power to maintain operation, the load current $I_{load}(t)$ is a function of the total power demand $P_{total}(t)$ and the terminal voltage $V_{term}(t)$. This relationship couples the software demand with the hardware state:
@@ -331,7 +331,7 @@ These equations account for the "voltage sag" observed during heavy gaming or 5G
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.55\textwidth]{../images/2RC_fig.png}
+    \includegraphics[width=0.55\textwidth]{images/2RC_fig.png}
     \caption{The 2RC-Thevenin Equivalent Circuit Model used for voltage dynamics simulation.}
     \label{fig:2rc_model}
 \end{figure}
@@ -385,7 +385,7 @@ For OLED displays, specifically, $\gamma(t) \approx 0.3$ in Dark Mode versus $\g
 
 \subsubsection{Network and Modems}
 
-Cellular modems (4G/5G) exhibit "tail energy" behavior. Ding et al. \cite{13} identify that radios remain in high-power states (DCH/FACH) after transmission. We model this as:
+Cellular modems (4G/5G) exhibit ``tail energy'' behavior. Ding et al. \cite{13} identify that radios remain in high-power states (DCH/FACH) after transmission. We model this as:
 
 \begin{equation} \label{eq:network_power}
 P_{net}(t) = \min \left( P_{max}, \delta_{snr} \cdot \epsilon \right) + P_{idle} \cdot \lambda_{user}
@@ -419,11 +419,11 @@ Where $\delta(t)$ are binary activation functions.
 
 \subsection{Software Models}
 
-Software behavior dictates when hardware is active. We model this via "Wake Locks" and our assumed App Clusters.
+Software behavior dictates when hardware is active. We model this via ``Wake Locks'' and our assumed App Clusters.
 
 \subsubsection{App Clusters and Wake Locks}
 
-Consistent with the "Energy Smells" framework proposed by Groza et al. \cite{10}, we model the power contribution of software as a summation over $M$ distinct clusters:
+Consistent with the ``Energy Smells'' framework proposed by Groza et al. \cite{10}, we model the power contribution of software as a summation over $M$ distinct clusters:
 
 \begin{equation} \label{eq:software_power}
 P_{software}(t) = \sum_{c=1}^{M} \sum_{j \in \text{Cluster}_c} \left( P_{active,c} \cdot A_j(t) + P_{bg,c} \cdot W_j(t) \right)
@@ -499,7 +499,7 @@ Low Power Mode is a software gainer that acts as a limiter on the drain paramete
 P_{LPM}(t) = \lambda_{cpu} P_{cpu}(f_{max\_limited}) + \lambda_{disp} P_{disp}(B_{reduced}) + \lambda_{bg} P_{software}^{background}
 \end{equation}
 
-Where $\lambda_{bg} \approx 0$ represents the disabling of background app refresh, directly addressing our "Background Persistence" assumption.
+Where $\lambda_{bg} \approx 0$ represents the disabling of background app refresh, directly addressing our ``Background Persistence'' assumption.
 
 \subsection{Thermal Throttling Model}
 
@@ -517,7 +517,7 @@ The derived equations provide a continuous-time framework that links physical ha
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1.0\textwidth]{../images/model_physics_curves.png}
+    \includegraphics[width=1.0\textwidth]{images/model_physics_curves.png}
     \caption{Constituent physics curves governing the model dynamics. Clockwise from top-left: Open Circuit Voltage (OCV) vs. SOC; Coulombic Efficiency $\eta(P)$ drop-off at high loads; Thermal Throttling factor decrease after $40^\circ$C; and exponential 5G power penalty vs. signal strength.}
     \label{fig:physics_curves}
 \end{figure}
@@ -534,18 +534,18 @@ The derived equations provide a continuous-time framework that links physical ha
 This profile represents a user leveraging high-performance cores and 5G connectivity.
 \begin{itemize}
     \item \textbf{Inputs:} Brightness $B(t) = 100\%$, Active 5G ($\delta_{5G} = 2.1$ W), Heavy Gaming Cluster.
-    \item \textbf{Observation:} The high current draw ($I_{load}$) causes significant $I^2R$ losses across internal resistance $R_0$, leading to "voltage sag".
+    \item \textbf{Observation:} The high current draw ($I_{load}$) causes significant $I^2R$ losses across internal resistance $R_0$, leading to ``voltage sag''.
 \end{itemize}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1.0\textwidth]{../images/power_user_composite.png}
+    \includegraphics[width=1.0\textwidth]{images/power_user_composite.png}
     \caption{Detailed Power User Profile. Central: Average power breakdown. Surrounding: Specific high-demand workloads (Gaming, 4K Streaming) highlighting maximum power draw variances and 5G penalties.}
     \label{fig:power_breakdown}
 \end{figure}
 
 \subsection{User B: The Limited User}
-This profile utilizes "Low Power Mode" to restrict background activity.
+This profile utilizes ``Low Power Mode'' to restrict background activity.
 \begin{itemize}
     \item \textbf{Inputs:} LPM Enabled ($\lambda_{bg} = 0$), Screen Time $< 2$ hours.
     \item \textbf{Observation:} The elimination of $P_{tail}$ from network activity and the reduction of $P_{static}$ via CPU throttling results in a linear, slow drain curve.
@@ -553,7 +553,7 @@ This profile utilizes "Low Power Mode" to restrict background activity.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1.0\textwidth]{../images/limited_user_composite.png}
+    \includegraphics[width=1.0\textwidth]{images/limited_user_composite.png}
     \caption{Detailed Limited User Profile. Central: Average power breakdown (mostly background/idle). Surrounding: Low-power workloads (Eco Reading, Texting) showing significantly reduced power caps with disabled 5G tail states.}
     \label{fig:limited_user}
 \end{figure}
@@ -563,25 +563,25 @@ This profile utilizes "Low Power Mode" to restrict background activity.
     \centering
     \begin{minipage}{0.48\textwidth}
         \centering
-        \includegraphics[height=9cm, keepaspectratio]{../images/ios_power_profile.png}
+        \includegraphics[height=9cm, keepaspectratio]{images/ios_power_profile.png}
         \caption{iOS: Power 1.5x Profile.}
     \end{minipage}
     \hfill
     \begin{minipage}{0.48\textwidth}
         \centering
-        \includegraphics[height=9cm, keepaspectratio]{../images/ios_eco_profile.png}
+        \includegraphics[height=9cm, keepaspectratio]{images/ios_eco_profile.png}
         \caption{iOS: Eco 1.5x Profile.}
     \end{minipage}
     \vspace{0.5em}
     \begin{minipage}{0.48\textwidth}
         \centering
-        \includegraphics[height=9cm, keepaspectratio]{../images/ios_gaming_load.png}
+        \includegraphics[height=9cm, keepaspectratio]{images/ios_gaming_load.png}
         \caption{iOS: Gaming Load.}
     \end{minipage}
     \hfill
     \begin{minipage}{0.48\textwidth}
         \centering
-        \includegraphics[height=9cm, keepaspectratio]{../images/ios_wifi_toggle.png}
+        \includegraphics[height=9cm, keepaspectratio]{images/ios_wifi_toggle.png}
         \caption{iOS: Wi-Fi Toggle.}
     \end{minipage}
     \caption{iOS Application Interface Validation showing Power vs. Eco profiles and real-time stress testing.}
@@ -603,25 +603,25 @@ This profile utilizes "Low Power Mode" to restrict background activity.
     \centering
     \begin{minipage}{0.48\textwidth}
         \centering
-        \includegraphics[height=9.2cm, keepaspectratio]{../images/android_dashboard_top.png}
+        \includegraphics[height=9.2cm, keepaspectratio]{images/android_dashboard_top.png}
         \caption{Dashboard (Top)}
     \end{minipage}
     \hfill
     \begin{minipage}{0.48\textwidth}
         \centering
-        \includegraphics[height=9.2cm, keepaspectratio]{../images/android_dashboard_bottom.png}
+        \includegraphics[height=9.2cm, keepaspectratio]{images/android_dashboard_bottom.png}
         \caption{Dashboard (Bottom)}
     \end{minipage}
     \vspace{0.5em}
     \begin{minipage}{0.48\textwidth}
         \centering
-        \includegraphics[height=9.2cm, keepaspectratio]{../images/android_light_full.png}
+        \includegraphics[height=9.2cm, keepaspectratio]{images/android_light_full.png}
         \caption{Light Mode (100\%)}
     \end{minipage}
     \hfill
     \begin{minipage}{0.48\textwidth}
         \centering
-        \includegraphics[height=9.2cm, keepaspectratio]{../images/android_eco_dark_50.png}
+        \includegraphics[height=9.2cm, keepaspectratio]{images/android_eco_dark_50.png}
         \caption{Dark Mode (Eco)}
     \end{minipage}
     \caption{Android Application Interface Validation comparing dashboard metrics and display power optimization (Light vs. Dark Mode).}
@@ -630,7 +630,7 @@ This profile utilizes "Low Power Mode" to restrict background activity.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.85\textwidth]{../images/battery_scenario_grid.png}
+    \includegraphics[width=0.9\textwidth]{images/battery_scenario_grid.png}
     \caption{Calibrated simulation results across 9 distinct user scenarios, highlighting the non-linear voltage sag and thermal throttling impact. This grid contrasts the Power User (Top Left) with the Limited User (Bottom Right).}
     \label{fig:scenario_grid}
 \end{figure}
@@ -644,13 +644,13 @@ Android devices often sustain higher peak power for longer durations before thro
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.85\textwidth]{../images/app_power_comparison.png}
+    \includegraphics[width=0.85\textwidth]{images/app_power_comparison.png}
     \caption{Component power contribution across 9 distinct app usage scenarios, highlighting the variance in CPU vs. 5G dominance.}
     \label{fig:app_comparison}
 \end{figure}
 
 \subsection{Scenario B: The Limited User}
-Android's "Ultra Power Saving" is more aggressive than iOS's LPM, disabling most clusters entirely.
+Android's ``Ultra Power Saving'' is more aggressive than iOS's LPM, disabling most clusters entirely.
 \begin{itemize}
     \item \textbf{Inputs:} Only Phone/SMS Clusters active.
     \item \textbf{Observation:} The model predicts a Time-to-Empty of several days, validated by manufacturer claims.
@@ -667,12 +667,12 @@ Using our display equation derived from \cite{2} and \cite{5}:
 P_{disp} = \beta_{max} \cdot B(t) \cdot \gamma(t)
 \end{equation}
 Switching from Light Mode ($\gamma \approx 0.8$) to Dark Mode ($\gamma \approx 0.1$) results in a direct reduction of $P_{disp}$.
-\textbf{Result:} Simulations confirm a 39\%--47\% reduction in display power, extending battery life by approximately 1-2 hours for heavy users \cite{5}.
+\textbf{Result:} Simulations confirm a 39\%--47\% reduction in display power, extending battery life by approximately 1--2 hours for heavy users \cite{5}.
 
 \subsection{App Usage Clustering}
 By analyzing the datasets (see Source \cite{12}), we identified that specific app clusters (e.g., Social Media with Autoplay) have disproportionately high $\gamma$ (CPU load) and $\delta$ (Network) coefficients.
 
-\textbf{Recommendation:} Users should identify "Power Hog" clusters. Our Python tool allows users to input their app usage and see the predicted drain. Reducing usage of Cluster 1 (High Performance Games) by 30 minutes saves more energy than reducing Cluster 4 (E-readers) by 2 hours.
+\textbf{Recommendation:} Users should identify ``Power Hog'' clusters. Our Python tool allows users to input their app usage and see the predicted drain. Reducing usage of Cluster 1 (High Performance Games) by 30 minutes saves more energy than reducing Cluster 4 (E-readers) by 2 hours.
 
 % Figure 5 Removed as duplicate. Reference Figure 5 (App Power Comparison) for details.
 
@@ -681,7 +681,7 @@ By analyzing the datasets (see Source \cite{12}), we identified that specific ap
 % =================================================================================
 \section{Dataset Applications \& Validation Results}
 
-To validate our CT-KBM model, we utilized verified open-source datasets. This section details how these datasets were used to calculate the coefficients for our differential equations and presents the validation results.
+To validate our CT-KBM model, we utilized verified, open-source datasets. This section details how these datasets were used to calculate the coefficients for our differential equations and presents the validation results.
 
 \subsection{User Behavior Dataset}
 \textbf{Source:} Flores-Martin et al. \cite{11} \\
@@ -779,7 +779,7 @@ $\delta_{snr}$ (Network penalty) & 1.00 & 1.20 & 4.11h (+0.0\%) \\
 \label{tab:sensitivity_gaming}
 \end{table}
 
-\textbf{Sensitivity Insights:} The CPU coefficient $\kappa_{soc}$ exhibits the highest sensitivity (-6.3\% TTE impact), indicating that CPU power modeling is the dominant uncertainty source in high-performance scenarios. Display and network parameters show moderate to negligible sensitivity in gaming contexts (the -110 dBm signal is already at maximum power draw). All parameter variations remain within plausible physical bounds, confirming model robustness. The negative impacts demonstrate that our baseline calibration ($\kappa_{soc} = 0.95$, $\beta_1 = 0.42$) represents conservative estimates, with higher values reducing predicted battery life as expected from Equations 8-11.
+\textbf{Sensitivity Insights:} The CPU coefficient $\kappa_{soc}$ exhibits the highest sensitivity (-6.3\% TTE impact), indicating that CPU power modeling is the dominant uncertainty source in high-performance scenarios. Display and network parameters show moderate to negligible sensitivity in gaming contexts (the -110 dBm signal is already at maximum power draw). All parameter variations remain within plausible physical bounds, confirming model robustness. The negative impacts demonstrate that our baseline calibration ($\kappa_{soc} = 0.95$, $\beta_1 = 0.42$) represents conservative estimates, with higher values reducing predicted battery life as expected from Equations 8--11.
 
 
 \textbf{Conclusion:} The updated model (Equations 1--18) provides actionable TTE predictions suitable for comparative analysis of usage modes and optimization strategies. While absolute TTE accuracy exhibits 16--18\% error, the model's value lies in decomposing drain into interpretable components ($P_{cpu}$, $P_{disp}$, $P_{net}$ via Eq. 8--11) and quantifying optimization impacts (dark mode $\gamma$-reduction, Low Power Mode $\lambda$-scaling). The gaming-to-limited ratio of $\sim$17:1 (4.1h vs. 71.0h) quantitatively demonstrates the combined effect of Equations 8--11, guiding the optimization recommendations in Section 10.
@@ -823,8 +823,6 @@ Developing the Python simulation into a full-featured mobile app that reads syst
 \subsection{Battery Degradation Over Lifecycle}
 Extending the model to incorporate battery aging dynamics would allow long-term predictions. By modeling capacity fade as a function of cycle count and depth-of-discharge, users could receive degradation warnings (e.g., ``Your effective capacity has decreased by 12\% over the past year''). This aligns with the RUL (Remaining Useful Life) methodology described by Safavi et al. \cite{8}.
 
-\subsection{Integration with Smart Grid Systems}
-As electric vehicles and home energy storage become prevalent, smartphone battery models could interface with smart grid APIs to optimize charging schedules. The model could recommend charging during off-peak hours or when renewable energy is abundant, reducing both electricity costs and carbon footprint.
 \newpage
 
 % =================================================================================
@@ -833,6 +831,7 @@ As electric vehicles and home energy storage become prevalent, smartphone batter
 \section{Appendix A: Validation Implementation}
 \begin{lstlisting}[language=Python, caption={Validation with updated equations}]
 class SmartphoneBatteryValidated:
+    Q_CAP = 3.0 * 3600 # 3000 mAh
     def __init__(self, soc_init=1.0):
         self.capacity = Q_CAP
         self.r1, self.c1 = 0.015, 2000
@@ -854,7 +853,7 @@ class SmartphoneBatteryValidated:
         p_disp = (beta1 * (profile['brightness']**1.6)
                   * profile['alpha'] + 0.02)
         
-        # EQ 10-11: Network with SNR penalty
+        # EQ 10--11: Network with SNR penalty
         L = profile.get('signal', -85)
         blocks_snr = 10**(-(L + 80) / 20)
         if profile['network_active']:
@@ -940,7 +939,7 @@ To clarify the interdependencies between the derived power modules, thermal feed
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.85\textwidth]{../images/equation_flowchart.png}
+    \includegraphics[width=0.85\textwidth]{images/equation_flowchart.png}
     \caption{Modular interaction of the mathematical battery models, showing the feedback loop between Power, Heat, and Circuit Dynamics.}
     \label{fig:equation_flowchart}
 \end{figure}
@@ -1226,7 +1225,7 @@ The authors customized colors, labels, and figure formatting.
 
 \textbf{Query:} ``How do I create a side-by-side figure layout in LaTeX using minipages, ensuring that the images have equal height and proper caption alignment?''
 
-\textbf{Output:} The AI provided the LaTeX code structure using \texttt{\textbackslash begin\{minipage\}\{0.48\textbackslash textwidth\}} and \texttt{\textbackslash includegraphics[height=...]}, which was used to create the composite figures for the iOS and Android interface validations (Figures 5-9 and 10-14).
+\textbf{Output:} The AI provided the LaTeX code structure using \texttt{\textbackslash begin\{minipage\}\{0.48\textbackslash textwidth\}} and \texttt{\textbackslash includegraphics[height=...]}, which was used to create the composite figures for the iOS and Android interface validations (Figures 5--9 and 10--14).
 
 \newpage
 
@@ -1253,5 +1252,6 @@ The authors customized colors, labels, and figure formatting.
 \end{enumerate}
 
 The team acknowledges the risks outlined in COMAP's AI Policy, including the potential for AI-generated content to contain inaccuracies or biases. Human judgment was applied at every stage to ensure the validity and originality of this submission.
+
 
 \end{document}
